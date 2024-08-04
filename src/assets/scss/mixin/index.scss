@@ -32,20 +32,23 @@
   $color,
   $active-color,
   $size) {
+  cursor: pointer;
   -webkit-text-fill-color: inherit;
   background-clip: border-box;
-  background: $bg-color;
   transition: $smooth;
-  border-radius: 4px;
-  cursor: pointer;
-
-  &:hover {
-    background: $hover-bg;
-  }
+  width: max-content !important;
+  // padding: 8px 12px;
 
   .div-hide {
     overflow: hidden;
     position: relative;
+    width: max-content;
+    background: $bg-color ;
+    border-radius: 4px;
+    padding: 4px 8px;
+    &:hover {
+      background: $hover-bg;
+    }
 
     .button-label-absolute-wrapper {
       position: absolute;
@@ -60,7 +63,6 @@
       transform-style: preserve-3d;
       transition: $smooth;
       color: $color;
-      letter-spacing: 0.035vw;
     }
 
     .active {

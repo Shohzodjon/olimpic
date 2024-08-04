@@ -1,0 +1,57 @@
+.horizontal-slider {
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        height: 230px !important;
+        padding: 1.5rem 0;
+        border: 1px solid red;
+        margin: 20px 0;
+
+    }
+
+    &__card-time {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+
+        span {
+            font-size: 1.8rem;
+            color: #fff;
+            font-weight: 500;
+        }
+    }
+
+    &__card-title {
+        font-size: 3.8rem;
+        color: #fff;
+        font-weight: 900;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    &__card-btn {
+        font-weight: 500;
+        background: $blue-800;
+        border-radius: 3px;
+        font-size: 18px;
+        line-height: 22px;
+        color: #ffffff;
+        padding: 10px 31px;
+        transition: $smooth;
+
+        &:hover {
+            color: $blue-800;
+            background: #fff;
+        }
+    }
+
+
+
+    .slick-dots-left {
+        display: none !important;
+    }
+}
