@@ -1,8 +1,7 @@
 <script setup>
-import Navbar from '@/sections/Navbar.vue';
-
-// import {  } from "vue";
-// import { RouterView, useRoute } from "vue-router";
+import Navbar from '@/components/sections/Navbar.vue';
+import Footer from '@/components/sections/Footer.vue';
+import { RouterView } from "vue-router";
 
 </script>
 
@@ -10,9 +9,8 @@ import Navbar from '@/sections/Navbar.vue';
   <section>
     <Navbar/>
     <router-view />
+    <!-- <Footer /> -->
   </section>
 </template>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

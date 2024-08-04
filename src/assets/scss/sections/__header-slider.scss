@@ -1,0 +1,41 @@
+.header-slider {
+    position: relative;
+    &::after{
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(13, 12, 12, 0.6);
+        display: block;
+        top: 0;
+        left: 0;
+    }
+    .slick-dots-bottom {
+      display: none !important;
+    }
+    .slider-item {
+        width: 100%;
+        height: calc(100vh - 147.27px);
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+
+        &>img {
+            color: #fff;
+            font-size: 25px;
+            transition: all linear 1s;
+            transform: scale(1.1);
+            width: 100%;
+            // height: 100%;
+        }
+    }
+
+    .slick-active {
+        .slider-item {
+            img {
+                transform: scale(1);
+                transition: all linear 1s;
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import "./assets/scss/main.scss";
-import "./assets/icons/style.css";
+import './assets/icons/style.css'
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import $i18n from "@/plugins/i18n";

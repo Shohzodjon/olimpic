@@ -1,4 +1,4 @@
-@import "__variables";
+@import "__variables", 'sections', 'components';
 
 *,
 *::after,
@@ -32,3 +32,94 @@ a {
   padding: 0 15px;
   margin: 0 auto;
 }
+
+
+//   
+// .ant-dropdown-link {
+//   font-size: 1.6rem !important;
+//   color: $black-600 !important;
+//   font-weight: 500;
+//   cursor: pointer;
+//   padding: 23px 0;
+// }
+
+// .ant-dropdown-menu-vertical {
+//   background: #eaeff6 !important;
+//   border-radius: 0 !important;
+//   box-shadow: none !important;
+//   width: 110% !important;
+
+//   .ant-dropdown-menu-submenu-vertical {
+//     padding: 6px 0;
+//     border-bottom: 1px solid #cacaca;
+//   }
+
+//   .ant-dropdown-menu-submenu-vertical:hover {
+//     background: none !important;
+//   }
+
+//   .ant-dropdown-menu-submenu-vertical:last-child {
+//     border: none !important;
+//   }
+//   .ant-dropdown-menu-submenu-title span {
+//     font-size: 1.6rem;
+//     color: $black-600 !important;
+//     font-weight: 500;
+//   }
+
+
+
+
+
+//   .ant-dropdown-menu-submenu-open {
+//     .ant-dropdown-menu-submenu-title {
+//       background: none !important;
+//     }
+//   }
+
+//   .ant-dropdown-menu-submenu-active {
+//     .ant-dropdown-menu-submenu-title {
+//       background: none !important;
+//     }
+//   }
+// }
+
+// .ant-dropdown-menu-submenu-popup {
+//   padding: 0 !important;
+//   width: max-content !important;
+// }
+
+// .ant-dropdown-menu-sub {
+//   .ant-dropdown-menu-item-only-child {
+//     padding: 6px 8px !important;
+//     border-bottom: 1px solid #cacaca;
+//     border-radius: 0 !important;
+
+//     .ant-dropdown-menu-title-content {
+//       font-size: 1.6rem;
+//       color: $black-600 !important;
+//       font-weight: 500;
+//     }
+
+//     &:last-child {
+//       border-bottom: none;
+//     }
+
+//     &:hover {
+//       background: none !important;
+//     }
+//   }
+
+//   .ant-dropdown-menu-submenu-open {
+//     .ant-dropdown-menu-submenu-title {
+//       background: none !important;
+//     }
+//   }
+
+//   .ant-dropdown-menu-submenu-active {
+//     .ant-dropdown-menu-submenu-title {
+//       background: none !important;
+//     }
+//   }
+
+// }
