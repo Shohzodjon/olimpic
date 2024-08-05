@@ -1,7 +1,10 @@
 <script setup>
-  import HomeHeader from '@/components/header/HomeHeader.vue';
+import HomeHeader from '@/components/header/HomeHeader.vue';
+import HomeBanner from '@/components/sections/home/HomeBanner.vue'
+import HomeNews from '@/components/sections/home/HomeNews.vue';
 </script>
 <template>
-    <!-- <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, esse. <span>{{$t('test')}}</span></h1> -->
-     <HomeHeader/>
+  <HomeHeader />
+  <HomeBanner />
+  <HomeNews/>
 </template>

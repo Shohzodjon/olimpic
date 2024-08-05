@@ -11,7 +11,7 @@ const items = reactive([
 </script>
 <template>
     <div class="horizontal-slider">
-        <a-carousel autoplay  :autoplaySpeed="3000" dot-position="left" :slidesToShow="1" :pauseOnHover="false" :space="10">
+        <a-carousel autoplay :dots="false"  :autoplaySpeed="3000" dot-position="left" :slidesToShow="1" :pauseOnHover="false" >
             <div v-for="item in items" :key="item.id" class="horizontal-slider__card">
                 <div class="horizontal-slider__card-time">
                     <ClockCircleOutlined />
