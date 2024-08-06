@@ -1,0 +1,29 @@
+.partner-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 8px rgba(157, 165, 185, 0.2);
+    height: 230px;
+    max-width: 330px;
+    min-width: 329px;
+    width: 100%;
+    margin: 5px 1rem;
+    // padding: 3rem;
+    &__img{
+        width: 100%;
+        width: 330px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+
+        img{
+            width: auto;
+            max-width: 90%;
+        }
+    }
+    &__name{
+        @include desc($black-800);
+        font-weight: 600;
+    }
+}
