@@ -19,6 +19,31 @@ const router = createRouter({
           name: "committe",
           component: () => import("../views/CommitteePage.vue"),
         },
+        {
+          path: "olimpic-museum",
+          name: "olimpic-museum",
+          component: () => import("../views/OlimpicMuseum.vue"),
+        },
+        {
+          path: "partners",
+          name: "partners-page",
+          component: () => import("../views/PartnersPage.vue"),
+        },
+        {
+          path: "leader",
+          name: "leader-page",
+          component: () => import("../views/LeaderPage.vue"),
+        },
+        {
+          path: "bos",
+          name: "bos-page",
+          component: () => import("../views/BosPage.vue"),
+        },
+        {
+          path: "chief-secretary",
+          name: "chief-secretary",
+          component: () => import("../views/ChiefSecretary.vue"),
+        },
       ],
     },
   ],
@@ -26,9 +51,9 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const lang = to.params.lang;
-  const locale=$i18n.global.locale.value;
-  if (lang!=locale) {
-    const language = $i18n.global.locale.value || 'oz'; 
+  const locale = $i18n.global.locale.value;
+  if (lang != locale) {
+    const language = $i18n.global.locale.value || "oz";
     return next(`/${language}`);
   }
   next();

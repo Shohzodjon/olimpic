@@ -5,8 +5,18 @@ import MenuDrop from '../dropdown/MenuDrop.vue';
 const menuItems = [
     {
         label: "O'zbekiston MOQ", children: [
-            { label: "Qo'mita", path: 'committe', children: [{ label: 'Olimpiya shon-shuhrati muzeyi', path: 'home', }, { label: 'Hamkorlar', path: 'home', }] },
-            // { label: 'Rahbariyat va hodimlar', path: '/:en', children: [{ label: 'Olimpiya shon-shuhrati muzeyi', path: '/:en', }, { label: 'Hamkorlar', path: '/:en', }] },
+            { label: "Qo'mita", path: 'committe', children: [{ label: 'Olimpiya shon-shuhrati muzeyi', path: 'olimpic-museum', }, { label: 'Hamkorlar', path: 'partners-page', }] },
+            {
+                label: 'Rahbariyat va hodimlar', path: 'leader-page',
+                children: [{ label: 'Rais', path: 'bos-page', },
+                { label: 'Bosh kotib', path: 'chief-secretary', },
+                { label: "Rais o'rinbosari", path: 'home', },
+                { label: 'Rais maslahatchilari', path: 'home', },
+                { label: "Ijroiya qo'mitasi", path: 'home', },
+                { label: 'Department direktorlari', path: 'home', },
+                { label: 'Xodimlar', path: 'home', }
+                ]
+            },
             // { label: 'Tibbiyot markazi', path: '/:en', children: [{ label: 'Olimpiya shon-shuhrati muzeyi', path: '/:en', }, { label: 'Hamkorlar', path: '/:en', }] },
         ]
     },
