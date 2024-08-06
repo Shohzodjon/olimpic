@@ -15,7 +15,6 @@ const news = [
     { img: hero, title: 'Sadullayeva ishtirokini yettinchi oʻrinda yakunladi', time: '4 Aug 2024', id: 2 },
     { img: hero, title: 'Sadullayeva ishtirokini yettinchi oʻrinda yakunladi', time: '4 Aug 2024', id: 3 },
     { img: hero, title: 'Sadullayeva ishtirokini yettinchi oʻrinda yakunladi', time: '4 Aug 2024', id: 4 },
-    { img: hero, title: 'Sadullayeva ishtirokini yettinchi oʻrinda yakunladi', time: '4 Aug 2024', id: 5 },
 ];
 const sliderData = [
     { img: hero2, title: 'Muzaffarbek To’raboyev — Parij-2024 yozgi Olimpiya o’yinlari sovrindori!', time: '1 Aug 2024', desc: 'Parij-2024 yozgi Olimpiya o’yinlarida O’zbekiston delegatsiyasi g’aznasi yana bir bronza medali bilan boyidi. Mazkur ', id: 1 },
@@ -36,7 +35,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay];
                     Barcha yangiliklar
                 </RouterLink>
             </div>
-            <a-row :gutter="18">
+            <a-row :gutter="20">
                 <a-col :span="12">
                     <swiper :pagination="{
                         type: 'fraction',
@@ -60,7 +59,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay];
                         </swiper-slide>
                     </swiper>
                 </a-col>
-                <a-col :span="12" style="display: none;">
+                <a-col :span="12">
                     <HomeNewsCard v-for="item in news" :key="item.id" :img="item.img" :title="item.title"
                         :time="item.time" />
                 </a-col>

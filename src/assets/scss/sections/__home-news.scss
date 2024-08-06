@@ -1,5 +1,4 @@
 .home-news-section {
-    border: 1px solid red;
     padding: 40px 0;
 
     &__flex {
@@ -11,6 +10,7 @@
 
     &__title {
         @include title($black-800);
+        font-weight: 700;
     }
 
     &__btn {
