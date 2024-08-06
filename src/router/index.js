@@ -14,6 +14,11 @@ const router = createRouter({
           name: "home",
           component: () => import("../views/HomePage.vue"),
         },
+        {
+          path: "committe",
+          name: "committe",
+          component: () => import("../views/CommitteePage.vue"),
+        },
       ],
     },
   ],

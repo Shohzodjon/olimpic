@@ -1,0 +1,38 @@
+.committee-page {
+    padding: 4rem 0;
+
+    & h2 {
+        @include title($black-800);
+        margin: 2rem 0;
+    }
+    &__content{
+        @include content();
+
+        img{
+            width: 100%;
+        }
+        p{
+            font-size: 1.6rem;
+            margin-top: 1rem;
+            line-height: 140%;
+        }
+    }
+    &__sidebar{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        &-menu{
+            @include content()
+        }
+        &-img{
+            width: 100%;
+            a{
+                width: 100%;
+                display: block;
+            }
+            img{
+                width: 100%;
+            }
+        }
+    }
+}

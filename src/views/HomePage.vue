@@ -13,15 +13,16 @@ import partner4 from '@/assets/images/partner4.png';
 import summer from '@/assets/images/summer.svg';
 import sun from '@/assets/images/sun-icon.svg';
 import { RightOutlined } from '@ant-design/icons-vue'
+import BreadCrump from '@/components/menu/BreadCrump.vue';
 const partnerList = [
-  { img: partner1, title: 'Hamkor', id: 1 },
-  { img: partner2, title: 'Hamkor', id: 2 },
-  { img: partner3, title: 'Hamkor', id: 3 },
-  { img: partner4, title: 'Hamkor', id: 4 },
-  { img: partner1, title: 'Hamkor', id: 5 },
-  { img: partner2, title: 'Hamkor', id: 6 },
-  { img: partner3, title: 'Hamkor', id: 7 },
-  { img: partner4, title: 'Hamkor', id: 8 },
+  { img: partner1, title: 'Hamkor', id: 1, url: '/:ru' },
+  { img: partner2, title: 'Hamkor', id: 2, url: '/:ru' },
+  { img: partner3, title: 'Hamkor', id: 3, url: '/:ru' },
+  { img: partner4, title: 'Hamkor', id: 4, url: '/:ru' },
+  { img: partner1, title: 'Hamkor', id: 5, url: '/:ru' },
+  { img: partner2, title: 'Hamkor', id: 6, url: '/:ru' },
+  { img: partner3, title: 'Hamkor', id: 7, url: '/:ru' },
+  { img: partner4, title: 'Hamkor', id: 8, url: '/:ru' },
 ]
 
 const olimpicData = [
@@ -32,6 +33,12 @@ const olimpicData = [
   { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 5 },
   { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 6 },
   { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 7 },
+];
+
+const breadCrumb = [
+  { label: 'Home', url: '/:en', id: 1 },
+  { label: 'About', id: 2 },
+  { label: 'Contact', id: 3 },
 ]
 
 </script>
@@ -52,7 +59,7 @@ const olimpicData = [
       <div class="container">
         <h2>Harakatni qo'llab-quvvatlash</h2>
         <Vue3Marquee :gradient="true" :pauseOnHover="true" :duration="35">
-          <PartnerCard v-for="item in partnerList" :key="item.id" :img="item.img" :title="item.title" />
+          <PartnerCard v-for="item in partnerList" :key="item.id" :img="item.img" :title="item.title" :url="item.url" />
         </Vue3Marquee>
       </div>
     </section>
@@ -60,7 +67,7 @@ const olimpicData = [
       <div class="container">
         <h2>XOQ hamkorlari</h2>
         <Vue3Marquee :gradient="true" :pauseOnHover="true" :duration="35" direction="reverse">
-          <PartnerCard v-for="item in partnerList" :key="item.id" :img="item.img" :title="item.title" />
+          <PartnerCard v-for="item in partnerList" :key="item.id" :img="item.img" :title="item.title" :url="item.url" />
         </Vue3Marquee>
       </div>
     </section>
@@ -73,7 +80,7 @@ const olimpicData = [
             :img="item.img">
             <template #season-icon><img src="@/assets/images/sun-icon.svg" width="24" height="24" /></template>
           </OlimpicCard>
-          <RouterLink class="last-item">
+          <RouterLink to="/:en" class="last-item">
             <h3>Barchasi
               <RightOutlined />
             </h3>
@@ -90,11 +97,12 @@ const olimpicData = [
     <section class="home-page__partner">
       <div class="container">
         <h2>O‘zbekiston Olimpiya o‘yinlarida</h2>
-        <Vue3Marquee :gradient="true" :pauseOnHover="true" :duration="35" >
-          <PartnerCard v-for="item in partnerList" :key="item.id" :img="item.img" :title="item.title" />
+        <Vue3Marquee :gradient="true" :pauseOnHover="true" :duration="35">
+          <PartnerCard v-for="item in partnerList" :key="item.id" :img="item.img" :title="item.title" :url="item.url" />
         </Vue3Marquee>
       </div>
     </section>
+    <BreadCrump :data="breadCrumb"/>
   </section>
 
 </template>

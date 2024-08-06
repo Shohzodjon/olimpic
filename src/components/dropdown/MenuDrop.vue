@@ -1,11 +1,16 @@
 <script setup>
 import { DownOutlined } from '@ant-design/icons-vue';
+import router from '@/router';
 defineProps({
     data: {
         type: Object,
         default: null
     }
-})
+});
+const handleSubMenuClick = (path) => {
+    router.push({name:path});
+}
+
 </script>
 <template>
     <a-dropdown>
@@ -19,11 +24,16 @@ defineProps({
             <a-menu>
                 <template v-for="(item, index) in data?.children" :key="index">
                     <a-menu-item v-if="!item.children" :class="{ 'custom-menu-item': true }">
-                        <a>{{ item.label }}</a>
+                        <router-link :to="{path:'/:en',name:item.path}" style="color: #333 !important;">
+                            {{ item.label }}
+                        </router-link>
                     </a-menu-item>
-                    <a-sub-menu v-else :title="item.label" :key="item.label" :class="{ 'custom-sub-menu': true }">
+                    <a-sub-menu v-else :title="item.label" @click="handleSubMenuClick(item?.path)" :key="item.label"
+                        :class="{ 'custom-sub-menu': true }">
                         <template v-for="(subItem, subIndex) in item.children" :key="subIndex">
-                            <a-menu-item :class="{ 'custom-sub-menu-item': true }">{{ subItem.label }}</a-menu-item>
+                            <a-menu-item :class="{ 'custom-sub-menu-item': true }">
+                                <router-link :to="{path:'/:en',name:subItem.path}" style="color: #333 !important;">{{ subItem.label }} </router-link>
+                            </a-menu-item>
                         </template>
                     </a-sub-menu>
                 </template>
@@ -31,6 +41,7 @@ defineProps({
         </template>
     </a-dropdown>
 </template>
+
 <style>
 .ant-dropdown-link {
     font-size: 1.6rem !important;
@@ -59,6 +70,7 @@ defineProps({
 .custom-sub-menu {
     border-bottom: 1px solid #cacaca;
 }
+
 .custom-sub-menu:last-child {
     border-bottom: none;
 }
@@ -66,6 +78,12 @@ defineProps({
 .custom-sub-menu span {
     font-size: 1.6rem !important;
     font-weight: 500;
+    color: #333 !important;
+}
+.custom-sub-menu .ant-dropdown-menu-title-content a {
+    font-size: 1.6rem !important;
+    font-weight: 500;
+    color: #333 !important;
 }
 
 .custom-sub-menu-item {
@@ -73,6 +91,9 @@ defineProps({
     font-weight: 500 !important;
     border-radius: 0 !important;
     border-bottom: 1px solid #cacaca;
+}
+.custom-sub-menu-item a{
+    color: #333 !important;
 }
 
 .custom-sub-menu-item:last-child {
@@ -86,6 +107,7 @@ defineProps({
     font-size: 1.6rem !important;
     font-weight: 500 !important;
 }
+
 
 .custom-menu-item:hover {
     background: none !important;

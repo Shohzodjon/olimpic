@@ -1,2 +1,36 @@
-<script setup></script>
-<template></template>
+<script setup>
+import { HomeOutlined } from '@ant-design/icons-vue'
+import { defineProps } from 'vue';
+
+defineProps({
+    data: { type: Array, default: [] },
+})
+
+</script>
+<template>
+    <a-breadcrumb>
+        <a-breadcrumb-item v-for="item in data" :key="item.id">
+            <template v-if="item.url">
+                <HomeOutlined />
+                <RouterLink :to="item.url">{{ item.label }}</RouterLink>
+            </template>
+            <template v-else>{{ item.label }}</template>
+        </a-breadcrumb-item>
+    </a-breadcrumb>
+</template>
+<style>
+.ant-breadcrumb-link {
+    font-size: 1.7rem;
+    color: #717b83 !important;
+    font-weight: 500;
+}
+
+.ant-breadcrumb-link a:hover {
+    color: #717b83;
+    background: none !important;
+}
+.ant-breadcrumb-link svg{
+    font-size: 1.8rem;
+    color: #717b83;
+}
+</style>
