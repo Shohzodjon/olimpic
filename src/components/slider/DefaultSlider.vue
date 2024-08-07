@@ -15,10 +15,10 @@ const items = reactive([
 </script>
 <template>
     <div class="vertical-slider">
-        <a-carousel autoplay :autoplaySpeed="3000" :dots="false"  :slidesToShow="4" :pauseOnHover="false"
-            :space="10">
-            <RouterLink to="/:en" v-for="item in items" :key="item.id" class="vertical-slider__wrapper">
-                <div  class="vertical-slider__card">
+        <a-carousel autoplay :autoplaySpeed="3000" :dots="false" :slidesToShow="4" :pauseOnHover="false" :space="10">
+            <RouterLink :to="`/oz/news-slug/${item.id}`" v-for="item in items" :key="item.id"
+                class="vertical-slider__wrapper">
+                <div class="vertical-slider__card">
                     <img :src="item.img" alt="hero img">
                     <div class="vertical-slider__card-time">
                         <ClockCircleOutlined />

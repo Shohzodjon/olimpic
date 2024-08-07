@@ -11,14 +11,15 @@ const items = reactive([
 </script>
 <template>
     <div class="horizontal-slider">
-        <a-carousel autoplay :dots="false"  :autoplaySpeed="3000" dot-position="left" :slidesToShow="1" :pauseOnHover="false" >
+        <a-carousel autoplay :dots="false" :autoplaySpeed="3000" dot-position="left" :slidesToShow="1"
+            :pauseOnHover="false">
             <div v-for="item in items" :key="item.id" class="horizontal-slider__card">
                 <div class="horizontal-slider__card-time">
                     <ClockCircleOutlined />
                     <span>{{ item.time }}</span>
                 </div>
                 <h3 class="horizontal-slider__card-title">{{ item.title }}</h3>
-                <RouterLink to="/:en" class="horizontal-slider__card-btn">Batafsil</RouterLink>
+                <RouterLink :to="`/oz/news-slug/${item.id}`" class="horizontal-slider__card-btn">Batafsil</RouterLink>
             </div>
         </a-carousel>
     </div>

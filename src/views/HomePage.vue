@@ -11,9 +11,7 @@ import partner2 from '@/assets/images/partner2.png';
 import partner3 from '@/assets/images/partner3.png';
 import partner4 from '@/assets/images/partner4.png';
 import summer from '@/assets/images/summer.svg';
-import sun from '@/assets/images/sun-icon.svg';
 import { RightOutlined } from '@ant-design/icons-vue'
-import BreadCrump from '@/components/menu/BreadCrump.vue';
 const partnerList = [
   { img: partner1, title: 'Hamkor', id: 1, url: '/:ru' },
   { img: partner2, title: 'Hamkor', id: 2, url: '/:ru' },
@@ -35,11 +33,7 @@ const olimpicData = [
   { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 7 },
 ];
 
-const breadCrumb = [
-  { label: 'Home', url: '/:en', id: 1 },
-  { label: 'About', id: 2 },
-  { label: 'Contact', id: 3 },
-]
+
 
 </script>
 <template>
@@ -102,7 +96,6 @@ const breadCrumb = [
         </Vue3Marquee>
       </div>
     </section>
-    <BreadCrump :data="breadCrumb"/>
   </section>
 
 </template>

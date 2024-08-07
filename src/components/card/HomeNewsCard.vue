@@ -14,12 +14,15 @@ defineProps({
     time: {
         type: String,
         default: ''
+    }, url: {
+        type: String,
+        default: '/oz'
     }
 })
 </script>
 <template>
     <div class="home-news">
-        <RouterLink to="/:en">
+        <RouterLink :to="url">
             <div class="home-news__flex">
                 <div class="home-news__img">
                     <img :src="img" alt="news img">

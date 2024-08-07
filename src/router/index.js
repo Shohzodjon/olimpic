@@ -89,6 +89,11 @@ const router = createRouter({
         },
         // news
         {
+          path: "news",
+          name: "news",
+          component: () => import("../views/NewsPage.vue"),
+        },
+        {
           path: "sport-news",
           name: "sport-news",
           component: () => import("../views/SportNews.vue"),

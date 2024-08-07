@@ -31,7 +31,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay];
         <div class="container">
             <div class="home-news-section__flex">
                 <h2 class="home-news-section__title">Yangiliklar</h2>
-                <RouterLink to="/:en" class="home-news-section__btn">
+                <RouterLink to="/oz/news" class="home-news-section__btn">
                     Barcha yangiliklar
                 </RouterLink>
             </div>
@@ -42,7 +42,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay];
                     }" :effect="'fade'" :navigation="true" autoplay loop :modules="modules" class="mySwiper">
                         <swiper-slide v-for="item in sliderData" :key="item.id">
                             <div class="home-news-section__card">
-                                <RouterLink to="/:en">
+                                <RouterLink to="/oz/news-slug/11">
                                     <div class="home-news-section__card-img">
                                         <img :src="item.img" alt="img">
                                     </div>
@@ -61,7 +61,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay];
                 </a-col>
                 <a-col :span="12">
                     <HomeNewsCard v-for="item in news" :key="item.id" :img="item.img" :title="item.title"
-                        :time="item.time" />
+                        :url="`/oz/news-slug/${item.id}`" :time="item.time" />
                 </a-col>
             </a-row>
         </div>

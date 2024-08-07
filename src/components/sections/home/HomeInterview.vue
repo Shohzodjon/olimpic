@@ -14,18 +14,18 @@ const mainData = { img: hero, title: 'Sadullayeva ishtirokini yettinchi oʻrinda
         <div class="container">
             <div class="home-interview-section__flex">
                 <h2 class="home-interview-section__title">Yangiliklar</h2>
-                <RouterLink to="/:en" class="home-interview-section__btn">
+                <RouterLink to="/oz/interview" class="home-interview-section__btn">
                     Barcha intervyular
                 </RouterLink>
             </div>
             <a-row :gutter="20">
                 <a-col :span="12">
                     <HomeGallery :img="mainData.img" :title="mainData.title" :time="mainData.time"
-                        class="main-interview-card" />
+                        :url="`/oz/news-slug/11`" class="main-interview-card" />
                 </a-col>
                 <a-col :span="12" class="home-interview-section__right-side">
                     <HomeGallery v-for="item in news" :key="item.id" :img="item.img" :title="item.title"
-                        :time="item.time" />
+                        :url="`/oz/news-slug/${item.id}`" :time="item.time" />
                 </a-col>
             </a-row>
         </div>
