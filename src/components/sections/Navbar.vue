@@ -45,53 +45,53 @@ const menuItems = [
             { label: 'Parij-2024 Olimpiyada litsenziyalari', path: 'parij-olimpy', },
         ]
     },
-    // {
-    //     label: 'Federatsiyalar', path: '/:en',
-    //     children: [
-    //         { label: "O'zbekiston sport fedratsiyasi", path: '/:en', },
-    //         { label: 'Xalqaro sport fedratsiyasi', path: '/:en', }
-    //     ],
-    // },
-    // {
-    //     label: "O'yinlar", path: '/:en',
-    //     children: [
-    //         {
-    //             label: "Olimpiya o'yinlari", path: '/:en', children: [
-    //                 { label: "O'yinlar tarixi", path: 'home', },
-    //                 { label: "Zamonaviy Olimpiya o'yinlari", path: 'home', },
-    //                 { label: "Yozgi Olimpiya o'yinlari", path: 'home', },
-    //                 { label: "Qishki Olimpiya o'yinlari", path: 'home', },
-    //                 { label: "O'smirlar Olimpiya o'yinlari", path: 'home', }]
-    //         },
-    //         {
-    //             label: "Osiyo o'yinlari", path: '/:en', children: [{ label: "O'yinlar tarixi", path: '/:en', },
-    //             { label: "Yozgi Osiyo o'yinlari", path: '/:en', },
-    //             { label: "Qishki Osiyo o'yinlari", path: '/:en', },
-    //             { label: "Osiyo sohilboyi o'yinlari", path: '/:en', },
-    //             { label: "Jang sana'ti va yopiq inshoatlardagi Osiyo o'yinlari", path: '/:en', }]
-    //         }
-    //     ],
-    // },
-    // {
-    //     label: "Jahon arenasi", path: '/:en',
-    //     children: [
-    //         {
-    //             label: "Olimpiya o'yinlari", path: '/:en', children: [
-    //                 { label: "O'yinlar tarixi", path: '/:en', },
-    //                 { label: "Zamonaviy Olimpiya o'yinlari", path: '/:en', },
-    //                 { label: "Yozgi Olimpiya o'yinlari", path: '/:en', },
-    //                 { label: "Qishki Olimpiya o'yinlari", path: '/:en', },
-    //                 { label: "O'smirlar Olimpiya o'yinlari", path: '/:en', }]
-    //         },
-    //         {
-    //             label: "Osiyo o'yinlari", path: '/:en', children: [{ label: "O'yinlar tarixi", path: '/:en', },
-    //             { label: "Yozgi Osiyo o'yinlari", path: '/:en', },
-    //             { label: "Qishki Osiyo o'yinlari", path: '/:en', },
-    //             { label: "Osiyo sohilboyi o'yinlari", path: '/:en', },
-    //             { label: "Jang sana'ti va yopiq inshoatlardagi Osiyo o'yinlari", path: '/:en', }]
-    //         }
-    //     ],
-    // }
+    {
+        label: 'Federatsiyalar', path: 'home',
+        children: [
+            { label: "O'zbekiston sport fedratsiyasi", path: 'home', },
+            { label: 'Xalqaro sport fedratsiyasi', path: 'home', }
+        ],
+    },
+    {
+        label: "O'yinlar", path: 'home',
+        children: [
+            {
+                label: "Olimpiya o'yinlari", path: 'home', children: [
+                    { label: "O'yinlar tarixi", path: 'home', },
+                    { label: "Zamonaviy Olimpiya o'yinlari", path: 'home', },
+                    { label: "Yozgi Olimpiya o'yinlari", path: 'home', },
+                    { label: "Qishki Olimpiya o'yinlari", path: 'home', },
+                    { label: "O'smirlar Olimpiya o'yinlari", path: 'home', }]
+            },
+            {
+                label: "Osiyo o'yinlari", path: 'home', children: [{ label: "O'yinlar tarixi", path: 'home', },
+                { label: "Yozgi Osiyo o'yinlari", path: 'home', },
+                { label: "Qishki Osiyo o'yinlari", path: 'home', },
+                { label: "Osiyo sohilboyi o'yinlari", path: 'home', },
+                { label: "Jang sana'ti va yopiq inshoatlardagi Osiyo o'yinlari", path: 'home', }]
+            }
+        ],
+    },
+    {
+        label: "Jahon arenasi", path: 'home',
+        children: [
+            {
+                label: "Olimpiya o'yinlari", path: 'home', children: [
+                    { label: "O'yinlar tarixi", path: 'home', },
+                    { label: "Zamonaviy Olimpiya o'yinlari", path: 'home', },
+                    { label: "Yozgi Olimpiya o'yinlari", path: 'home', },
+                    { label: "Qishki Olimpiya o'yinlari", path: 'home', },
+                    { label: "O'smirlar Olimpiya o'yinlari", path: 'home', }]
+            },
+            {
+                label: "Osiyo o'yinlari", path: 'home', children: [{ label: "O'yinlar tarixi", path: 'home', },
+                { label: "Yozgi Osiyo o'yinlari", path: 'home', },
+                { label: "Qishki Osiyo o'yinlari", path: 'home', },
+                { label: "Osiyo sohilboyi o'yinlari", path: 'home', },
+                { label: "Jang sana'ti va yopiq inshoatlardagi Osiyo o'yinlari", path: 'home', }]
+            }
+        ],
+    }
 ];
 </script>
 <template>
@@ -120,9 +120,9 @@ const menuItems = [
                             <PictureOutlined />
                             <span>Медиа галерея</span>
                         </RouterLink>
-                        <div class="header-child">
+                        <!-- <div class="header-child">
                             glass
-                        </div>
+                        </div> -->
                         <div class="header-child">
                             <SearchOutlined /> <span>Поиск</span>
                         </div>
