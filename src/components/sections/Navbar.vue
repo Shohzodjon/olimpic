@@ -5,7 +5,12 @@ import MenuDrop from '../dropdown/MenuDrop.vue';
 const menuItems = [
     {
         label: "O'zbekiston MOQ", children: [
-            { label: "Qo'mita", path: 'committe', children: [{ label: 'Olimpiya shon-shuhrati muzeyi', path: 'olimpic-museum', }, { label: 'Hamkorlar', path: 'partners-page', }] },
+            {
+                label: "Qo'mita", path: 'committe',
+                children: [
+                    { label: 'Olimpiya shon-shuhrati muzeyi', path: 'olimpic-museum', },
+                    { label: 'Hamkorlar', path: 'partners-page', }]
+            },
             {
                 label: 'Rahbariyat va hodimlar', path: 'leader-page',
                 children: [{ label: 'Rais', path: 'bos-page', },
@@ -17,24 +22,29 @@ const menuItems = [
                 { label: 'Xodimlar', path: 'employees', }
                 ]
             },
-            // { label: 'Tibbiyot markazi', path: '/:en', children: [{ label: 'Olimpiya shon-shuhrati muzeyi', path: '/:en', }, { label: 'Hamkorlar', path: '/:en', }] },
+            {
+                label: 'Tibbiyot markazi', path: 'medical-center',
+                children: [
+                    { label: 'RSTIAM faoliyati', path: 'rstiam-activity', },
+                    { label: 'Federatsiya shifokorlari', path: 'federation-doctors', }]
+            },
         ]
     },
     {
         label: "Yangiliklar", path: 'home', children: [
-            { label: 'Sport tibbiyoti', path: 'committe', },
-            { label: 'Interview', path: 'home', },
-            // { label: "Ochiq ma'lumotlar", path: '/:en', },
-            // { label: "Davlat dasturi ijrosi", path: '/:en', },
-            // { label: "Ijtimoiy roliklar", path: '/:en', },
+            { label: 'Sport tibbiyoti', path: 'sport-news', },
+            { label: 'Interview', path: 'interview', },
+            { label: "Ochiq ma'lumotlar", path: 'open-data', },
+            { label: "Davlat dasturi ijrosi", path: 'state-execution', },
+            { label: "Ijtimoiy roliklar", path: 'social-roller', },
         ]
     },
-    // {
-    //     label: 'Parij-2024', path: '/:en',
-    //     children: [
-    //         { label: 'Parij-2024 Olimpiyada litsenziyalari', path: '/:en', },
-    //     ]
-    // },
+    {
+        label: 'Parij-2024', path: 'home',
+        children: [
+            { label: 'Parij-2024 Olimpiyada litsenziyalari', path: 'parij-olimpy', },
+        ]
+    },
     // {
     //     label: 'Federatsiyalar', path: '/:en',
     //     children: [

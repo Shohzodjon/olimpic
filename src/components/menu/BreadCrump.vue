@@ -9,9 +9,11 @@ defineProps({
 </script>
 <template>
     <a-breadcrumb>
-        <a-breadcrumb-item v-for="item in data" :key="item.id">
+        <a-breadcrumb-item v-for="(item, index) in data" :key="item.id">
             <template v-if="item.url">
-                <HomeOutlined />
+                <template v-if="index === 0">
+                    <HomeOutlined />
+                </template>
                 <RouterLink :to="item.url">{{ item.label }}</RouterLink>
             </template>
             <template v-else>{{ item.label }}</template>
@@ -29,7 +31,8 @@ defineProps({
     color: #717b83;
     background: none !important;
 }
-.ant-breadcrumb-link svg{
+
+.ant-breadcrumb-link svg {
     font-size: 1.8rem;
     color: #717b83;
 }

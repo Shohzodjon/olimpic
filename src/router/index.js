@@ -14,6 +14,7 @@ const router = createRouter({
           name: "home",
           component: () => import("../views/HomePage.vue"),
         },
+        // qo'mita
         {
           path: "committe",
           name: "committe",
@@ -29,6 +30,7 @@ const router = createRouter({
           name: "partners-page",
           component: () => import("../views/PartnersPage.vue"),
         },
+        // rahbariyat
         {
           path: "leader",
           name: "leader-page",
@@ -68,6 +70,58 @@ const router = createRouter({
           path: "employees",
           name: "employees",
           component: () => import("../views/EmployPage.vue"),
+        },
+        // medical
+        {
+          path: "medical-center",
+          name: "medical-center",
+          component: () => import("../views/MedicalCenter.vue"),
+        },
+        {
+          path: "rstiam-activity",
+          name: "rstiam-activity",
+          component: () => import("../views/RSTIAM.vue"),
+        },
+        {
+          path: "federation-doctors",
+          name: "federation-doctors",
+          component: () => import("../views/FederationDoctors.vue"),
+        },
+        // news
+        {
+          path: "sport-news",
+          name: "sport-news",
+          component: () => import("../views/SportNews.vue"),
+        },
+        {
+          path: "interview",
+          name: "interview",
+          component: () => import("../views/InterviewPage.vue"),
+        },
+        {
+          path: "open-data",
+          name: "open-data",
+          component: () => import("../views/OpenData.vue"),
+        },
+        {
+          path: "state-execution",
+          name: "state-execution",
+          component: () => import("../views/StateExecution.vue"),
+        },
+        {
+          path: "social-roller",
+          name: "social-roller",
+          component: () => import("../views/SocialRoller.vue"),
+        },
+        {
+          path: "parij-olimpy",
+          name: "parij-olimpy",
+          component: () => import("../views/ParijOlimpy.vue"),
+        },
+        {
+          path: "news-slug/:id",
+          name: "news-slug",
+          component: () => import("../views/NewsSlug.vue"),
         },
       ],
     },
