@@ -10,11 +10,11 @@ const menuItems = [
                 label: 'Rahbariyat va hodimlar', path: 'leader-page',
                 children: [{ label: 'Rais', path: 'bos-page', },
                 { label: 'Bosh kotib', path: 'chief-secretary', },
-                { label: "Rais o'rinbosari", path: 'home', },
-                { label: 'Rais maslahatchilari', path: 'home', },
-                { label: "Ijroiya qo'mitasi", path: 'home', },
-                { label: 'Department direktorlari', path: 'home', },
-                { label: 'Xodimlar', path: 'home', }
+                { label: "Rais o'rinbosari", path: 'deputy', },
+                { label: 'Rais maslahatchilari', path: 'advisor', },
+                { label: "Ijroiya qo'mitasi", path: 'executive', },
+                { label: 'Department direktorlari', path: 'department', },
+                { label: 'Xodimlar', path: 'employees', }
                 ]
             },
             // { label: 'Tibbiyot markazi', path: '/:en', children: [{ label: 'Olimpiya shon-shuhrati muzeyi', path: '/:en', }, { label: 'Hamkorlar', path: '/:en', }] },

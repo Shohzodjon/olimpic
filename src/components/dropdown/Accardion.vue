@@ -1,16 +1,71 @@
 <script setup>
-import { ref } from 'vue';
-const activeKey = ref([]);
-const text = `A dog is a type of domesticated animal.Known for its loyalty and faithfulness,it can be found as a welcome guest in many households across the world.`;
-</script>
+import { ref, defineProps, onMounted, nextTick } from 'vue';
+import EmployeesCard from '../card/EmployeesCard.vue';
+const props = defineProps({
+    data: {
+        type: Object,
+        default: null
+    }
+});
+
+const activeKey = ref(props.data ? props.data.id : 1);
+// const handleClick = async (e) => {
+//     await nextTick();
+//     const items = document.querySelectorAll('.ant-collapse-item');
+//     let el = e.target;
+//     let parent = el.closest('.ant-collapse-header');
+//     let sibling = parent.nextElementSibling;
+
+//     items.forEach(item => {
+//         let content = item.querySelector('.ant-collapse-content');
+//         if (content) {
+//             content.classList.remove('ant-collapse-content-active');
+//             content.style.display = 'none';
+//         }
+//     });
+
+//     if (sibling) {
+//         sibling.classList.add('ant-collapse-content-active');
+//         sibling.style.display = 'block';
+//     }
+// };
+const handleClick = async (e) => {
+    await nextTick();
+    const items = document.querySelectorAll('.ant-collapse-item');
+    let el = e.target;
+    let parent = el.closest('.ant-collapse-header');
+    let sibling = parent.nextSibling;
+    items.forEach(item => {
+        if (item.children.length > 1) {
+            item.children[1].classList.remove('ant-collapse-content-active');
+            item.children[1].style.display = 'none';
+        }
+    })
+    sibling.classList.add('ant-collapse-content-active');
+    sibling.style.display = 'block'
+}
+
 </script>
 <template>
-    <div>
+    <div style="margin-bottom: 20px;">
         <a-collapse v-model:activeKey="activeKey" accordion>
-            <a-collapse-panel key="1" header="This is panel header 1">
-                <slot name="content" />
+            <a-collapse-panel key="1" :header="data?.label" @click="(e) => handleClick(e)">
+                <EmployeesCard v-for="child in data?.children" :key="child.id" :img="child.img" :name="child.name"
+                    :position="child.position" :reception="child.reception" />
             </a-collapse-panel>
         </a-collapse>
     </div>
 
 </template>
+<style scoped>
+.ant-collapse-icon-position-start {
+    border-radius: 4px !important;
+    background: #fff !important;
+    border: none !important;
+    box-shadow: 0px 0px 12px rgb(56 56 56 / 5%) !important;
+}
+
+.ant-collapse-item .ant-collapse-header .ant-collapse-expand-icon .ant-collapse-arrow {
+    display: none !important;
+}
+</style>

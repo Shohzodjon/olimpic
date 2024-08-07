@@ -16,6 +16,7 @@
     }
 
     &__info {
+        flex: 1;
         p {
             @include desc($gray-800);
             font-weight: 500;

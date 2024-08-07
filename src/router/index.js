@@ -44,6 +44,31 @@ const router = createRouter({
           name: "chief-secretary",
           component: () => import("../views/ChiefSecretary.vue"),
         },
+        {
+          path: "deputy",
+          name: "deputy",
+          component: () => import("../views/DeputyPage.vue"),
+        },
+        {
+          path: "advisor",
+          name: "advisor",
+          component: () => import("../views/AdvisorPage.vue"),
+        },
+        {
+          path: "executive",
+          name: "executive",
+          component: () => import("../views/ExecutiveCommittee.vue"),
+        },
+        {
+          path: "department",
+          name: "department",
+          component: () => import("../views/DepartmentPage.vue"),
+        },
+        {
+          path: "employees",
+          name: "employees",
+          component: () => import("../views/EmployPage.vue"),
+        },
       ],
     },
   ],

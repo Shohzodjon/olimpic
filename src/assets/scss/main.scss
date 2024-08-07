@@ -32,4 +32,20 @@ a {
   padding: 0 15px;
   margin: 0 auto;
 }
+.ant-collapse-item{
+  border: none !important;
+}
+.ant-collapse-item .ant-collapse-header .ant-collapse-expand-icon .ant-collapse-arrow {
+  display: none !important;
+}
+.ant-collapse-header .ant-collapse-header-text{
+  color: $blue-600;
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+.ant-collapse-content{
+  border-top: none !important;
+  border-radius: 0 !important;
+}
+
 
