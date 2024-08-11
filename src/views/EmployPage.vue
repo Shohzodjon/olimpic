@@ -2,7 +2,7 @@
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import Accardion from '@/components/dropdown/Accardion.vue'
 import employ from '@/assets/images/employ.jpg'
-// import Accardion from '@/components/dropdown/Accardion.vue';
+import EmployeesCard from '@/components/card/EmployeesCard.vue';
 const breads = [
     { label: 'Home', url: '/:en', id: 1 },
     { label: "Rahbariyat va xodimlar", id: 2 },
@@ -70,7 +70,14 @@ const employList = [
                 <a-col :span="19">
                     <a-row :gutter="[24, 24]">
                         <a-col v-for="item in employList" :key="item.id" :span="24">
-                            <Accardion :data="item"  />
+                            <Accardion :data="item">
+                                <template #accardion-card>
+                                    
+                                    <EmployeesCard v-for="child in item?.children" :key="child.id" :img="child.img"
+                                        :name="child.name" :position="child.position" :reception="child.reception" />
+                                </template>
+
+                            </Accardion>
                         </a-col>
                     </a-row>
                 </a-col>

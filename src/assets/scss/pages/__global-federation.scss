@@ -1,0 +1,32 @@
+.global-federation {
+    &__tab {
+        @include content();
+
+        .ant-tabs-tab {
+            border: 1px solid transparent;
+            margin: 0 !important;
+            padding: 0 !important;
+            border-top-left-radius: .25rem;
+            border-top-right-radius: .25rem;
+
+            .ant-tabs-tab-btn {
+                font-size: 1.8rem;
+                color: $gray-800;
+                padding: 8px 16px !important;
+            }
+        }
+
+        .ant-tabs-tab-active {
+            border-color: #dee2e6;
+
+            .ant-tabs-tab-btn {
+                color: $gray-800 !important;
+            }
+
+        }
+        .ant-tabs-ink-bar-animated{
+            background: #fff;
+        }
+
+    }
+}

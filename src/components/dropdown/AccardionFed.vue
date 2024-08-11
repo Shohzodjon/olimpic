@@ -7,7 +7,7 @@ const props = defineProps({
     }
 });
 
-const activeKey = ref(props.data ? props.data.id : 1);
+const activeKey = ref(0);
 // const handleClick = async (e) => {
 //     await nextTick();
 //     const items = document.querySelectorAll('.ant-collapse-item');

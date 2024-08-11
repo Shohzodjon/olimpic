@@ -128,6 +128,17 @@ const router = createRouter({
           name: "news-slug",
           component: () => import("../views/NewsSlug.vue"),
         },
+        // federation
+        {
+          path: "local-federation",
+          name: "local-federation",
+          component: () => import("../views/LocalFederation.vue"),
+        },
+        {
+          path: "global-federation",
+          name: "global-federation",
+          component: () => import("../views/GlobalFederation.vue"),
+        },
       ],
     },
   ],

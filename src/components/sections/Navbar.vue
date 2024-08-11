@@ -48,8 +48,8 @@ const menuItems = [
     {
         label: 'Federatsiyalar', path: 'home',
         children: [
-            { label: "O'zbekiston sport fedratsiyasi", path: 'home', },
-            { label: 'Xalqaro sport fedratsiyasi', path: 'home', }
+            { label: "O'zbekiston sport fedratsiyasi", path: 'local-federation', },
+            { label: 'Xalqaro sport fedratsiyasi', path: 'global-federation', }
         ],
     },
     {
