@@ -66,10 +66,10 @@ const menuItems = [
             {
                 label: "Osiyo o'yinlari", path: 'asia-game', children: [
                     { label: "O'yinlar tarixi", path: 'asia-history', },
-                    { label: "Yozgi Osiyo o'yinlari", path: 'home', },
-                    { label: "Qishki Osiyo o'yinlari", path: 'home', },
-                    { label: "Osiyo sohilboyi o'yinlari", path: 'home', },
-                    { label: "Jang sana'ti va yopiq inshoatlardagi Osiyo o'yinlari", path: 'home', }]
+                    { label: "Yozgi Osiyo o'yinlari", path: 'asia-summer', },
+                    { label: "Qishki Osiyo o'yinlari", path: 'asia-winter', },
+                    { label: "Osiyo sohilboyi o'yinlari", path: 'asia-beach', },
+                    { label: "Jang sana'ti va yopiq inshoatlardagi Osiyo o'yinlari", path: 'asia-battle', }]
             }
         ],
     },
@@ -77,19 +77,25 @@ const menuItems = [
         label: "Jahon arenasi", path: 'home',
         children: [
             {
-                label: "Olimpiya o'yinlari", path: 'home', children: [
-                    { label: "O'yinlar tarixi", path: 'home', },
-                    { label: "Zamonaviy Olimpiya o'yinlari", path: 'home', },
-                    { label: "Yozgi Olimpiya o'yinlari", path: 'home', },
-                    { label: "Qishki Olimpiya o'yinlari", path: 'home', },
-                    { label: "O'smirlar Olimpiya o'yinlari", path: 'home', }]
+                label: "Xalqaro Olimpiya qomitasi", path: 'international-olimpic', children: [
+                    { label: "XOQ tuzilmasi", path: 'international-structure', },
+                    { label: "XOQ sesiyasi", path: 'international-session', },
+                    { label: "XOQ hamkorlari", path: 'international-partner', },
+                    { label: "Olimpiya harakati", path: 'international-action', },
+                    { label: "Olimpiya xartiya", path: 'international-charter', }]
             },
             {
-                label: "Osiyo o'yinlari", path: 'home', children: [{ label: "O'yinlar tarixi", path: 'home', },
-                { label: "Yozgi Osiyo o'yinlari", path: 'home', },
-                { label: "Qishki Osiyo o'yinlari", path: 'home', },
-                { label: "Osiyo sohilboyi o'yinlari", path: 'home', },
-                { label: "Jang sana'ti va yopiq inshoatlardagi Osiyo o'yinlari", path: 'home', }]
+                label: "Osiyo olimpiya kengashi", path: 'asia-council', children: [
+                    { label: "OOK tuzilmasi", path: 'asia-structure', },
+                    { label: "OOK prezidenti", path: 'asia-prezident', },
+                ]
+            },
+            {
+                label: "Xalqaro munosabatlar", path: 'home', children: [
+                    { label: "Milliy olimpiya qo’mitalari", path: 'home', },
+                    { label: "Yangiliklar va foydali materiallar", path: 'home', },
+                    { label: "Xalqaro tadbirlar", path: 'home', },
+                ]
             }
         ],
     }

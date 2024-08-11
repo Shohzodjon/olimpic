@@ -183,6 +183,75 @@ const router = createRouter({
           name: "asia-history",
           component: () => import("../views/AsiaHistory.vue"),
         },
+        {
+          path: "asia-summer",
+          name: "asia-summer",
+          component: () => import("../views/AsiaSummer.vue"),
+        },
+        {
+          path: "asia-winter",
+          name: "asia-winter",
+          component: () => import("../views/AsiaWinter.vue"),
+        },
+        {
+          path: "asia-beach",
+          name: "asia-beach",
+          component: () => import("../views/AsiaBeachGame.vue"),
+        },
+        {
+          path: "asia-battle",
+          name: "asia-battle",
+          component: () => import("../views/AsiaBattleGame.vue"),
+        },
+
+        //   Jahon arenasi
+            // xalqaro olimpiya qomitasi
+        {
+          path: "international-olimpic",
+          name: "international-olimpic",
+          component: () => import("../views/InternationalOlympicCommittee.vue"),
+        },
+        {
+          path: "international-structure",
+          name: "international-structure",
+          component: () => import("../views/InterOlimpicStructure.vue"),
+        },
+        {
+          path: "international-session",
+          name: "international-session",
+          component: () => import("../views/InterOlimpicSession.vue"),
+        },
+        {
+          path: "international-partner",
+          name: "international-partner",
+          component: () => import("../views/InterOlimpicPartner.vue"),
+        },
+        {
+          path: "international-action",
+          name: "international-action",
+          component: () => import("../views/InterOlimpicAction.vue"),
+        },
+        {
+          path: "international-charter",
+          name: "international-charter",
+          component: () => import("../views/InterOlimpicCharter.vue"),
+        },
+        //  osiyo
+        {
+          path: "asia-council",
+          name: "asia-council",
+          component: () => import("../views/AsiaOlimpicCouncil.vue"),
+        },
+        {
+          path: "asia-structure",
+          name: "asia-structure",
+          component: () => import("../views/OOKStructure.vue"),
+        },
+        {
+          path: "asia-prezident",
+          name: "asia-prezident",
+          component: () => import("../views/OOKPrezident.vue"),
+        },
       ],
     },
   ],
