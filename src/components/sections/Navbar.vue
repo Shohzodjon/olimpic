@@ -56,19 +56,20 @@ const menuItems = [
         label: "O'yinlar", path: 'home',
         children: [
             {
-                label: "Olimpiya o'yinlari", path: 'home', children: [
-                    { label: "O'yinlar tarixi", path: 'home', },
-                    { label: "Zamonaviy Olimpiya o'yinlari", path: 'home', },
-                    { label: "Yozgi Olimpiya o'yinlari", path: 'home', },
-                    { label: "Qishki Olimpiya o'yinlari", path: 'home', },
-                    { label: "O'smirlar Olimpiya o'yinlari", path: 'home', }]
+                label: "Olimpiya o'yinlari", path: 'olimpic-game', children: [
+                    { label: "O'yinlar tarixi", path: 'olimpic-history', },
+                    { label: "Zamonaviy Olimpiya o'yinlari", path: 'olimpic-modern', },
+                    { label: "Yozgi Olimpiya o'yinlari", path: 'olimpic-summer', },
+                    { label: "Qishki Olimpiya o'yinlari", path: 'olimpic-winter', },
+                    { label: "O'smirlar Olimpiya o'yinlari", path: 'olimpic-generation', }]
             },
             {
-                label: "Osiyo o'yinlari", path: 'home', children: [{ label: "O'yinlar tarixi", path: 'home', },
-                { label: "Yozgi Osiyo o'yinlari", path: 'home', },
-                { label: "Qishki Osiyo o'yinlari", path: 'home', },
-                { label: "Osiyo sohilboyi o'yinlari", path: 'home', },
-                { label: "Jang sana'ti va yopiq inshoatlardagi Osiyo o'yinlari", path: 'home', }]
+                label: "Osiyo o'yinlari", path: 'asia-game', children: [
+                    { label: "O'yinlar tarixi", path: 'asia-history', },
+                    { label: "Yozgi Osiyo o'yinlari", path: 'home', },
+                    { label: "Qishki Osiyo o'yinlari", path: 'home', },
+                    { label: "Osiyo sohilboyi o'yinlari", path: 'home', },
+                    { label: "Jang sana'ti va yopiq inshoatlardagi Osiyo o'yinlari", path: 'home', }]
             }
         ],
     },

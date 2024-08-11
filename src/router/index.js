@@ -139,6 +139,50 @@ const router = createRouter({
           name: "global-federation",
           component: () => import("../views/GlobalFederation.vue"),
         },
+        //  games
+        //  olimpic
+        {
+          path: "olimpic-game",
+          name: "olimpic-game",
+          component: () => import("../views/OlimpicGames.vue"),
+        },
+        {
+          path: "olimpic-history",
+          name: "olimpic-history",
+          component: () => import("../views/OlimpicHistory.vue"),
+        },
+        {
+          path: "olimpic-modern",
+          name: "olimpic-modern",
+          component: () => import("../views/OlimpicModern.vue"),
+        },
+        {
+          path: "olimpic-summer",
+          name: "olimpic-summer",
+          component: () => import("../views/OlimpicSummer.vue"),
+        },
+        {
+          path: "olimpic-winter",
+          name: "olimpic-winter",
+          component: () => import("../views/OlimpicWinter.vue"),
+        },
+        {
+          path: "olimpic-generation",
+          name: "olimpic-generation",
+          component: () => import("../views/OlimpicGeneration.vue"),
+        },
+
+        // asia
+        {
+          path: "asia-game",
+          name: "asia-game",
+          component: () => import("../views/AsiaGames.vue"),
+        },
+        {
+          path: "asia-history",
+          name: "asia-history",
+          component: () => import("../views/AsiaHistory.vue"),
+        },
       ],
     },
   ],

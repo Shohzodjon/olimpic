@@ -3,7 +3,7 @@ import { defineProps } from 'vue';
 import { RouterLink } from 'vue-router';
 defineProps({
     url: {
-        type: String, defualt: '/:en'
+        type: String, defualt: '/oz'
     },
     img: {
         type: String, defualt: ''

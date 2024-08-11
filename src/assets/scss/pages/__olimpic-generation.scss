@@ -1,0 +1,21 @@
+.olimpic-generation {
+    &__card {
+        padding: 2rem;
+        display: block;
+        height: max-content;
+
+        .partner-card__img {
+            width: 100%;
+            height: 196px;
+
+            img {
+                height: 196px;
+                object-fit: fill;
+            }
+        }
+
+        h5 {
+            text-align: center;
+        }
+    }
+}
