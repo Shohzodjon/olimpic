@@ -252,7 +252,6 @@ const router = createRouter({
           name: "asia-prezident",
           component: () => import("../views/OOKPrezident.vue"),
         },
-
         // gallery
         {
           path: "gallery",
@@ -273,6 +272,16 @@ const router = createRouter({
           path: "video-slug/:id",
           name: "video-slug",
           component: () => import("../views/VideoSlug.vue"),
+        },
+        {
+          path: "announce",
+          name: "announce-page",
+          component: () => import("../views/Announcement.vue"),
+        },
+        {
+          path: "announce-slug/:id",
+          name: "announce-slug",
+          component: () => import("../views/AnnounceSlug.vue"),
         },
       ],
     },
