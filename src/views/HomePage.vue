@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted } from 'vue';
 import HomeHeader from '@/components/header/HomeHeader.vue';
 import HomeBanner from '@/components/sections/home/HomeBanner.vue'
 import HomeNews from '@/components/sections/home/HomeNews.vue';
@@ -11,7 +12,9 @@ import partner2 from '@/assets/images/partner2.png';
 import partner3 from '@/assets/images/partner3.png';
 import partner4 from '@/assets/images/partner4.png';
 import summer from '@/assets/images/summer.svg';
-import { RightOutlined } from '@ant-design/icons-vue'
+import { RightOutlined } from '@ant-design/icons-vue';
+import { useMenuStore } from '@/stores/menu';
+
 const partnerList = [
   { img: partner1, title: 'Hamkor', id: 1, url: '/:ru' },
   { img: partner2, title: 'Hamkor', id: 2, url: '/:ru' },
@@ -33,7 +36,11 @@ const olimpicData = [
   { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 7 },
 ];
 
+const menuStore = useMenuStore();
 
+onMounted(async () => {
+  await menuStore.fetchList();
+})
 
 </script>
 <template>

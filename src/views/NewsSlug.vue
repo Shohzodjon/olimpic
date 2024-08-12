@@ -10,7 +10,7 @@ import news2 from '@/assets/images/news2.jpg'
 import news3 from '@/assets/images/news3.jpg'
 const breads = [
     { label: 'Home', url: '/:en', id: 1 },
-    { label: "Yangiliklar", id: 2, url: '/oz' },
+    { label: "Yangiliklar", id: 2, url: '/oz/news' },
 ];
 const images = [news1, news2, news3];
 </script>

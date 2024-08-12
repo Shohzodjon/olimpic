@@ -120,19 +120,22 @@ const menuItems = [
                 </RouterLink>
                 <div class="navbar-right">
                     <div class="navbar-header">
-                        <RouterLink to="/oz/announce" class="header-child">
-                            <NotificationOutlined /><span>Объявления</span>
-                        </RouterLink>
-                        <RouterLink to='/oz/gallery' class="header-child">
-                            <PictureOutlined />
-                            <span>Медиа галерея</span>
-                        </RouterLink>
-                        <!-- <div class="header-child">
-                            glass
-                        </div> -->
-                        <div class="header-child">
-                            <SearchOutlined /> <span>Поиск</span>
+                        <div class="navbar-header__left">
+                            <RouterLink to="/oz/announce" class="header-child">
+                                <NotificationOutlined /><span>Объявления</span>
+                            </RouterLink>
+                            <RouterLink to='/oz/gallery' class="header-child">
+                                <PictureOutlined />
+                                <span>Медиа галерея</span>
+                            </RouterLink>
+                            <!-- <div class="header-child">
+                                glass
+                            </div> -->
+                            <div class="header-child">
+                                <SearchOutlined /> <span>Поиск</span>
+                            </div>
                         </div>
+                   
                         <LangComp />
                     </div>
                     <div class="navbar-bottom">
