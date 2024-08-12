@@ -123,7 +123,7 @@ const menuItems = [
                         <RouterLink to="/:oz" class="header-child">
                             <NotificationOutlined /><span>Объявления</span>
                         </RouterLink>
-                        <RouterLink to='/:oz' class="header-child">
+                        <RouterLink to='/oz/gallery' class="header-child">
                             <PictureOutlined />
                             <span>Медиа галерея</span>
                         </RouterLink>

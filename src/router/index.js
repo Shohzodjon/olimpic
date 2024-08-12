@@ -205,7 +205,7 @@ const router = createRouter({
         },
 
         //   Jahon arenasi
-            // xalqaro olimpiya qomitasi
+        // xalqaro olimpiya qomitasi
         {
           path: "international-olimpic",
           name: "international-olimpic",
@@ -251,6 +251,28 @@ const router = createRouter({
           path: "asia-prezident",
           name: "asia-prezident",
           component: () => import("../views/OOKPrezident.vue"),
+        },
+
+        // gallery
+        {
+          path: "gallery",
+          name: "gallery-page",
+          component: () => import("../views/MediaGallery.vue"),
+        },
+        {
+          path: "gallery-slug/:id",
+          name: "gallery-slug",
+          component: () => import("../views/GallerySlug.vue"),
+        },
+        {
+          path: "video",
+          name: "video-page",
+          component: () => import("../views/VideoPage.vue"),
+        },
+        {
+          path: "video-slug/:id",
+          name: "video-slug",
+          component: () => import("../views/VideoSlug.vue"),
         },
       ],
     },
