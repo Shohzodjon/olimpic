@@ -27,12 +27,12 @@ const tabClick = (tab) => {
                         :class="[currentTab != 'photo' ? 'active-tab' : '']">Videogalareya</button>
                 </div>
             </div>
-            <a-row :gutter="20">
-                <a-col :span="12">
+            <a-row :gutter="[20,20]">
+                <a-col :sm="24" :md="12" :lg="12" :xl="12">
                     <HomeGallery :img="mainData.img" :title="mainData.title" :time="mainData.time"
                         class="main-interview-card" />
                 </a-col>
-                <a-col :span="12" class="home-media__right-side">
+                <a-col :sm="24" :md="12" :lg="12" :xl="12" class="home-media__right-side">
                     <HomeGallery v-for="item in news" :key="item.id" :img="item.img" :title="item.title"
                         :time="item.time" />
                 </a-col>

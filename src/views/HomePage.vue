@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import HomeHeader from '@/components/header/HomeHeader.vue';
 import HomeBanner from '@/components/sections/home/HomeBanner.vue'
 import HomeNews from '@/components/sections/home/HomeNews.vue';
@@ -15,6 +15,21 @@ import summer from '@/assets/images/summer.svg';
 import { RightOutlined } from '@ant-design/icons-vue';
 import { useMenuStore } from '@/stores/menu';
 
+const windowWidth = ref(window.innerWidth);
+
+function updateWindowWidth() {
+  windowWidth.value = window.innerWidth;
+}
+
+const isGradient = computed(() => windowWidth.value > 800);
+
+onMounted(() => {
+  window.addEventListener('resize', updateWindowWidth);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateWindowWidth);
+});
 const partnerList = [
   { img: partner1, title: 'Hamkor', id: 1, url: '/:ru' },
   { img: partner2, title: 'Hamkor', id: 2, url: '/:ru' },
@@ -49,17 +64,17 @@ onMounted(async () => {
     <HomeBanner />
     <HomeNews />
     <section class="home-page__strategy"></section>
-    <!-- <HomeInterview />
+     <HomeInterview />
     <div class="container">
       <div class="home-page__banner">
         <img src="@/assets/images/home-banner.png" alt="home banner">
       </div>
     </div>
-    <HomeMedia /> -->
-    <!-- <section class="home-page__partner">
+    <HomeMedia />
+    <section class="home-page__partner">
       <div class="container">
         <h2>Harakatni qo'llab-quvvatlash</h2>
-        <Vue3Marquee :gradient="true" :pauseOnHover="true" :duration="35">
+        <Vue3Marquee :gradient="isGradient" :pauseOnHover="true" :duration="35">
           <PartnerCard v-for="item in partnerList" :key="item.id" :img="item.img" :title="item.title" :url="item.url" />
         </Vue3Marquee>
       </div>
@@ -67,15 +82,14 @@ onMounted(async () => {
     <section class="home-page__partner">
       <div class="container">
         <h2>XOQ hamkorlari</h2>
-        <Vue3Marquee :gradient="true" :pauseOnHover="true" :duration="35" direction="reverse">
+        <Vue3Marquee :gradient="isGradient" :pauseOnHover="true" :duration="35" direction="reverse">
           <PartnerCard v-for="item in partnerList" :key="item.id" :img="item.img" :title="item.title" :url="item.url" />
         </Vue3Marquee>
       </div>
     </section>
-    <section class="home-page__olimpic">
+     <section class="home-page__olimpic">
       <div class="container">
         <h2>Olimpiya sport turlari</h2>
-
         <div class="olimpic-grid">
           <OlimpicCard v-for="item in olimpicData" :key="item.id" :title="item.title" :season="item.season"
             :img="item.img">
@@ -98,11 +112,11 @@ onMounted(async () => {
     <section class="home-page__partner">
       <div class="container">
         <h2>O‘zbekiston Olimpiya o‘yinlarida</h2>
-        <Vue3Marquee :gradient="true" :pauseOnHover="true" :duration="35">
+        <Vue3Marquee :gradient="isGradient" :pauseOnHover="true" :duration="35">
           <PartnerCard v-for="item in partnerList" :key="item.id" :img="item.img" :title="item.title" :url="item.url" />
         </Vue3Marquee>
       </div>
-    </section> -->
+    </section>
   </section>
 
 </template>

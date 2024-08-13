@@ -21,6 +21,14 @@
   color: $color;
   line-height: 36px;
   font-weight: 700;
+  @media (max-width: $md) {
+    font-size: 2.2rem;
+    line-height: 130%;
+  }
+
+  @media (max-width: $xs) {
+    font-size: 2rem;
+  }
 }
 
 @mixin card-title($color) {

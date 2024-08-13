@@ -9,21 +9,37 @@
     min-width: 329px;
     width: 100%;
     margin: 5px 1rem;
+
     // padding: 3rem;
-    &__img{
+    &__img {
         width: 100%;
         width: 330px;
         display: flex;
         justify-content: center;
         margin-bottom: 2rem;
 
-        img{
+        img {
             width: auto;
             max-width: 90%;
         }
     }
-    &__name{
+
+    &__name {
         @include desc($black-800);
         font-weight: 600;
     }
+
+
+    @media (max-width:$md) {
+        height: 220px;
+        max-width: 301px;
+        min-width: 300px;
+    }
+
+    @media (max-width:$xs) {
+        height: 200px;
+        max-width: 280px;
+        min-width: 260px;
+    }
+
 }

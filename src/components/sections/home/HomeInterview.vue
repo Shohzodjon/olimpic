@@ -18,12 +18,12 @@ const mainData = { img: hero, title: 'Sadullayeva ishtirokini yettinchi oʻrinda
                     Barcha intervyular
                 </RouterLink>
             </div>
-            <a-row :gutter="20">
-                <a-col :span="12">
+            <a-row :gutter="[20,20]">
+                <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
                     <HomeGallery :img="mainData.img" :title="mainData.title" :time="mainData.time"
                         :url="`/oz/news-slug/11`" class="main-interview-card" />
                 </a-col>
-                <a-col :span="12" class="home-interview-section__right-side">
+                <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12" class="home-interview-section__right-side">
                     <HomeGallery v-for="item in news" :key="item.id" :img="item.img" :title="item.title"
                         :url="`/oz/news-slug/${item.id}`" :time="item.time" />
                 </a-col>

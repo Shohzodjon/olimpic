@@ -2,7 +2,7 @@
 import { defineProps } from 'vue';
 import { RouterLink } from 'vue-router';
 defineProps({
-    url: { type: String, default: '/:en' },
+    url: { type: String, default: '/oz' },
     title: { type: String, default: '' },
     img: { type: String, default: '' },
     season: { type: String, default: '' },

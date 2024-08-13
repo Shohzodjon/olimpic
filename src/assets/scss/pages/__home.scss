@@ -52,13 +52,14 @@
             flex-direction: column;
             padding: 3rem;
 
-                h3 {
-                    @include desc($blue-700);
-                    font-weight: 400;
-                    svg{
-                        font-size: 1.4rem;
-                    }
+            h3 {
+                @include desc($blue-700);
+                font-weight: 400;
+
+                svg {
+                    font-size: 1.4rem;
                 }
+            }
 
 
             .item-flex {
@@ -76,4 +77,79 @@
 
         }
     }
+
+    /*
+$sm: 576px;
+$xs: 768px;
+$md: 992px;
+$lg: 1024px;
+$xl: 1200px;
+$xxl: 1500px;
+*/
+    @media (max-width:$xl) {
+        &__strategy {
+            height: 380px;
+            background-size: 110% 100%;
+            background-position: center;
+        }
+
+        &__olimpic {
+
+            .olimpic-grid {
+                gap: 1.5rem;
+            }
+        }
+    }
+
+    @media (max-width:$lg) {
+        &__olimpic {
+            .olimpic-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .last-item {
+                padding: 2.5rem;
+            }
+        }
+    }
+
+    @media (max-width:$md) {
+        &__strategy {
+            height: 360px;
+            background-size: 120% 110%;
+        }
+
+        &__olimpic {
+            .last-item {
+                padding: 2rem;
+            }
+        }
+    }
+
+    @media (max-width:$xs) {
+        &__strategy {
+            height: 300px;
+            background-size: 100% 100%;
+        }
+
+        &__olimpic {
+            .olimpic-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+
+    @media (max-width:$sm) {
+        &__strategy {
+            background-size: 130% 100%;
+        }
+
+        &__olimpic {
+            .olimpic-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    }
+
+
 }
