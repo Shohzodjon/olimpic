@@ -34,9 +34,9 @@ const employList = [
         <div class="container">
             <BreadCrump :data="breads" />
             <h2>XOQ tuzilmasi</h2>
-            <a-row :gutter="24">
-                <a-col :span="19">
-                    <a-row :gutter="[24, 24]">
+            <a-row :gutter="[20,20]">
+                <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
+                    <a-row :gutter="[20, 20]">
                         <a-col :span="24">
                             <div class="global-federation__tab">
                                 <a-tabs v-model:activeKey="activeKey">
@@ -163,7 +163,7 @@ const employList = [
                         </a-col>
                     </a-row>
                 </a-col>
-                <a-col :span="5">
+                <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                     <div class="committee-page__sidebar">
                         <div class="committee-page__sidebar-menu">Menu</div>
                         <div class="committee-page__sidebar-img">

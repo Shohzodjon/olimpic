@@ -18,8 +18,8 @@ const images = [news1, news2, news3];
     <section class="news-slug">
         <div class="container">
             <BreadCrump :data="breads" />
-            <a-row :gutter="24">
-                <a-col :span="19">
+            <a-row :gutter="[20,20]">
+                <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="news-slug__content">
                         <a-carousel autoplay :dots="false" :autoplaySpeed="3000" :slidesToShow="1"
                            >
@@ -119,7 +119,7 @@ const images = [news1, news2, news3];
                             O‘zbekiston Milliy Olimpiya qo‘mitasining tashkiliy tuzilmasi:</p>
                     </div>
                 </a-col>
-                <a-col :span="5">
+                <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                     <div class="committee-page__sidebar">
                         <div class="committee-page__sidebar-menu">Menu</div>
                         <div class="committee-page__sidebar-img">

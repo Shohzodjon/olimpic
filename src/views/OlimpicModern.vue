@@ -11,9 +11,10 @@ const breads = [
         <div class="container">
             <BreadCrump :data="breads" />
             <h2>Zamonaviy Olimpiya o’yinlari</h2>
-            <a-row :gutter="24">
-                <a-col :span="19">
+            <a-row :gutter="[20, 20]">
+                <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="committee-page__content">
+                        <h5>ОЛИМПИЯ ЎЙИНЛАРИ ТАРИХИ</h5>
                         <p>Тарихга назар ташлайдиган бўлсак, биринчи Олимпия ўйинлари милоддан аввалги 776 йилда
                             ўтказилган. Мусобақалар Олимпия худоларига бағишланган ва Олимпия қишлоғи ҳудудида бўлиб
                             ўтган. Орадан деярли ўн икки аср вақт ўтгач, милодий 393 йилда император Феодосий
@@ -97,7 +98,7 @@ const breads = [
                             этган.</p>
                     </div>
                 </a-col>
-                <a-col :span="5">
+                <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                     <div class="committee-page__sidebar">
                         <div class="committee-page__sidebar-menu">Menu</div>
                         <div class="committee-page__sidebar-img">

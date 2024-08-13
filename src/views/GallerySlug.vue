@@ -24,13 +24,13 @@ const onHide = () => visibleRef.value = false
         <div class="container">
             <BreadCrump :data="breads" />
             <h2 class="gallery-slug__title">Media galereya</h2>
-            <a-row :gutter="24">
-                <a-col :span="19">
+            <a-row :gutter="[20, 20]">
+                <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="gallery-slug__content">
                         <h3 class="gallery-slug__sub-title">Razambek Jamalov delegatsiyamiz hisobiga oltinchi oltin
                             medalni taqdim etgan finalning yorqin lahzalari</h3>
                         <a-row :gutter="[20, 20]">
-                            <a-col :span="8" v-for="(img, i) in images" :key="i">
+                            <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="(img, i) in images" :key="i">
                                 <div class="gallery-slug__card pic" @click="() => showImg(i)">
                                     <div class="pic">
                                         <img :src="img" />
@@ -43,7 +43,7 @@ const onHide = () => visibleRef.value = false
                             @hide="onHide"></vue-easy-lightbox>
                     </div>
                 </a-col>
-                <a-col :span="5">
+                <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                     <div class="gallery-slug__sidebar">
                         <div class="gallery-slug__sidebar-img">
                             <RouterLink to="/:en">

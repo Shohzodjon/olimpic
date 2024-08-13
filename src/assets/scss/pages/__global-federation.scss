@@ -24,9 +24,27 @@
             }
 
         }
-        .ant-tabs-ink-bar-animated{
+
+        .ant-tabs-ink-bar-animated {
             background: #fff;
         }
 
+    }
+
+    @media (max-width:$md) {
+        .ant-tabs-tab {
+            .ant-tabs-tab-btn {
+                font-size: 1.5rem;
+                padding: 8px 12px !important;
+            }
+        }
+    }
+
+    @media (max-width:$sm) {
+        .ant-tabs-tab {
+            .ant-tabs-tab-btn {
+                font-size: 1.2rem;
+            }
+        }
     }
 }

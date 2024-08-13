@@ -36,4 +36,10 @@ defineProps({
     font-size: 1.8rem;
     color: #717b83;
 }
+
+@media (max-width:768px) {
+    .ant-breadcrumb-link {
+        font-size: 1.5rem;
+    }   
+}
 </style>

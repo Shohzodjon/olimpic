@@ -14,12 +14,12 @@ const breads = [
         <div class="container">
             <BreadCrump :data="breads" />
             <h2>Bosh kotib</h2>
-            <a-row :gutter="24">
-                <a-col :span="19">
+            <a-row :gutter="[20,20]">
+                <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <EmployeesCard :img="employ" position="Bosh kotib" name="Kasimov Oybek Omilovich"
                         reception="Seshanba va Juma kunlari soat 14:00 dan 18:00 gacha" />
                 </a-col>
-                <a-col :span="5">
+                <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                     <div class="committee-page__sidebar">
                         <div class="committee-page__sidebar-menu">Menu</div>
                         <div class="committee-page__sidebar-img">

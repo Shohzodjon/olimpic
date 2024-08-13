@@ -40,5 +40,17 @@
     &__content {
         @include content();
     }
+@media (max-width:$xs) {
+    ul {
+        gap: 1rem;
 
+        li {
+            padding: 4px 8px;
+            a {
+                font-size: 1.5rem;
+                line-height: 20px;
+            }
+        }
+    } 
+}
 }

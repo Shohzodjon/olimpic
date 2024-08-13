@@ -17,6 +17,7 @@
 
     &__info {
         flex: 1;
+
         p {
             @include desc($gray-800);
             font-weight: 500;
@@ -30,6 +31,28 @@
 
         span {
             @include desc(#000)
+        }
+    }
+
+    @media (max-width:$md) {
+        &__img {
+            height: 220px;
+        }
+    }
+
+    @media (max-width:$xs) {
+        gap: 1.5rem;
+
+        &__img {
+            max-width: 170px;
+            height: 180px;
+        }
+    }
+
+    @media (max-width:$sm) {
+        &__img {
+            max-width: 130px;
+            height: 160px;
         }
     }
 }

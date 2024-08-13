@@ -4,8 +4,6 @@ import VueEasyLightbox from 'vue-easy-lightbox/external-css';
 import 'vue-easy-lightbox/external-css/vue-easy-lightbox.css';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import news1 from '@/assets/images/news1.jpg'
-import news2 from '@/assets/images/news2.jpg'
-import news3 from '@/assets/images/news3.jpg'
 const breads = [
     { label: 'Home', url: '/oz', id: 1 },
     { label: "Video", id: 2, url: '/oz/video' },
@@ -17,8 +15,8 @@ const breads = [
         <div class="container">
             <BreadCrump :data="breads" />
             <h2 class="video-slug__title">Videolar</h2>
-            <a-row :gutter="24">
-                <a-col :span="19">
+            <a-row :gutter="[20,20]">
+                <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="video-slug__content">
                         <h3 class="video-slug__sub-title">Razambek Jamalov delegatsiyamiz hisobiga oltinchi oltin
                             medalni taqdim etgan finalning yorqin lahzalari</h3>
@@ -27,7 +25,7 @@ const breads = [
                         </div>
                     </div>
                 </a-col>
-                <a-col :span="5">
+                <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                     <div class="video-slug__sidebar">
                         <div class="video-slug__sidebar-img">
                             <RouterLink to="/en">

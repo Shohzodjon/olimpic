@@ -31,20 +31,20 @@ const olimpicData = [
         <div class="container">
             <BreadCrump :data="breads" />
             <h2>Qishki Olimpiya o'yinlari</h2>
-            <a-row :gutter="24">
-                <a-col :span="19">
+            <a-row :gutter="[20,20]">
+                <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="committee-page__content">
                    <a-row :gutter="[20,20]">
-                    <a-col :span="8" v-for="item in olimpicData" :key="item.id">
+                    <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="item in olimpicData" :key="item.id">
                         <OlimpicCard  :title="item.title" :season="item.season"
                         :img="item.img">
-                        <template #season-icon><img src="@/assets/images/winter.png" width="24" height="24" /></template>
+                        <template #season-icon><img src="@/assets/images/sun-icon.svg" width="24" height="24" /></template>
                       </OlimpicCard>
                     </a-col>
                    </a-row>
                     </div>
                 </a-col>
-                <a-col :span="5">
+                <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                     <div class="committee-page__sidebar">
                         <div class="committee-page__sidebar-menu">Menu</div>
                         <div class="committee-page__sidebar-img">

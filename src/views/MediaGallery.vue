@@ -33,11 +33,11 @@ const list = [
                     </li>
                 </ul>
             </div>
-            <a-row :gutter="24">
+            <a-row :gutter="[20,20]">
                 <a-col :span="24">
                     <div class="gallery-page__content">
                         <a-row :gutter="[22, 22]">
-                            <a-col v-for="item in list" :key="item.id" :span="6">
+                            <a-col v-for="item in list" :key="item.id" :xs="24" :sm="12" :md="8" :lg="6" :xl="6">
                                 <GalleryCard :desc="item.desc" :img="item.img" :url="`/oz/gallery-slug/${item.id}`" />
                             </a-col>
                         </a-row>

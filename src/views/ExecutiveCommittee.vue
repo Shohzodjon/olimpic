@@ -24,9 +24,9 @@ const employList = [
         <div class="container">
             <BreadCrump :data="breads" />
             <h2>Ijroiya qo‘mitasi</h2>
-            <a-row :gutter="24">
-                <a-col :span="19">
-                    <a-row :gutter="[24, 24]">
+            <a-row :gutter="[20, 20]">
+                <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
+                    <a-row :gutter="[20, 20]">
                         <a-col v-for="item in employList" :key="item.id">
                             <EmployeesCard :img="item.img" :position="item.position" :name="item.name"
                                 :reception="item.reception" />
@@ -34,7 +34,7 @@ const employList = [
                     </a-row>
 
                 </a-col>
-                <a-col :span="5">
+                <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                     <div class="committee-page__sidebar">
                         <div class="committee-page__sidebar-menu">Menu</div>
                         <div class="committee-page__sidebar-img">
