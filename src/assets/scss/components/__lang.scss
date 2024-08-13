@@ -21,4 +21,8 @@
 
     }
 
+    @media (max-width:$md) {
+        display: none;
+    }
+
 }

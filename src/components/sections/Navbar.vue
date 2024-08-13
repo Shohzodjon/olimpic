@@ -1,5 +1,6 @@
 <script setup>
 import { NotificationOutlined, PictureOutlined, SearchOutlined } from '@ant-design/icons-vue';
+import {MenuOutlined } from '@ant-design/icons-vue'
 import LangComp from '@/components/lang/LangComp.vue'
 import MenuDrop from '../dropdown/MenuDrop.vue';
 const menuItems = [
@@ -128,9 +129,7 @@ const menuItems = [
                                 <PictureOutlined />
                                 <span>Медиа галерея</span>
                             </RouterLink>
-                            <!-- <div class="header-child">
-                                glass
-                            </div> -->
+                            <!-- <div class="header-child"></div> -->
                             <div class="header-child">
                                 <SearchOutlined /> <span>Поиск</span>
                             </div>
@@ -139,7 +138,12 @@ const menuItems = [
                         <LangComp />
                     </div>
                     <div class="navbar-bottom">
-                        <MenuDrop v-for="(item, i) in menuItems" :key="i" :data="item" />
+                        <div class="navbar-bottom__item" v-for="(item, i) in menuItems" :key="i">
+                            <MenuDrop  :data="item" />
+                        </div>
+                        <div class="navbar-menu">
+                            <MenuOutlined />
+                        </div>
                     </div>
                 </div>
 
