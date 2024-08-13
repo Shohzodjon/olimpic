@@ -9,7 +9,7 @@ import { RouterView } from "vue-router";
   <section>
     <Navbar/>
     <router-view />
-    <Footer />
+    <!-- <Footer /> -->
   </section>
 </template>
 

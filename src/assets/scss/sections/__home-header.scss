@@ -21,5 +21,21 @@
         padding: 5rem 0;
     }
 
+    @media (max-width:$md) {
+        &__flex {
+            padding: 4rem 0;
+        }
+    }
 
+    @media (max-width:$xs) {
+        &__flex {
+            padding: 3rem 0;
+        }
+    }
+
+    @media (max-width:$sm) {
+        &__flex {
+            padding: 1.5rem 0;
+        }
+    }
 }

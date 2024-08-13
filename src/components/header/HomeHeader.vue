@@ -12,8 +12,7 @@ import DefaultSlider from '@/components/slider/DefaultSlider.vue';
                     <HorizontalSlider />
                     <DefaultSlider/>
                 </div>
-            </div>
-            
+            </div>      
         </div>
     </header>
 </template>

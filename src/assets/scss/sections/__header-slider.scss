@@ -24,7 +24,7 @@
             transition: all linear 1s;
             transform: scale(1.1);
             width: 100%;
-            // height: 100%;
+            height: 100%;
         }
     }
 
@@ -35,5 +35,16 @@
                 transition: all linear 1s;
             }
         }
+    }
+
+    @media (max-width:$xl) {
+        .slider-item {
+            height: calc(100vh - 120.27px);
+        }   
+    }
+    @media (max-width:$sm) {
+        .slider-item {
+            height: calc(100vh - 140px);
+        }   
     }
 }

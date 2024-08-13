@@ -19,4 +19,50 @@
         line-height: 120px;
         word-spacing: 100vw;
     }
+
+
+    @media (max-width:$xl) {
+        background-size: 110% 120%;
+        height: 380px;
+        margin: 30px 0;
+
+        .container {
+            width: 100%;
+        }
+
+        &__title {
+            font-size: 8rem;
+            line-height: 110px;
+            word-spacing: 10px;
+        }
+    }
+
+    @media (max-width:$md) {
+        background-size: 120% 130%;
+        height: 350px;
+        margin: 20px 0;
+
+        &__title {
+            font-size: 6rem;
+            line-height: 90px;
+        }
+    }
+
+    @media (max-width:$xs) {
+        background-size: 130% 140%;
+
+        &__sub-title {
+            font-size: 2rem;
+        }
+
+        &__title {
+            font-size: 4rem;
+            line-height: 140%;
+        }
+    }
+
+    @media (max-width:$sm) {
+        background-size: 160% 100%;
+    }
+
 }

@@ -1,4 +1,5 @@
 .horizontal-slider {
+    margin-bottom: 1.5rem;
 
     &__card {
         display: flex;
@@ -7,9 +8,7 @@
         height: 230px !important;
         padding: 1.5rem 0;
         margin: 20px 0;
-
     }
-
     &__card-time {
         display: flex;
         gap: 5px;
@@ -48,9 +47,69 @@
         }
     }
 
-
-
     .slick-dots-left {
         display: none !important;
+    }
+
+    @media (max-width:$xl) {
+        &__card {
+            height: 200px !important;
+        }
+
+        &__card-time {
+            span {
+                font-size: 1.5rem;
+            }
+        }
+
+        &__card-title {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+
+        &__card-btn {
+            font-size: 1.5rem;
+            line-height: 20px;
+            padding: 8px 28px;
+        }
+    }
+
+    @media (max-width:$md) {
+        &__card {
+            height: 180px !important;
+            margin: 10px 0;
+        }
+
+        &__card-time {
+            span {
+                font-size: 1.5rem;
+            }
+        }
+
+        &__card-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        &__card-btn {
+            padding: 8px 25px;
+        }
+    }
+
+    @media (max-width:$xs) {
+        &__card-title {
+            font-size: 2.5rem;
+        }
+    }
+
+    @media (max-width:$sm) {
+        &__card-title {
+            font-size: 2rem;
+        }
+
+        &__card-btn {
+            padding: 6px 20px;
+        }
     }
 }

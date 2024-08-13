@@ -98,14 +98,14 @@
 
     .swiper-button-next,
     .swiper-button-prev {
-        top: 96% !important;
+        top: 96.5% !important;
         border: 1px solid $blue-800;
-        width: 34px;
-        height: 34px;
+        width: 30px;
+        height: 30px;
         border-radius: 4px;
 
         &::after {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: $blue-800;
         }
@@ -113,6 +113,58 @@
 
     .swiper-button-next {
         left: 21%;
+    }
+
+    /*
+$sm: 576px;
+$xs: 768px;
+$md: 992px;
+$lg: 1024px;
+$xl: 1200px;
+$xxl: 1500px;
+*/
+    @media (max-width:$lg) {
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            top: 96.8% !important;
+            width: 27px;
+            height: 27px;
+
+            &::after {
+                font-size: 12px;
+            }
+        }
+    }
+
+    @media (max-width:$md) {
+        &__btn {
+            padding: 4px 10px;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            width: 25px;
+            height: 25px;
+        }
+
+        .swiper-button-prev {
+            left: 0 !important;
+        }
+
+        .swiper-pagination-fraction {
+            left: 11%;
+            transform: translateX(-11%) translateY(-4%);
+            bottom: 3%;
+        }
+    }
+
+    @media (max-width:$xs) {
+        .swiper-pagination-fraction {
+            left: 11%;
+            transform: translateX(-11%) translateY(-4%);
+            bottom: 3%;
+        }
     }
 
 }

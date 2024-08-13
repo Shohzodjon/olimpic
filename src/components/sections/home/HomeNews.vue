@@ -35,8 +35,8 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay];
                     Barcha yangiliklar
                 </RouterLink>
             </div>
-            <a-row :gutter="20">
-                <a-col :span="12">
+            <a-row :gutter="[20,20]">
+                <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
                     <swiper :pagination="{
                         type: 'fraction',
                     }" :effect="'fade'" :navigation="true" autoplay loop :modules="modules" class="mySwiper">
@@ -59,7 +59,11 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay];
                         </swiper-slide>
                     </swiper>
                 </a-col>
-                <a-col :span="12">
+                <a-col   :xs="24"
+                :sm="24"
+                :md="12"
+                :lg="12"
+                :xl="12">
                     <HomeNewsCard v-for="item in news" :key="item.id" :img="item.img" :title="item.title"
                         :url="`/oz/news-slug/${item.id}`" :time="item.time" />
                 </a-col>

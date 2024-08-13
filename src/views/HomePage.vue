@@ -49,14 +49,14 @@ onMounted(async () => {
     <HomeBanner />
     <HomeNews />
     <section class="home-page__strategy"></section>
-    <HomeInterview />
+    <!-- <HomeInterview />
     <div class="container">
       <div class="home-page__banner">
         <img src="@/assets/images/home-banner.png" alt="home banner">
       </div>
     </div>
-    <HomeMedia />
-    <section class="home-page__partner">
+    <HomeMedia /> -->
+    <!-- <section class="home-page__partner">
       <div class="container">
         <h2>Harakatni qo'llab-quvvatlash</h2>
         <Vue3Marquee :gradient="true" :pauseOnHover="true" :duration="35">
@@ -102,7 +102,7 @@ onMounted(async () => {
           <PartnerCard v-for="item in partnerList" :key="item.id" :img="item.img" :title="item.title" :url="item.url" />
         </Vue3Marquee>
       </div>
-    </section>
+    </section> -->
   </section>
 
 </template>
