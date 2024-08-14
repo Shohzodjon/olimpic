@@ -92,6 +92,8 @@
         cursor: pointer;
     }
 
+  
+
     /*
 $sm: 576px;
 $xs: 768px;
@@ -122,18 +124,21 @@ $xxl: 1500px;
         &-bottom {
             justify-content: flex-end;
             height: 50px;
+
             &__item {
                 display: none;
             }
         }
+
         &-menu {
-            display:block;
+            display: block;
         }
 
         &-header {
 
             .header-child {
                 font-size: 1.8rem;
+
                 span:nth-child(2) {
                     display: none;
                 }
@@ -158,6 +163,7 @@ $xxl: 1500px;
                 font-size: 2rem;
             }
         }
+
         &-bottom {
             height: 70px;
         }
@@ -193,6 +199,7 @@ $xxl: 1500px;
                 font-size: 1.8rem;
             }
         }
+
         &-bottom {
             height: 50px;
         }
@@ -203,11 +210,13 @@ $xxl: 1500px;
             flex-direction: column;
             gap: 10px;
         }
+
         &-right {
             align-items: center;
             flex-direction: row;
             justify-content: space-between;
         }
+
         &-logo {
             padding: 13px 20px;
             max-width: 100%;
@@ -218,6 +227,7 @@ $xxl: 1500px;
                 }
             }
         }
+
         &-bottom {
             height: max-content !important;
         }

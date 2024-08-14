@@ -282,19 +282,24 @@ const router = createRouter({
           name: "announce-slug",
           component: () => import("../views/AnnounceSlug.vue"),
         },
+        {
+          path: "search",
+          name: "search",
+          component: () => import("../views/SearchPage.vue"),
+        },
       ],
     },
   ],
 });
 router.beforeEach((to, from, next) => {
-  const lang = to.params.lang; 
-  const storedLocale = localStorage.getItem("locale"); 
+  const lang = to.params.lang;
+  const storedLocale = localStorage.getItem("locale");
 
   if (storedLocale && lang !== storedLocale) {
-    return next(`/${storedLocale}${to.path.slice(3)}`); 
+    return next(`/${storedLocale}${to.path.slice(3)}`);
   }
   if (!lang) {
-    return next(`/${storedLocale || 'en'}`); 
+    return next(`/${storedLocale || "en"}`);
   }
   next();
 });

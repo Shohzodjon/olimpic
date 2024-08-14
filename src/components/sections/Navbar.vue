@@ -1,6 +1,8 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
+import router from '@/router';
 import { NotificationOutlined, PictureOutlined, SearchOutlined } from '@ant-design/icons-vue';
-import {MenuOutlined } from '@ant-design/icons-vue'
+import { MenuOutlined } from '@ant-design/icons-vue'
 import LangComp from '@/components/lang/LangComp.vue'
 import MenuDrop from '../dropdown/MenuDrop.vue';
 const menuItems = [
@@ -101,6 +103,23 @@ const menuItems = [
         ],
     }
 ];
+
+const open = ref(false);
+const search = ref('');
+const lang = localStorage.getItem('locale') || 'oz';
+const showModal = () => {
+    open.value = !open.value;
+};
+const searchFunc = () => {
+    open.value = false;
+    router.push(`/${lang}/search?text=${search.value}`);
+    search.value = ''
+}
+const handleOk = (e) => {
+    open.value = false;
+};
+
+
 </script>
 <template>
     <nav class="navbar">
@@ -130,16 +149,16 @@ const menuItems = [
                                 <span>Медиа галерея</span>
                             </RouterLink>
                             <!-- <div class="header-child"></div> -->
-                            <div class="header-child">
+                            <div class="header-child" @click="showModal">
                                 <SearchOutlined /> <span>Поиск</span>
                             </div>
                         </div>
-                   
+
                         <LangComp />
                     </div>
                     <div class="navbar-bottom">
                         <div class="navbar-bottom__item" v-for="(item, i) in menuItems" :key="i">
-                            <MenuDrop  :data="item" />
+                            <MenuDrop :data="item" />
                         </div>
                         <div class="navbar-menu">
                             <MenuOutlined />
@@ -149,5 +168,13 @@ const menuItems = [
 
             </div>
         </div>
+        <a-modal v-model:open="open" centered title="" @ok="handleOk">
+            <label class="modal__label">
+                <input type="text" placeholder="Izlash" v-model="search" />
+                <span @click="searchFunc">
+                    <SearchOutlined />
+                </span>
+            </label>
+        </a-modal>
     </nav>
 </template>

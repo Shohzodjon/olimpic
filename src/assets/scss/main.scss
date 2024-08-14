@@ -1,5 +1,4 @@
-@import "__variables",'mixin', 'sections', 'components' , 'pages';
-
+@import "__variables", 'mixin', 'sections', 'components', 'pages';
 *,
 *::after,
 *::before {
@@ -32,46 +31,109 @@ a {
   padding: 0 15px;
   margin: 0 auto;
 }
-.ant-collapse-item{
+
+.ant-collapse-item {
   border: none !important;
 }
+
 .ant-collapse-item .ant-collapse-header .ant-collapse-expand-icon .ant-collapse-arrow {
   display: none !important;
 }
-.ant-collapse-header .ant-collapse-header-text{
+
+.ant-collapse-header .ant-collapse-header-text {
   color: $blue-600;
   font-size: 2.2rem;
   font-weight: 600;
 }
-.ant-collapse-content{
+
+.ant-collapse-content {
   border-top: none !important;
   border-radius: 0 !important;
 }
-.ant-pagination-options{
+
+.ant-pagination-options {
   display: none !important;
 }
-.ant-pagination{
+
+.ant-pagination {
   margin: 3rem auto 0;
-  .ant-pagination-item{
+
+  .ant-pagination-item {
     min-width: 30px;
     min-height: 30px;
     line-height: 29px;
   }
 }
+
+.ant-modal-content {
+  width: 110% !important;
+  padding: 1rem 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+.ant-modal-wrap{
+  cursor: pointer !important;
+}
+.ant-modal-mask{
+  background: rgba(37, 37, 37, 0.7) !important;
+}
+.ant-modal-close,
+.ant-modal-footer {
+  display: none;
+}
+
+.modal__label {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+
+  input {
+    flex: 1;
+    width: 100%;
+    max-width: calc(100% - 50px);
+    display: block;
+    border-radius: 0;
+    border: 0;
+    height: 50px;
+    line-height: 40px;
+    float: left;
+    padding-left: 20px;
+    background: #fff;
+    color: #999;
+    font-size: 17px;
+    font-style: italic;
+    box-shadow: none;
+    outline: none;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 2rem;
+    background: $blue-600;
+    color: #fff;
+
+  }
+}
+
 @media (max-width:$md) {
-  .ant-collapse-header .ant-collapse-header-text{
+  .ant-collapse-header .ant-collapse-header-text {
     font-size: 2rem;
   }
 }
+
 @media (max-width:$xs) {
-  .ant-collapse-header .ant-collapse-header-text{
+  .ant-collapse-header .ant-collapse-header-text {
     font-size: 1.8rem;
   }
 }
+
 @media (max-width:$sm) {
-  .ant-collapse-header .ant-collapse-header-text{
+  .ant-collapse-header .ant-collapse-header-text {
     font-size: 1.5rem;
   }
 }
-
-
