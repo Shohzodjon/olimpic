@@ -1,6 +1,6 @@
 <script setup>
 import { HomeOutlined } from '@ant-design/icons-vue'
-import { defineProps } from 'vue';
+// import { defineProps } from 'vue';
 
 defineProps({
     data: { type: Array, default: [] },

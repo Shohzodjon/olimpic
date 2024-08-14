@@ -7,10 +7,23 @@ import { RouterView } from "vue-router";
 
 <template>
   <section>
-    <Navbar/>
-    <router-view />
+    <Navbar />
+    <Transition name="fade" mode="out-in">
+      <router-view />
+    </Transition>
     <Footer />
   </section>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to
+  {
+  opacity: 0;
+}
+</style>
