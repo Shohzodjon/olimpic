@@ -28,6 +28,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay];
 </script>
 <template>
     <section class="home-news-section">
+        <img src="@/assets/images/big_logo.png" alt="big logo" class="big__logo">
         <div class="container">
             <div class="home-news-section__flex">
                 <h2 class="home-news-section__title">Yangiliklar</h2>
@@ -35,7 +36,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay];
                     Barcha yangiliklar
                 </RouterLink>
             </div>
-            <a-row :gutter="[20,20]">
+            <a-row :gutter="[20, 20]">
                 <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
                     <swiper :pagination="{
                         type: 'fraction',
@@ -59,11 +60,7 @@ const modules = [Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay];
                         </swiper-slide>
                     </swiper>
                 </a-col>
-                <a-col   :xs="24"
-                :sm="24"
-                :md="12"
-                :lg="12"
-                :xl="12">
+                <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
                     <HomeNewsCard v-for="item in news" :key="item.id" :img="item.img" :title="item.title"
                         :url="`/oz/news-slug/${item.id}`" :time="item.time" />
                 </a-col>

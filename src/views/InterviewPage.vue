@@ -35,6 +35,7 @@ const newsList = [
                             <NewsCard :data="item" :url="`/oz/news-slug/${item.id}`" />
                         </a-col>
                     </a-row>
+                    <a-pagination v-model:current="current" :total="500" show-less-items />
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                     <div class="committee-page__sidebar">

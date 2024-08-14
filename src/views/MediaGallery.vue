@@ -41,6 +41,7 @@ const list = [
                                 <GalleryCard :desc="item.desc" :img="item.img" :url="`/oz/gallery-slug/${item.id}`" />
                             </a-col>
                         </a-row>
+                        <a-pagination v-model:current="current" :total="500" show-less-items />
                     </div>
                 </a-col>
 

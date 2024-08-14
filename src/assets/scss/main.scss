@@ -47,6 +47,17 @@ a {
   border-top: none !important;
   border-radius: 0 !important;
 }
+.ant-pagination-options{
+  display: none !important;
+}
+.ant-pagination{
+  margin: 3rem auto 0;
+  .ant-pagination-item{
+    min-width: 30px;
+    min-height: 30px;
+    line-height: 29px;
+  }
+}
 @media (max-width:$md) {
   .ant-collapse-header .ant-collapse-header-text{
     font-size: 2rem;
