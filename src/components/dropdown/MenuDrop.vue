@@ -7,8 +7,9 @@ defineProps({
         default: null
     }
 });
+const lang = localStorage.getItem('locale');
 const handleSubMenuClick = (path) => {
-    router.push({name:path});
+    router.push({ name: path });
 }
 
 </script>
@@ -16,23 +17,33 @@ const handleSubMenuClick = (path) => {
     <a-dropdown>
         <a class="ant-dropdown-link" @click.prevent>
             <span>
-                {{ data?.label }}
+                {{ data?.title }}
             </span>
             <DownOutlined />
         </a>
         <template #overlay>
             <a-menu>
                 <template v-for="(item, index) in data?.children" :key="index">
-                    <a-menu-item v-if="!item.children" :class="{ 'custom-menu-item': true }">
-                        <router-link :to="{path:'/:en',name:item.path}" style="color: #333 !important;">
-                            {{ item.label }}
+                    <a-menu-item v-if="item.children.length == 0" :class="{ 'custom-menu-item': true }">
+                        <router-link v-if="item.link" :to="{ name: item.link }" style="color: #333 !important;">
+                            {{ item.title }}
+                        </router-link>
+                        <router-link v-else :to="{ name: 'static-page', query: { alias: item.alias } }"
+                            style="color: #333 !important;">
+                            {{ item.title }}
                         </router-link>
                     </a-menu-item>
-                    <a-sub-menu v-else :title="item.label" @click="handleSubMenuClick(item?.path)" :key="item.label"
+                    <a-sub-menu v-else :title="item.title" @click="handleSubMenuClick(item?.link)" :key="item.id"
                         :class="{ 'custom-sub-menu': true }">
-                        <template v-for="(subItem, subIndex) in item.children" :key="subIndex">
+                        <template v-if="item.children.length != 0" v-for="(subItem, subIndex) in item.children"
+                            :key="subIndex">
                             <a-menu-item :class="{ 'custom-sub-menu-item': true }">
-                                <router-link :to="{path:'/:en',name:subItem.path}" style="color: #333 !important;">{{ subItem.label }} </router-link>
+                                <router-link v-if="subItem.link" :to="{ name: subItem.link }"
+                                    style="color: #333 !important;">{{
+                                        subItem.title }} </router-link>
+                                <router-link v-else :to="{ name: 'static-page', query: { alias: subItem.alias } }"
+                                    style="color: #333 !important;">{{
+                                        subItem.title }} </router-link>
                             </a-menu-item>
                         </template>
                     </a-sub-menu>
@@ -80,6 +91,7 @@ const handleSubMenuClick = (path) => {
     font-weight: 500;
     color: #333 !important;
 }
+
 .custom-sub-menu .ant-dropdown-menu-title-content a {
     font-size: 1.6rem !important;
     font-weight: 500;
@@ -92,7 +104,8 @@ const handleSubMenuClick = (path) => {
     border-radius: 0 !important;
     border-bottom: 1px solid #cacaca;
 }
-.custom-sub-menu-item a{
+
+.custom-sub-menu-item a {
     color: #333 !important;
 }
 

@@ -27,7 +27,7 @@ const newsList = [
     <section class="committee-page">
         <div class="container">
             <BreadCrump :data="breads" />
-            <h2>Davlat dasturi ijrosi</h2>
+            <h2>Parij 2024</h2>
             <a-row :gutter="[20,20]">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <a-row :gutter="[20, 20]">

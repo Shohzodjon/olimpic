@@ -25,8 +25,8 @@ const router = createRouter({
           component: () => import("../views/OlimpicMuseum.vue"),
         },
         {
-          path: "partners",
-          name: "partners-page",
+          path: "static-page",
+          name: "static-page",
           component: () => import("../views/PartnersPage.vue"),
         },
         // rahbariyat
@@ -118,8 +118,8 @@ const router = createRouter({
           component: () => import("../views/SocialRoller.vue"),
         },
         {
-          path: "parij-olimpy",
-          name: "parij-olimpy",
+          path: "licensees",
+          name: "licensees",
           component: () => import("../views/ParijOlimpy.vue"),
         },
         {
@@ -134,8 +134,8 @@ const router = createRouter({
           component: () => import("../views/LocalFederation.vue"),
         },
         {
-          path: "global-federation",
-          name: "global-federation",
+          path: "international",
+          name: "international",
           component: () => import("../views/GlobalFederation.vue"),
         },
         //  games
@@ -236,6 +236,7 @@ const router = createRouter({
           component: () => import("../views/InterOlimpicCharter.vue"),
         },
         //  osiyo
+        // xalqaro munosabatlar
         {
           path: "asia-council",
           name: "asia-council",
@@ -251,6 +252,7 @@ const router = createRouter({
           name: "asia-prezident",
           component: () => import("../views/OOKPrezident.vue"),
         },
+
         // gallery
         {
           path: "gallery",
@@ -299,7 +301,7 @@ router.beforeEach((to, from, next) => {
     return next(`/${storedLocale}${to.path.slice(3)}`);
   }
   if (!lang) {
-    return next(`/${storedLocale || "en"}`);
+    return next(`/${storedLocale || "oz"}`);
   }
   next();
 });

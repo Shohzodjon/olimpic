@@ -8,10 +8,8 @@ const inctance = axios.create({
 
 inctance.interceptors.request.use(
   (config) => {
-    config.params = {
-      ...config.params,
-      lang: lang,
-    };
+    // ...config.params,
+    config.headers["Accept-Language"] = lang;
     return config;
   },
   (error) => {

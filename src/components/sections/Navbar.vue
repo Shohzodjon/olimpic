@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import { useMenuStore } from '@/stores/menu';
 import router from '@/router';
 import { NotificationOutlined, PictureOutlined, SearchOutlined } from '@ant-design/icons-vue';
 import { MenuOutlined } from '@ant-design/icons-vue'
@@ -107,6 +108,13 @@ const menuItems = [
 const open = ref(false);
 const search = ref('');
 const lang = localStorage.getItem('locale') || 'oz';
+const menuStore=useMenuStore();
+onMounted(async()=>{
+await menuStore.fetchList();
+console.log(menuStore.list)
+})
+
+
 const showModal = () => {
     open.value = !open.value;
 };
@@ -153,11 +161,10 @@ const handleOk = (e) => {
                                 <SearchOutlined /> <span>Поиск</span>
                             </div>
                         </div>
-
                         <LangComp />
                     </div>
                     <div class="navbar-bottom">
-                        <div class="navbar-bottom__item" v-for="(item, i) in menuItems" :key="i">
+                        <div class="navbar-bottom__item" v-for="(item, i) in menuStore.list.data" :key="i">
                             <MenuDrop :data="item" />
                         </div>
                         <div class="navbar-menu">

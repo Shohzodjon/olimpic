@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import ResponsiveNavbar from '@/components/responsive/ResponsiveNavbar.vue'
 import HomeHeader from '@/components/header/HomeHeader.vue';
 import HomeBanner from '@/components/sections/home/HomeBanner.vue'
 import HomeNews from '@/components/sections/home/HomeNews.vue';
@@ -117,6 +118,7 @@ onMounted(async () => {
         </Vue3Marquee>
       </div>
     </section>
+    <ResponsiveNavbar/>
   </section>
 
 </template>
