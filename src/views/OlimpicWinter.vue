@@ -1,47 +1,38 @@
 <script setup>
+import { ref, onMounted } from 'vue';
+import { useGamesStore } from '@/stores/games';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import OlimpicCard from '@/components/card/OlimpicCard.vue'
-import summer from '@/assets/images/summer.svg'
+const lang = localStorage.getItem('locale');
+const gamesStore = useGamesStore();
+const isLoad = ref(false);
 const breads = [
-    { label: 'Home', url: '/:en', id: 1 },
+    { label: 'Home', url: `/${lang}`, id: 1 },
     { label: "Olimpiya o'yinlari", id: 2 },
     { label: "Qishki Olimpiya o'yinlari", id: 3 },
 ];
 
-const olimpicData = [
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 1 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 2 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 3 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 4 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 5 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 6 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 7 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 8 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 9 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 10 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 11 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 12 },
-];
-
-
-
+onMounted(async () => {
+    await gamesStore.fetchOlimpicWinter();
+    isLoad.value = true;
+})
 </script>
 <template>
     <section class="committee-page">
         <div class="container">
             <BreadCrump :data="breads" />
             <h2>Qishki Olimpiya o'yinlari</h2>
-            <a-row :gutter="[20,20]">
+            <a-row :gutter="[20, 20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="committee-page__content">
-                   <a-row :gutter="[20,20]">
-                    <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="item in olimpicData" :key="item.id">
-                        <OlimpicCard  :title="item.title" :season="item.season"
-                        :img="item.img">
-                        <template #season-icon><img src="@/assets/images/sun-icon.svg" width="24" height="24" /></template>
-                      </OlimpicCard>
-                    </a-col>
-                   </a-row>
+                        <a-row :gutter="[20, 20]">
+                            <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="item in gamesStore.olimpicWinter" :key="item.id">
+                                <OlimpicCard :title="item.title" :season="item.season" :img="item.images">
+                                    <template #season-icon><img src="@/assets/images/sun-icon.svg" width="24"
+                                            height="24" /></template>
+                                </OlimpicCard>
+                            </a-col>
+                        </a-row>
                     </div>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">

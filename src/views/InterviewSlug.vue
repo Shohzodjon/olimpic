@@ -18,7 +18,7 @@ const breads = [
 ];
 
 onMounted(async () => {
-    await newsStore.fetchDetail(infoId);
+    await newsStore.fetchInterviewDetail(infoId);
     isLoad.value = true;
 })
 const printPage = () => {
@@ -33,13 +33,13 @@ const printPage = () => {
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="news-slug__content">
                         <a-carousel autoplay :dots="false" :autoplaySpeed="3000" :slidesToShow="1">
-                            <div v-for="(img, i) in newsStore.detail.images" :key="i">
+                            <div v-for="(img, i) in newsStore.interviewDetail.images" :key="i">
                                 <img :src="img" alt="img">
                             </div>
                         </a-carousel>
                         <div class="news-slug__flex">
                             <div class="news-slug__time">
-                                <ClockCircleOutlined /> <span>{{ newsStore.detail.created_at }}</span>
+                                <ClockCircleOutlined /> <span>{{ newsStore.interviewDetail.created_at }}</span>
                             </div>
                             <ul class="news-slug__social">
                                 <li>
@@ -65,12 +65,12 @@ const printPage = () => {
                             </ul>
 
                             <div class="news-slug__statistic">
-                                <EyeOutlined /> <span>{{ newsStore.detail.views }}</span>
+                                <EyeOutlined /> <span>{{ newsStore.interviewDetail.views }}</span>
                             </div>
 
                         </div>
-                        <h2>{{ newsStore.detail.title }}</h2>
-                        <div v-html="newsStore.detail.content"></div>
+                        <h2>{{ newsStore.interviewDetail.title }}</h2>
+                        <div v-html="newsStore.interviewDetail.content"></div>
                         <button @click="printPage">Print Page</button>
                     </div>
                 </a-col>

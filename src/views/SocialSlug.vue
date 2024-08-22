@@ -1,20 +1,59 @@
 <script setup>
 import BreadCrump from '@/components/menu/BreadCrump.vue';
+import { ClockCircleOutlined, EyeOutlined } from '@ant-design/icons-vue';
+import VK from '@/components/icons/VK.vue';
+import Telegram from '@/components/icons/Telegram.vue';
+import Twitter from '@/components/icons/Twitter.vue';
+import OK from '@/components/icons/OK.vue';
+import news1 from '@/assets/images/news1.jpg'
+import news2 from '@/assets/images/news2.jpg'
+import news3 from '@/assets/images/news3.jpg'
 const breads = [
     { label: 'Home', url: '/:en', id: 1 },
-    { label: "Tibbiyot markazi", id: 2 },
-    { label: "RSTIAM faoliyati", id: 3 },
-]
+    { label: "Yangiliklar", id: 2, url: '/oz/news' },
+];
+const images = [news1, news2, news3];
 </script>
 <template>
-    <section class="committee-page">
+    <section class="news-slug">
         <div class="container">
             <BreadCrump :data="breads" />
-            <h2 >RSTIAM faoliyati</h2>
             <a-row :gutter="[20,20]">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
-                    <div class="committee-page__content">
-                        <img src="@/assets/images/olimpic-center.jpg" alt="center">
+                    <div class="news-slug__content">
+                      
+                        <div class="news-slug__flex">
+                            <div class="news-slug__time">
+                                <ClockCircleOutlined /> <span>14 Fevral 2022</span>
+                            </div>
+                            <ul class="news-slug__social">
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <VK />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <OK />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <Telegram />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <Twitter />
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="news-slug__statistic">
+                                <EyeOutlined /> <span>272</span>
+                            </div>
+
+                        </div>
                         <p>O‘zbekiston Milliy Olimpiya qo‘mitasi nodavlat — notijorat tashkiloti bo‘lib, o‘z faoliyatini
                             O‘zbekiston Respublikasi qonunchiligi, Xalqaro Olimpiya Qo‘mitasi Olimpiya Xartiyasi hamda
                             O‘zbekiston Milliy olimpiya qo‘mitasining Ustavi asosida amalga oshiradi.
@@ -73,6 +112,12 @@ const breads = [
                             O‘zbekiston Milliy Olimpiya qo‘mitasi huzurida Olimpiya akademiyasi tashkil etilgan.
 
                             O‘zbekiston Milliy Olimpiya qo‘mitasining tashkiliy tuzilmasi:</p>
+                            <a-carousel autoplay :dots="false" :autoplaySpeed="3000" :slidesToShow="1"
+                            >
+                             <div v-for="(img, i) in images" :key="i">
+                                 <img :src="img" alt="img">
+                             </div>
+                         </a-carousel>
                     </div>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">

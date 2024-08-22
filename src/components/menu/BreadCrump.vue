@@ -8,7 +8,7 @@ defineProps({
 
 </script>
 <template>
-    <a-breadcrumb>
+    <a-breadcrumb class="bread__crumb">
         <a-breadcrumb-item v-for="(item, index) in data" :key="item.id">
             <template v-if="item.url">
                 <template v-if="index === 0">

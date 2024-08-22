@@ -1,38 +1,35 @@
 <script setup>
+import { ref, onMounted } from 'vue';
+import { useGamesStore } from '@/stores/games';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import PartnerCard from '@/components/card/PartnerCard.vue'
-import generation from '@/assets/images/generation.png'
+const lang = localStorage.getItem('locale');
+const gamesStore = useGamesStore();
+const isLoad = ref(false);
 const breads = [
     { label: 'Home', url: '/:en', id: 1 },
     { label: "Olimpiya o'yinlari", id: 2 },
     { label: "O‘smirlar Olimpiya o'yinlari", id: 3 },
 ];
-
-const olimpicData = [
-    { title: 'Singapur - 2010', img: generation, id: 1 },
-    { title: 'Nankin - 2014', img: generation, id: 2 },
-    { title: 'Buenos-Ayres - 2018', img: generation, id: 3 },
-    { title: 'Singapur - 2010', img: generation, id: 4 },
-    { title: 'Nankin - 2014', img: generation, id: 5 },
-    { title: 'Singapur - 2010', img: generation, id: 7 },
-    { title: 'Buenos-Ayres - 2018', img: generation, id: 8 },
-];
-
-
-
+onMounted(async () => {
+    await gamesStore.fetchOlimpicTeenager();
+    isLoad.value = true;
+})
 </script>
 <template>
     <section class="committee-page olimpic-generation">
         <div class="container">
             <BreadCrump :data="breads" />
             <h2>O‘smirlar Olimpiya o'yinlari</h2>
-            <a-row :gutter="[20,20]">
+            <a-row :gutter="[20, 20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
-                        <a-row :gutter="[20, 20]">
-                            <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="item in olimpicData" :key="item.id">
-                                <PartnerCard :img="item.img" :title="item.title" class="olimpic-generation__card" />
-                            </a-col>
-                        </a-row>
+                    <a-row :gutter="[20, 20]">
+                        <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="item in gamesStore.teenager"
+                            :key="item.id">
+                            <PartnerCard :img="item.images" :title="item.title" :url="item.link"
+                                class="olimpic-generation__card" />
+                        </a-col>
+                    </a-row>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                     <div class="committee-page__sidebar">

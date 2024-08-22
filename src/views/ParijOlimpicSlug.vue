@@ -1,19 +1,32 @@
 <script setup>
+import { ref, onMounted } from 'vue';
+import { useLicenseesStore } from '@/stores/licensees';
+import { useRoute } from 'vue-router';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
+
+const  licenseesStore= useLicenseesStore();
+const isLoad = ref(false);
+const router = useRoute();
+const infoId = router.params.id;
 const breads = [
     { label: 'Home', url: '/:en', id: 1 },
-    { label: "O'yinlar", id: 2 },
-    { label: "Osiyo o'yinlari", id: 3 },
-]
+    { label: "Yangiliklar", id: 2, url: '/oz/news' },
+];
+
+onMounted(async () => {
+    await licenseesStore.fetchDetail(infoId);
+    isLoad.value = true;
+})
 </script>
 <template>
-    <section class="committee-page">
+    <section class="news-slug">
         <div class="container">
             <BreadCrump :data="breads" />
-            <h2>Osiyo o'yinlari</h2>
-            <a-row :gutter="[20,20]">
+            <a-row :gutter="[20, 20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
-                    <div class="committee-page__content">
+                    <div class="news-slug__content">
+                        <h2>{{ licenseesStore.detail.title }}</h2>
+                        <div v-html="licenseesStore.detail.content"></div>
                     </div>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">

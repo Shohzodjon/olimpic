@@ -1,15 +1,21 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { useMediaStore } from '@/stores/gallery';
 import HomeGallery from '@/components/card/HomeGallery.vue'
-import hero from '@/assets/images/hero_4.jpg';
-const news = [
-    { img: hero, title: 'Sadullayeva ishtirokini yettinchi oʻrinda yakunladi', time: '4 Aug 2024', id: 1 },
-    { img: hero, title: 'Sadullayeva ishtirokini yettinchi oʻrinda yakunladi', time: '4 Aug 2024', id: 2 },
 
-];
-const mainData = { img: hero, title: 'Sadullayeva ishtirokini yettinchi oʻrinda yakunladi', time: '4 Aug 2024', id: 1 };
 
 const currentTab = ref('photo');
+const lang = localStorage.getItem('locale');
+const isLoad = ref(false)
+const mediaStore = useMediaStore();
+onMounted(async () => {
+    await Promise.all([
+        mediaStore.galleryList(),
+        mediaStore.videoList()
+    ]);
+    isLoad.value = true
+})
+
 
 const tabClick = (tab) => {
     currentTab.value = tab;
@@ -27,16 +33,29 @@ const tabClick = (tab) => {
                         :class="[currentTab != 'photo' ? 'active-tab' : '']">Videogalareya</button>
                 </div>
             </div>
-            <a-row :gutter="[20,20]">
-                <a-col :sm="24" :md="12" :lg="12" :xl="12">
-                    <HomeGallery :img="mainData.img" :title="mainData.title" :time="mainData.time"
-                        class="main-interview-card" />
-                </a-col>
-                <a-col :sm="24" :md="12" :lg="12" :xl="12" class="home-media__right-side">
-                    <HomeGallery v-for="item in news" :key="item.id" :img="item.img" :title="item.title"
-                        :time="item.time" />
-                </a-col>
-            </a-row>
+            <div v-if="isLoad">
+                <a-row :gutter="[20, 20]" v-if="currentTab == 'photo'">
+                    <a-col :sm="24" :md="12" :lg="12" :xl="12">
+                        <HomeGallery :img="mediaStore.gallery[0].img" :title="mediaStore.gallery[0].title"
+                            :time="mediaStore.gallery[0].created_at" class="main-interview-card" :url="`/${lang}/gallery`" />
+                    </a-col>
+                    <a-col :sm="24" :md="12" :lg="12" :xl="12" class="home-media__right-side">
+                        <HomeGallery v-for="(item, i) in mediaStore.gallery" v-show="i != 0" :key="item.id"
+                            :img="item.img" :title="item.title" :time="item.created_at" :url="`/${lang}/gallery`" />
+                    </a-col>
+                </a-row>
+                <a-row :gutter="[20, 20]" v-if="currentTab == 'video'">
+                    <a-col :sm="24" :md="12" :lg="12" :xl="12">
+                        <HomeGallery :img="mediaStore.video[0].images" :title="mediaStore.video[0].title"
+                            :time="mediaStore.video[0].created_at" class="main-interview-card"  />
+                    </a-col>
+                    <a-col :sm="24" :md="12" :lg="12" :xl="12" class="home-media__right-side">
+                        <HomeGallery v-for="(item, i) in mediaStore.video" v-show="i != 0" :key="item.id"
+                            :img="item.images" :title="item.title" :time="item.created_at" />
+                    </a-col>
+                </a-row>
+            </div>
+
         </div>
     </section>
 

@@ -1,4 +1,5 @@
 @import "__variables", 'mixin', 'sections', 'components', 'pages';
+
 *,
 *::after,
 *::before {
@@ -71,12 +72,15 @@ a {
   background: none !important;
   box-shadow: none !important;
 }
-.ant-modal-wrap{
+
+.ant-modal-wrap {
   cursor: pointer !important;
 }
-.ant-modal-mask{
+
+.ant-modal-mask {
   background: rgba(37, 37, 37, 0.7) !important;
 }
+
 .ant-modal-close,
 .ant-modal-footer {
   display: none;
@@ -135,5 +139,15 @@ a {
 @media (max-width:$sm) {
   .ant-collapse-header .ant-collapse-header-text {
     font-size: 1.5rem;
+  }
+}
+
+@media print {
+
+  .navbar,
+  .footer,
+  .committee-page__sidebar,
+  .bread__crumb {
+    display: none !important;
   }
 }

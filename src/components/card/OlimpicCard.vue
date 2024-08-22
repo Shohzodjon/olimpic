@@ -16,7 +16,7 @@ defineProps({
             <h3>{{ title }}</h3>
             <div class="olimpic-card__flex">
                 <slot name="season-icon" />
-                <span>{{ season }}</span>
+                <span>{{ season }} </span>
             </div>
         </div>
         <div class="olimpic-card__img">

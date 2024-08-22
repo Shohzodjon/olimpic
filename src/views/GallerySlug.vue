@@ -1,16 +1,24 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { useMediaStore } from '@/stores/gallery';
+import { useRoute } from 'vue-router';
 import VueEasyLightbox from 'vue-easy-lightbox/external-css';
 import 'vue-easy-lightbox/external-css/vue-easy-lightbox.css';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
-import news1 from '@/assets/images/news1.jpg'
-import news2 from '@/assets/images/news2.jpg'
-import news3 from '@/assets/images/news3.jpg'
+
 const breads = [
     { label: 'Home', url: '/oz', id: 1 },
     { label: "Media galereya", id: 2, url: '/oz/gallery' },
 ];
-const images = [news1, news2, news3];
+const lang = localStorage.getItem('locale');
+const router = useRoute();
+const slug = router.params.id;
+const galleryStore = useMediaStore();
+const isLoad = ref(false);
+onMounted(async () => {
+    await galleryStore.fetchGalleryDetail(slug);
+    isLoad.value = true;
+})
 const visibleRef = ref(false)
 const indexRef = ref(0)
 const showImg = (index) => {
@@ -21,16 +29,15 @@ const onHide = () => visibleRef.value = false
 </script>
 <template>
     <section class="gallery-slug">
-        <div class="container">
+        <div class="container" v-if="isLoad">
             <BreadCrump :data="breads" />
-            <h2 class="gallery-slug__title">Media galereya</h2>
+            <h2 class="gallery-slug__title">{{ galleryStore.galleryDetail.title }}</h2>
             <a-row :gutter="[20, 20]">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="gallery-slug__content">
-                        <h3 class="gallery-slug__sub-title">Razambek Jamalov delegatsiyamiz hisobiga oltinchi oltin
-                            medalni taqdim etgan finalning yorqin lahzalari</h3>
+                        <h3 class="gallery-slug__sub-title">{{ galleryStore.galleryDetail.title  }}</h3>
                         <a-row :gutter="[20, 20]">
-                            <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="(img, i) in images" :key="i">
+                            <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="(img, i) in galleryStore.galleryDetail.images" :key="i">
                                 <div class="gallery-slug__card pic" @click="() => showImg(i)">
                                     <div class="pic">
                                         <img :src="img" />
@@ -39,7 +46,7 @@ const onHide = () => visibleRef.value = false
                                 </div>
                             </a-col>
                         </a-row>
-                        <vue-easy-lightbox :visible="visibleRef" :imgs="images" :index="indexRef"
+                        <vue-easy-lightbox :visible="visibleRef" :imgs="galleryStore.galleryDetail.images" :index="indexRef"
                             @hide="onHide"></vue-easy-lightbox>
                     </div>
                 </a-col>

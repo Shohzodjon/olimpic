@@ -25,8 +25,8 @@ const router = createRouter({
           component: () => import("../views/OlimpicMuseum.vue"),
         },
         {
-          path: "static-page",
-          name: "static-page",
+          path: "partner",
+          name: "partner",
           component: () => import("../views/PartnersPage.vue"),
         },
         // rahbariyat
@@ -76,11 +76,7 @@ const router = createRouter({
           name: "medical-center",
           component: () => import("../views/MedicalCenter.vue"),
         },
-        {
-          path: "rstiam-activity",
-          name: "rstiam-activity",
-          component: () => import("../views/RSTIAM.vue"),
-        },
+      
         {
           path: "federation-doctors",
           name: "federation-doctors",
@@ -103,6 +99,11 @@ const router = createRouter({
           component: () => import("../views/InterviewPage.vue"),
         },
         {
+          path: "interview-detail/:id",
+          name: "interview-detail",
+          component: () => import("../views/InterviewSlug.vue"),
+        },
+        {
           path: "open-data",
           name: "open-data",
           component: () => import("../views/OpenData.vue"),
@@ -123,9 +124,19 @@ const router = createRouter({
           component: () => import("../views/ParijOlimpy.vue"),
         },
         {
+          path: "licensees-slug/:id",
+          name: "licensees-slug",
+          component: () => import("../views/ParijOlimpicSlug.vue"),
+        },
+        {
           path: "news-slug/:id",
           name: "news-slug",
           component: () => import("../views/NewsSlug.vue"),
+        },
+        {
+          path: "social-slug/:id",
+          name: "social-slug",
+          component: () => import("../views/SocialSlug.vue"),
         },
         // federation
         {
@@ -146,8 +157,8 @@ const router = createRouter({
           component: () => import("../views/OlimpicGames.vue"),
         },
         {
-          path: "olimpic-history",
-          name: "olimpic-history",
+          path: "static-page",
+          name: "static-page",
           component: () => import("../views/OlimpicHistory.vue"),
         },
         {
@@ -242,16 +253,16 @@ const router = createRouter({
           name: "asia-council",
           component: () => import("../views/AsiaOlimpicCouncil.vue"),
         },
-        {
-          path: "asia-structure",
-          name: "asia-structure",
-          component: () => import("../views/OOKStructure.vue"),
-        },
-        {
-          path: "asia-prezident",
-          name: "asia-prezident",
-          component: () => import("../views/OOKPrezident.vue"),
-        },
+        // {
+        //   path: "asia-structure",
+        //   name: "asia-structure",
+        //   component: () => import("../views/OOKStructure.vue"),
+        // },
+        // {
+        //   path: "asia-prezident",
+        //   name: "asia-prezident",
+        //   component: () => import("../views/OOKPrezident.vue"),
+        // },
 
         // gallery
         {

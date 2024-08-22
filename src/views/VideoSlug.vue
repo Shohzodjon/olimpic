@@ -1,7 +1,7 @@
 <script setup>
-import { ref } from 'vue';
-import VueEasyLightbox from 'vue-easy-lightbox/external-css';
-import 'vue-easy-lightbox/external-css/vue-easy-lightbox.css';
+import { ref, onMounted } from 'vue';
+import { useMediaStore } from '@/stores/gallery';
+import { useRoute } from 'vue-router';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import news1 from '@/assets/images/news1.jpg'
 const breads = [
@@ -9,19 +9,26 @@ const breads = [
     { label: "Video", id: 2, url: '/oz/video' },
 ];
 
+const lang = localStorage.getItem('locale');
+const router = useRoute();
+const slug = router.params.id;
+const galleryStore = useMediaStore();
+const isLoad = ref(false);
+onMounted(async () => {
+    await galleryStore.fetchVideoDetail(slug);
+    isLoad.value = true;
+})
 </script>
 <template>
     <section class="video-slug">
         <div class="container">
             <BreadCrump :data="breads" />
             <h2 class="video-slug__title">Videolar</h2>
-            <a-row :gutter="[20,20]">
+            <a-row :gutter="[20,20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="video-slug__content">
-                        <h3 class="video-slug__sub-title">Razambek Jamalov delegatsiyamiz hisobiga oltinchi oltin
-                            medalni taqdim etgan finalning yorqin lahzalari</h3>
-                        <div class="video-slug__card ">
-                            <img :src="news1" />
+                        <h3 class="video-slug__sub-title">{{galleryStore.videoDetail.title}}</h3>
+                        <div class="video-slug__card " v-html="galleryStore.videoDetail.content">
                         </div>
                     </div>
                 </a-col>

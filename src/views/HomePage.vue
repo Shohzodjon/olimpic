@@ -1,5 +1,7 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import { usePartnerStore } from '@/stores/partner';
+import { useHomeStore } from '@/stores/home';
 import ResponsiveNavbar from '@/components/responsive/ResponsiveNavbar.vue'
 import HomeHeader from '@/components/header/HomeHeader.vue';
 import HomeBanner from '@/components/sections/home/HomeBanner.vue'
@@ -8,64 +10,39 @@ import HomeInterview from '@/components/sections/home/HomeInterview.vue'
 import HomeMedia from '@/components/sections/home/HomeMedia.vue';
 import PartnerCard from '@/components/card/PartnerCard.vue';
 import OlimpicCard from '@/components/card/OlimpicCard.vue';
-import partner1 from '@/assets/images/partner1.png';
-import partner2 from '@/assets/images/partner2.png';
-import partner3 from '@/assets/images/partner3.png';
-import partner4 from '@/assets/images/partner4.png';
-import summer from '@/assets/images/summer.svg';
 import { RightOutlined } from '@ant-design/icons-vue';
-import { useMenuStore } from '@/stores/menu';
 
 const windowWidth = ref(window.innerWidth);
-
-function updateWindowWidth() {
-  windowWidth.value = window.innerWidth;
-}
-
-const isGradient = computed(() => windowWidth.value > 800);
-
-onMounted(() => {
-  window.addEventListener('resize', updateWindowWidth);
-});
-
+const partnerStore = usePartnerStore();
+const homeStore = useHomeStore();
+const lang = localStorage.getItem('locale')
+const isLoad = ref(false);
 onBeforeUnmount(() => {
   window.removeEventListener('resize', updateWindowWidth);
 });
-const partnerList = [
-  { img: partner1, title: 'Hamkor', id: 1, url: '/:ru' },
-  { img: partner2, title: 'Hamkor', id: 2, url: '/:ru' },
-  { img: partner3, title: 'Hamkor', id: 3, url: '/:ru' },
-  { img: partner4, title: 'Hamkor', id: 4, url: '/:ru' },
-  { img: partner1, title: 'Hamkor', id: 5, url: '/:ru' },
-  { img: partner2, title: 'Hamkor', id: 6, url: '/:ru' },
-  { img: partner3, title: 'Hamkor', id: 7, url: '/:ru' },
-  { img: partner4, title: 'Hamkor', id: 8, url: '/:ru' },
-]
-
-const olimpicData = [
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 1 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 2 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 3 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 4 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 5 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 6 },
-  { title: 'Suv sporti', season: 'Yozgi', img: summer, id: 7 },
-];
-
-const menuStore = useMenuStore();
-
 onMounted(async () => {
-  await menuStore.fetchList();
-})
+  window.addEventListener('resize', updateWindowWidth);
+  await Promise.all([
+    partnerStore.fetchList(),
+    partnerStore.fetchSupport(),
+    homeStore.fetchOlimpicType(),
+    homeStore.fetchOlimpicGames()
+  ])
+  isLoad.value = true;
 
+})
+function updateWindowWidth() {
+  windowWidth.value = window.innerWidth;
+}
+const isGradient = computed(() => windowWidth.value > 800);
 </script>
 <template>
-  <section class="home-page">
+  <section class="home-page" v-if="isLoad">
     <HomeHeader />
     <HomeBanner />
     <HomeNews />
     <section class="home-page__strategy"></section>
-     <HomeInterview />
+    <HomeInterview />
     <div class="container">
       <div class="home-page__banner">
         <img src="@/assets/images/home-banner.png" alt="home banner">
@@ -76,7 +53,8 @@ onMounted(async () => {
       <div class="container">
         <h2>Harakatni qo'llab-quvvatlash</h2>
         <Vue3Marquee :gradient="isGradient" :pauseOnHover="true" :duration="35">
-          <PartnerCard v-for="item in partnerList" :key="item.id" :img="item.img" :title="item.title" :url="item.url" />
+          <PartnerCard v-for="item in partnerStore.support.data" :key="item.id" :img="item.images" :title="item.title"
+            :url="`/${lang}`" style="margin:  1rem;min-width:320px" />
         </Vue3Marquee>
       </div>
     </section>
@@ -84,16 +62,17 @@ onMounted(async () => {
       <div class="container">
         <h2>XOQ hamkorlari</h2>
         <Vue3Marquee :gradient="isGradient" :pauseOnHover="true" :duration="35" direction="reverse">
-          <PartnerCard v-for="item in partnerList" :key="item.id" :img="item.img" :title="item.title" :url="item.url" />
+          <PartnerCard v-for="item in partnerStore.list.data" :key="item.id" :img="item.images" :title="item.title"
+            :url="`/${lang}`" style="margin: 1rem;" />
         </Vue3Marquee>
       </div>
     </section>
-     <section class="home-page__olimpic">
+    <section class="home-page__olimpic">
       <div class="container">
         <h2>Olimpiya sport turlari</h2>
         <div class="olimpic-grid">
-          <OlimpicCard v-for="item in olimpicData" :key="item.id" :title="item.title" :season="item.season"
-            :img="item.img">
+          <OlimpicCard v-for="item in homeStore.olimpicType.data" :key="item.id" :title="item.title"
+            :season="item.season" :img="item.images">
             <template #season-icon><img src="@/assets/images/sun-icon.svg" width="24" height="24" /></template>
           </OlimpicCard>
           <RouterLink to="/:en" class="last-item">
@@ -114,11 +93,12 @@ onMounted(async () => {
       <div class="container">
         <h2>O‘zbekiston Olimpiya o‘yinlarida</h2>
         <Vue3Marquee :gradient="isGradient" :pauseOnHover="true" :duration="35">
-          <PartnerCard v-for="item in partnerList" :key="item.id" :img="item.img" :title="item.title" :url="item.url" />
+          <PartnerCard v-for="item in homeStore.olimpicGame.data" :key="item.id" :img="item.images" :title="item.title"
+            :url="`/${lang}`" style="margin: 1rem;min-width:250px" />
         </Vue3Marquee>
       </div>
     </section>
-    <ResponsiveNavbar/>
+    <!-- <ResponsiveNavbar /> -->
   </section>
 
 </template>

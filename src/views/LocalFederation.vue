@@ -1,44 +1,36 @@
 <script setup>
+import { ref, onMounted } from 'vue';
+import { useFederationStore } from '@/stores/federation';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
-import AccardionFed from '@/components/dropdown/AccardionFed.vue'
+import AccardionFed from '@/components/dropdown/AccardionFed.vue';
+
+const federationStore = useFederationStore();
+const lang = localStorage.getItem('locale');
+const isLoad = ref(false);
 const breads = [
-    { label: 'Home', url: '/oz', id: 1 },
+    { label: 'Home', url: `/${lang}`, id: 1 },
     { label: "Federatsiyalar", id: 2 },
     { label: "O’zbekiston sport federatsiyalari", id: 3 },
 ];
-const employList = [
-    {
-        label: "O'zbekiston bosk federatsiyasi ", id: 1, children: "<p>Rais: Ramatov Achilboy Jumaniyozovich</p> <p>Raisning birinchi o‘rinbosari: Polatov Saken Djetibaevich</p> <p>Bosh kotib: Shohid Tillaboyev</p> <p>Tashkil topgan yili: 1992 yil</p><p>Manzil: 100066, Toshkent shahar, Turob To‘la ko‘chasi, 126-uy</p><p>     <span>     Telefon: <a href='tel:+99871-2457015'>+99871-2457015</a> </span> </p> <p>     <span>         Faks: <a href='fax:+99871-2457015'>+99871-2457015</a>     </span> </p> <p>     E-mail: <a href='mailto:boxing.uzbekistan@gmail.com'>boxing.uzbekistan@gmail.com</a> </p> <p>     <a href='http://olympicboxing.uz/uz' target='_blank' rel='noopener'>         <span>www.olympicboxing.uz</span>     </a> </p>"
-    },
-    {
-        label: "O'zbekiston valeybol federatsiyasi ", id: 2, children: "<p>Rais: Ramatov Achilboy Jumaniyozovich</p> <p>Raisning birinchi o‘rinbosari: Polatov Saken Djetibaevich</p> <p>Bosh kotib: Shohid Tillaboyev</p> <p>Tashkil topgan yili: 1992 yil</p><p>Manzil: 100066, Toshkent shahar, Turob To‘la ko‘chasi, 126-uy</p><p>     <span>     Telefon: <a href='tel:+99871-2457015'>+99871-2457015</a> </span> </p> <p>     <span>         Faks: <a href='fax:+99871-2457015'>+99871-2457015</a>     </span> </p> <p>     E-mail: <a href='mailto:boxing.uzbekistan@gmail.com'>boxing.uzbekistan@gmail.com</a> </p> <p>     <a href='http://olympicboxing.uz/uz' target='_blank' rel='noopener'>         <span>www.olympicboxing.uz</span>     </a> </p>"
-    },
-    {
-        label: "O'zbekiston ganbol federatsiyasi ", id: 3, children: "<p>Rais: Ramatov Achilboy Jumaniyozovich</p> <p>Raisning birinchi o‘rinbosari: Polatov Saken Djetibaevich</p> <p>Bosh kotib: Shohid Tillaboyev</p> <p>Tashkil topgan yili: 1992 yil</p><p>Manzil: 100066, Toshkent shahar, Turob To‘la ko‘chasi, 126-uy</p><p>     <span>     Telefon: <a href='tel:+99871-2457015'>+99871-2457015</a> </span> </p> <p>     <span>         Faks: <a href='fax:+99871-2457015'>+99871-2457015</a>     </span> </p> <p>     E-mail: <a href='mailto:boxing.uzbekistan@gmail.com'>boxing.uzbekistan@gmail.com</a> </p> <p>     <a href='http://olympicboxing.uz/uz' target='_blank' rel='noopener'>         <span>www.olympicboxing.uz</span>     </a> </p>"
-    },
-    {
-        label: "O'zbekiston tennis federatsiyasi ", id: 4, children: "<p>Rais: Ramatov Achilboy Jumaniyozovich</p> <p>Raisning birinchi o‘rinbosari: Polatov Saken Djetibaevich</p> <p>Bosh kotib: Shohid Tillaboyev</p> <p>Tashkil topgan yili: 1992 yil</p><p>Manzil: 100066, Toshkent shahar, Turob To‘la ko‘chasi, 126-uy</p><p>     <span>     Telefon: <a href='tel:+99871-2457015'>+99871-2457015</a> </span> </p> <p>     <span>         Faks: <a href='fax:+99871-2457015'>+99871-2457015</a>     </span> </p> <p>     E-mail: <a href='mailto:boxing.uzbekistan@gmail.com'>boxing.uzbekistan@gmail.com</a> </p> <p>     <a href='http://olympicboxing.uz/uz' target='_blank' rel='noopener'>         <span>www.olympicboxing.uz</span>     </a> </p>"
-    },
-    {
-        label: "O'zbekiston futbol federatsiyasi ", id: 5, children: "<p>Rais: Ramatov Achilboy Jumaniyozovich</p> <p>Raisning birinchi o‘rinbosari: Polatov Saken Djetibaevich</p> <p>Bosh kotib: Shohid Tillaboyev</p> <p>Tashkil topgan yili: 1992 yil</p><p>Manzil: 100066, Toshkent shahar, Turob To‘la ko‘chasi, 126-uy</p><p>     <span>     Telefon: <a href='tel:+99871-2457015'>+99871-2457015</a> </span> </p> <p>     <span>         Faks: <a href='fax:+99871-2457015'>+99871-2457015</a>     </span> </p> <p>     E-mail: <a href='mailto:boxing.uzbekistan@gmail.com'>boxing.uzbekistan@gmail.com</a> </p> <p>     <a href='http://olympicboxing.uz/uz' target='_blank' rel='noopener'>         <span>www.olympicboxing.uz</span>     </a> </p>"
-    },
-    {
-        label: "O'zbekiston yengil atletika federatsiyasi ", id: 6, children: "<p>Rais: Ramatov Achilboy Jumaniyozovich</p> <p>Raisning birinchi o‘rinbosari: Polatov Saken Djetibaevich</p> <p>Bosh kotib: Shohid Tillaboyev</p> <p>Tashkil topgan yili: 1992 yil</p><p>Manzil: 100066, Toshkent shahar, Turob To‘la ko‘chasi, 126-uy</p><p>     <span>     Telefon: <a href='tel:+99871-2457015'>+99871-2457015</a> </span> </p> <p>     <span>         Faks: <a href='fax:+99871-2457015'>+99871-2457015</a>     </span> </p> <p>     E-mail: <a href='mailto:boxing.uzbekistan@gmail.com'>boxing.uzbekistan@gmail.com</a> </p> <p>     <a href='http://olympicboxing.uz/uz' target='_blank' rel='noopener'>         <span>www.olympicboxing.uz</span>     </a> </p>"
-    }
-]
+
+onMounted(async () => {
+    await federationStore.fetchLocal();
+    isLoad.value = true;
+})
+
 </script>
 <template>
     <section class="committee-page local-federation">
         <div class="container">
             <BreadCrump :data="breads" />
             <h2>O’zbekiston sport federatsiyalari</h2>
-            <a-row :gutter="[20,20]">
+            <a-row :gutter="[20, 20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <a-row :gutter="[20, 20]">
-                        <a-col v-for="item in employList" :key="item.id" :span="24">
+                        <a-col v-for="item in federationStore.local" :key="item.id" :span="24">
                             <AccardionFed :data="item">
                                 <template #accardion-card>
-                                    <div class="local-federation__card" v-html="item.children">
+                                    <div class="local-federation__card" v-html="item.content">
                                     </div>
                                 </template>
                             </AccardionFed>

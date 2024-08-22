@@ -48,7 +48,7 @@ const handleClick = async (e) => {
 <template>
     <div style="margin-bottom: 20px;">
         <a-collapse v-model:activeKey="activeKey" accordion>
-            <a-collapse-panel key="1" :header="data?.label" @click="(e) => handleClick(e)">
+            <a-collapse-panel key="1" :header="data?.title" @click="(e) => handleClick(e)">
           <slot name="accardion-card"/>
             </a-collapse-panel>
         </a-collapse>

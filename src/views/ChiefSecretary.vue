@@ -1,12 +1,21 @@
 <script setup>
+import { ref, onMounted } from 'vue';
+import { useEmployeesStore } from '@/stores/employees';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import EmployeesCard from '@/components/card/EmployeesCard.vue';
-import employ from '@/assets/images/employ.jpg'
+const lang = localStorage.getItem('locale');
 const breads = [
-    { label: 'Home', url: '/:en', id: 1 },
+    { label: 'Home', url: `/${lang}`, id: 1 },
     { label: "Rahbariyat va xodimlar", id: 2 },
     { label: "Bosh kotib", id: 3 },
 ];
+
+const employeesStore = useEmployeesStore();
+const isLoad = ref(false);
+onMounted(async () => {
+    await employeesStore.fetchSecretaryList();
+    isLoad.value = true;
+})
 
 </script>
 <template>
@@ -14,16 +23,16 @@ const breads = [
         <div class="container">
             <BreadCrump :data="breads" />
             <h2>Bosh kotib</h2>
-            <a-row :gutter="[20,20]">
+            <a-row :gutter="[20,20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
-                    <EmployeesCard :img="employ" position="Bosh kotib" name="Kasimov Oybek Omilovich"
-                        reception="Seshanba va Juma kunlari soat 14:00 dan 18:00 gacha" />
+                    <EmployeesCard :img="item.images" :position="item.post" :name="item.title"
+                    :reception="item.reception" v-for="item in employeesStore.secretary.data"  />
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                     <div class="committee-page__sidebar">
                         <div class="committee-page__sidebar-menu">Menu</div>
                         <div class="committee-page__sidebar-img">
-                            <RouterLink to="/:en">
+                            <RouterLink :to="`/${lang}`">
                                 <img src="@/assets/images/olimpic.png" alt="olimpic ">
                             </RouterLink>
                         </div>

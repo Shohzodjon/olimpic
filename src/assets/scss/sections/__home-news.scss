@@ -1,15 +1,16 @@
 .home-news-section {
     padding: 40px 0;
-position: relative;
+    position: relative;
 
-.big__logo{
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    opacity: 0.03;
-    z-index: -1;
-}
+    .big__logo {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        opacity: 0.03;
+        z-index: -1;
+    }
+
     &__flex {
         display: flex;
         align-items: center;
@@ -174,7 +175,8 @@ $xxl: 1500px;
             transform: translateX(-11%) translateY(-4%);
             bottom: 3%;
         }
-        .big__logo{
+
+        .big__logo {
             top: 100%;
             transform: translateY(-100%);
         }
