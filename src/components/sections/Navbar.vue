@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useMenuStore } from '@/stores/menu';
+import { lang } from '@/uitiles/currentLang';
 import router from '@/router';
 import { NotificationOutlined, PictureOutlined, SearchOutlined } from '@ant-design/icons-vue';
 import { MenuOutlined } from '@ant-design/icons-vue'
@@ -107,11 +108,9 @@ const menuItems = [
 
 const open = ref(false);
 const search = ref('');
-const lang = localStorage.getItem('locale') || 'oz';
 const menuStore=useMenuStore();
 onMounted(async()=>{
 await menuStore.fetchList();
-console.log(menuStore.list)
 })
 
 
@@ -133,7 +132,7 @@ const handleOk = (e) => {
     <nav class="navbar">
         <div class="nav-container">
             <div class="navbar-flex">
-                <RouterLink to="/en" class="navbar-logo">
+                <RouterLink :to="`/${lang}`" class="navbar-logo">
                     <div class="navbar-logo__img">
                         <img src="@/assets/images/logo.png" alt="logo ">
                     </div>
@@ -149,10 +148,10 @@ const handleOk = (e) => {
                 <div class="navbar-right">
                     <div class="navbar-header">
                         <div class="navbar-header__left">
-                            <RouterLink to="/oz/announce" class="header-child">
+                            <RouterLink :to="`/${lang}/announce`" class="header-child">
                                 <NotificationOutlined /><span>Объявления</span>
                             </RouterLink>
-                            <RouterLink to='/oz/gallery' class="header-child">
+                            <RouterLink :to="`/${lang}/gallery`" class="header-child">
                                 <PictureOutlined />
                                 <span>Медиа галерея</span>
                             </RouterLink>
@@ -163,6 +162,7 @@ const handleOk = (e) => {
                         </div>
                         <LangComp />
                     </div>
+                    <!-- <pre>{{menuStore.list.data}}</pre> -->
                     <div class="navbar-bottom">
                         <div class="navbar-bottom__item" v-for="(item, i) in menuStore.list.data" :key="i">
                             <MenuDrop :data="item" />

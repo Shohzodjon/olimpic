@@ -14,9 +14,9 @@ defineProps({
                 <template v-if="index === 0">
                     <HomeOutlined />
                 </template>
-                <RouterLink :to="item.url">{{ item.label }}</RouterLink>
+                <RouterLink :to="item.url">{{ item.title }}</RouterLink>
             </template>
-            <template v-else>{{ item.label }}</template>
+            <template v-else>{{ item.title }}</template>
         </a-breadcrumb-item>
     </a-breadcrumb>
 </template>

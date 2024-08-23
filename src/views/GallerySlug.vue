@@ -5,12 +5,12 @@ import { useRoute } from 'vue-router';
 import VueEasyLightbox from 'vue-easy-lightbox/external-css';
 import 'vue-easy-lightbox/external-css/vue-easy-lightbox.css';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
+import { lang } from '@/uitiles/currentLang';
 
 const breads = [
-    { label: 'Home', url: '/oz', id: 1 },
-    { label: "Media galereya", id: 2, url: '/oz/gallery' },
+    { label: 'Home', url:`/${lang}`, id: 1 },
+    { label: "Media galereya", id: 2, url: `/${lang}/gallery` },
 ];
-const lang = localStorage.getItem('locale');
 const router = useRoute();
 const slug = router.params.id;
 const galleryStore = useMediaStore();

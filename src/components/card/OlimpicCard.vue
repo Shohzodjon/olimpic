@@ -1,8 +1,8 @@
 <script setup>
-// import { defineProps } from 'vue';
 import { RouterLink } from 'vue-router';
+import { lang } from '@/uitiles/currentLang';
 defineProps({
-    url: { type: String, default: '/oz' },
+    url: { type: String, default: `/${lang}` },
     title: { type: String, default: '' },
     img: { type: String, default: '' },
     season: { type: String, default: '' },

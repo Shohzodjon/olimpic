@@ -1,12 +1,12 @@
 <script setup>
 import { ClockCircleOutlined } from '@ant-design/icons-vue';
+import { lang } from '@/uitiles/currentLang';
 defineProps({
     data: {
         type: Array,
         default: []
     }
 })
-const lang = localStorage.getItem('locale') || 'oz'
 </script>
 <template>
     <div class="horizontal-slider">

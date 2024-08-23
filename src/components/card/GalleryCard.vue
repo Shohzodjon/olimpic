@@ -1,4 +1,5 @@
 <script setup>
+import { lang } from '@/uitiles/currentLang';
 defineProps({
     img: {
         type: String,
@@ -6,7 +7,7 @@ defineProps({
     },
     url: {
         type: String,
-        default: '/oz',
+        default: `/${lang}`,
     },
     desc: {
         type: String,

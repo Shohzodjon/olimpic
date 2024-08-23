@@ -3,10 +3,10 @@ import { ref, onMounted } from 'vue';
 import { useMediaStore } from '@/stores/gallery';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import NewsCard from '@/components/card/NewsCard.vue';
+import { lang } from '@/uitiles/currentLang';
 const mediaStore = useMediaStore();
-const lang = localStorage.getItem('locale');
 const breads = [
-    { label: 'Home', url: '/oz', id: 1 },
+    { label: 'Home', url: `/${lang}`, id: 1 },
     { label: "Elonlar", id: 2, },
 
 ];

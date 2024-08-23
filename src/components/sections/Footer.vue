@@ -1,4 +1,5 @@
 <script setup>
+import { lang } from '@/uitiles/currentLang';
 </script>
 <template>
     <footer class="footer">
@@ -6,7 +7,7 @@
             <div class="footer-flex">
                 <div class="footer-header">
                     <div class="left">
-                        <RouterLink to="/en" class="footer-logo">
+                        <RouterLink :to="`/${lang}`" class="footer-logo">
                             <div class="footer-logo__img">
                                 <img src="@/assets/images/logo.png" alt="logo ">
                             </div>

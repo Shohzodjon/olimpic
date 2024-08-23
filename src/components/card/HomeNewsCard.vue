@@ -2,6 +2,7 @@
 // import { defineProps } from 'vue';
 import { RouterLink } from 'vue-router';
 import { ClockCircleOutlined } from '@ant-design/icons-vue';
+import { lang } from '@/uitiles/currentLang';
 defineProps({
     img: {
         type: String,
@@ -16,7 +17,7 @@ defineProps({
         default: ''
     }, url: {
         type: String,
-        default: '/oz'
+        default: `/${lang}`
     }
 })
 </script>

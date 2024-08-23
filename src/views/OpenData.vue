@@ -4,8 +4,7 @@ import { useNewsStore } from '@/stores/news';
 import { useRoute } from 'vue-router';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import NewsCard from '@/components/card/NewsCard.vue';
-
-const lang = localStorage.getItem('locale');
+import { lang } from '@/uitiles/currentLang';
 const newsStore = useNewsStore();
 const router = useRoute();
 const slug = router.query.alias;

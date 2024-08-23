@@ -1,7 +1,7 @@
 <script setup>
 // import { defineProps } from 'vue';
 import { RouterLink } from 'vue-router';
-
+import { lang } from '@/uitiles/currentLang';
 defineProps({
     data: {
         type: Object,
@@ -12,7 +12,7 @@ defineProps({
 <template>
     <div class="header-slider-card">
         <img :src="data?.img" alt="img">
-        <RouterLink to="/">
+        <RouterLink :to="`/${lang}`">
             <h3>{{ data.time }}</h3>
             <div class="line"></div>
             <p class="desc">{{ data?.desc }}</p>

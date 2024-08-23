@@ -3,8 +3,8 @@ import { onMounted, ref } from 'vue';
 import { useInterviewStore } from '@/stores/interview';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import NewsCard from '@/components/card/NewsCard.vue';
+import { lang } from '@/uitiles/currentLang';
 const isLoad = ref(false);
-const lang = localStorage.getItem('locale') || 'oz';
 const breads = [
     { label: 'Home', url: `/${lang}`, id: 1 },
     { label: "Yangiliklar", id: 2, url: `/${lang}` },

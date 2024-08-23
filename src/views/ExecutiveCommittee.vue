@@ -3,26 +3,13 @@ import { ref, onMounted } from 'vue';
 import { useEmployeesStore } from '@/stores/employees';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import EmployeesCard from '@/components/card/EmployeesCard.vue';
-import employ from '@/assets/images/employ.jpg';
-
-const lang = localStorage.getItem('locale');
+import { lang } from '@/uitiles/currentLang';
 const employeesStore = useEmployeesStore();
 const isLoad=ref(false)
 const breads = [
     { label: 'Home', url: `/${lang}`, id: 1 },
     { label: "Rahbariyat va xodimlar", id: 2 },
     { label: "Ijroiya qo‘mitasi", id: 3 },
-];
-const employList = [
-    { img: employ, position: "MOQ raisining birinchi o'rinbosari, O'zbekiston futbol assotsiatsiyasi birinchi vitse-prezidenti", name: "Irmatov Ravshan Saifuddinovich", reception: 'Seshanba kuni soat 09:00 dan 13:00 gacha', id: 1 },
-    { img: employ, position: "MOQ raisining birinchi o'rinbosari, O'zbekiston futbol assotsiatsiyasi birinchi vitse-prezidenti", name: "Irmatov Ravshan Saifuddinovich", reception: 'Seshanba kuni soat 09:00 dan 13:00 gacha', id: 2 },
-    { img: employ, position: "MOQ raisining birinchi o'rinbosari, O'zbekiston futbol assotsiatsiyasi birinchi vitse-prezidenti", name: "Irmatov Ravshan Saifuddinovich", reception: 'Seshanba kuni soat 09:00 dan 13:00 gacha', id: 3 },
-    { img: employ, position: "MOQ raisining birinchi o'rinbosari, O'zbekiston futbol assotsiatsiyasi birinchi vitse-prezidenti", name: "Irmatov Ravshan Saifuddinovich", reception: 'Seshanba kuni soat 09:00 dan 13:00 gacha', id: 4 },
-    { img: employ, position: "MOQ raisining birinchi o'rinbosari, O'zbekiston futbol assotsiatsiyasi birinchi vitse-prezidenti", name: "Irmatov Ravshan Saifuddinovich", reception: 'Seshanba kuni soat 09:00 dan 13:00 gacha', id: 5 },
-    { img: employ, position: "MOQ raisining birinchi o'rinbosari, O'zbekiston futbol assotsiatsiyasi birinchi vitse-prezidenti", name: "Irmatov Ravshan Saifuddinovich", reception: 'Seshanba kuni soat 09:00 dan 13:00 gacha', id: 6 },
-    { img: employ, position: "MOQ raisining birinchi o'rinbosari, O'zbekiston futbol assotsiatsiyasi birinchi vitse-prezidenti", name: "Irmatov Ravshan Saifuddinovich", reception: 'Seshanba kuni soat 09:00 dan 13:00 gacha', id: 7 },
-    { img: employ, position: "MOQ raisining birinchi o'rinbosari, O'zbekiston futbol assotsiatsiyasi birinchi vitse-prezidenti", name: "Irmatov Ravshan Saifuddinovich", reception: 'Seshanba kuni soat 09:00 dan 13:00 gacha', id: 8 },
-    { img: employ, position: "MOQ raisining birinchi o'rinbosari, O'zbekiston futbol assotsiatsiyasi birinchi vitse-prezidenti", name: "Irmatov Ravshan Saifuddinovich", reception: 'Seshanba kuni soat 09:00 dan 13:00 gacha', id: 9 },
 ];
 
 onMounted(async () => {

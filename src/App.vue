@@ -8,13 +8,13 @@ import { RouterView } from "vue-router";
 <template>
   <section>
     <Navbar />
-   
-      <router-view v-slot="{ Component }">
-        <Transition name="fade" mode="out-in"> 
-          <component :is="Component" />
-        </Transition>
-      </router-view>
-   
+
+    <router-view v-slot="{ Component }">
+      <Transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </Transition>
+    </router-view>
+
     <Footer />
   </section>
 </template>
@@ -26,8 +26,7 @@ import { RouterView } from "vue-router";
 }
 
 .fade-enter,
-.fade-leave-to
-  {
+.fade-leave-to {
   opacity: 0;
 }
 </style>

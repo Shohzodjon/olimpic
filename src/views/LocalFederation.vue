@@ -3,9 +3,8 @@ import { ref, onMounted } from 'vue';
 import { useFederationStore } from '@/stores/federation';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import AccardionFed from '@/components/dropdown/AccardionFed.vue';
-
+import { lang } from '@/uitiles/currentLang';
 const federationStore = useFederationStore();
-const lang = localStorage.getItem('locale');
 const isLoad = ref(false);
 const breads = [
     { label: 'Home', url: `/${lang}`, id: 1 },

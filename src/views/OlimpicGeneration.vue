@@ -3,7 +3,6 @@ import { ref, onMounted } from 'vue';
 import { useGamesStore } from '@/stores/games';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import PartnerCard from '@/components/card/PartnerCard.vue'
-const lang = localStorage.getItem('locale');
 const gamesStore = useGamesStore();
 const isLoad = ref(false);
 const breads = [

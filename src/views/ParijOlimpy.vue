@@ -3,8 +3,7 @@ import { ref, onMounted } from 'vue';
 import { useLicenseesStore } from '@/stores/licensees';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import NewsCard from '@/components/card/NewsCard.vue';
-
-const lang = localStorage.getItem('locale');
+import { lang } from '@/uitiles/currentLang';
 const licenseesStore = useLicenseesStore();
 const isLoad = ref(false);
 

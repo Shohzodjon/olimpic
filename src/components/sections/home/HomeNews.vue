@@ -1,8 +1,8 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useHomeStore } from '@/stores/home';
-import hero from '@/assets/images/hero_4.jpg';
 import HomeNewsCard from '@/components/card/HomeNewsCard.vue';
+import { lang } from '@/uitiles/currentLang';
 import { ClockCircleOutlined, } from '@ant-design/icons-vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay } from 'swiper/modules';
@@ -17,7 +17,6 @@ import 'swiper/css/effect-fade';
 const modules = [Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay];
 const homeStore = useHomeStore();
 const isLoad = ref(false);
-const lang = localStorage.getItem('locale');
 onMounted(async () => {
     await homeStore.fetchBanner();
     isLoad.value = true

@@ -3,12 +3,12 @@ import { ref, onMounted } from 'vue';
 import { useFederationStore } from '@/stores/federation';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import Accardion from '@/components/dropdown/Accardion.vue'
-
+import { lang } from '@/uitiles/currentLang';
 const isLoad = ref(false);
 const federationStore = useFederationStore();
 
 const breads = [
-    { label: 'Home', url: '/:en', id: 1 },
+    { label: 'Home', url: `/${lang}`, id: 1 },
     { label: "Tibbiyot markazi", id: 2 },
     { label: "Federatsiya shifokorlari", id: 3 },
 ];

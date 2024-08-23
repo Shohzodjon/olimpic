@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue';
 import { useGamesStore } from '@/stores/games';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
-const lang = localStorage.getItem('locale');
+import { lang } from '@/uitiles/currentLang';
 const gamesStore = useGamesStore();
 const isLoad = ref(false);
 
@@ -11,7 +11,7 @@ onMounted(async () => {
     isLoad.value = true;
 })
 const breads = [
-    { label: 'Home', url: '/:en', id: 1 },
+    { label: 'Home', url: `/${lang}`, id: 1 },
     { label: "Osiyo o'yinlari", id: 2 },
     { label: "Qishki Osiyo o‘yinlari", id: 3 },
 ]

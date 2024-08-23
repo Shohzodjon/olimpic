@@ -1,12 +1,12 @@
 <script setup>
 import { ref, reactive, onMounted, onBeforeUnmount } from 'vue';
-import { ClockCircleOutlined } from '@ant-design/icons-vue'
+import { ClockCircleOutlined } from '@ant-design/icons-vue';
+import { lang } from '@/uitiles/currentLang';
 
 defineProps({
     data: { type: Array, default: [] }
 })
 const slidesToShow = ref(calculateSlidesToShow());
-const lang = localStorage.getItem('locale');
 function calculateSlidesToShow() {
     const width = window.innerWidth;
     if (width < 576) return 1;

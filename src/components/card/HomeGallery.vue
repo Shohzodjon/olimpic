@@ -2,9 +2,10 @@
 // import { defineProps } from 'vue';
 import { RouterLink } from 'vue-router';
 import { ClockCircleOutlined } from '@ant-design/icons-vue';
+import { lang } from '@/uitiles/currentLang';
 defineProps({
     url: {
-        type: String, default: '/:en'
+        type: String, default: `/${lang}`
     },
     img: {
         type: String, default: ''

@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import { usePartnerStore } from '@/stores/partner';
 import { useHomeStore } from '@/stores/home';
+import { lang } from '@/uitiles/currentLang';
 import ResponsiveNavbar from '@/components/responsive/ResponsiveNavbar.vue'
 import HomeHeader from '@/components/header/HomeHeader.vue';
 import HomeBanner from '@/components/sections/home/HomeBanner.vue'
@@ -11,11 +12,11 @@ import HomeMedia from '@/components/sections/home/HomeMedia.vue';
 import PartnerCard from '@/components/card/PartnerCard.vue';
 import OlimpicCard from '@/components/card/OlimpicCard.vue';
 import { RightOutlined } from '@ant-design/icons-vue';
+import SidebarMenu from '@/components/menu/SidebarMenu.vue';
 
 const windowWidth = ref(window.innerWidth);
 const partnerStore = usePartnerStore();
 const homeStore = useHomeStore();
-const lang = localStorage.getItem('locale')
 const isLoad = ref(false);
 onBeforeUnmount(() => {
   window.removeEventListener('resize', updateWindowWidth);
@@ -33,7 +34,8 @@ onMounted(async () => {
 })
 function updateWindowWidth() {
   windowWidth.value = window.innerWidth;
-}
+};
+
 const isGradient = computed(() => windowWidth.value > 800);
 </script>
 <template>

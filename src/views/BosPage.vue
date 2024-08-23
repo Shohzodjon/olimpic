@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import EmployeesCard from '@/components/card/EmployeesCard.vue';
 import { useEmployeesStore } from '@/stores/employees';
-const lang = localStorage.getItem('locale');
+import { lang } from '@/uitiles/currentLang';
 const breads = [
     { label: 'Home', url: `/${lang}`, id: 1 },
     { label: "Rahbariyat va xodimlar", id: 2 },

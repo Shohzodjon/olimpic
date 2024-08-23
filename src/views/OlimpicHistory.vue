@@ -3,6 +3,7 @@ import { ref, onMounted, watch } from 'vue';
 import { useStaticStore } from '@/stores/staticPages';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import { useRoute } from 'vue-router';
+import SidebarMenu from '@/components/menu/SidebarMenu.vue';
 
 const staticStore = useStaticStore();
 const router = useRoute();
@@ -22,6 +23,26 @@ watch(() => router.query.alias, async (newAlias) => {
     slug.value = newAlias;
     await staticStore.fetchStatic(slug.value);
 });
+
+const data = [
+    {
+        title: 'Home', children: [
+            { title: 'About1', link: 'static-page' },
+            { title: 'About2', link: 'static-page' },
+            { title: 'About3', link: 'static-page' },
+        ]
+    },
+    {
+        title: 'About', children: [
+            { title: 'About1', link: 'static-page' },
+            { title: 'About2', link: 'static-page' },
+            { title: 'About3', link: 'static-page' },
+        ]
+    },
+    {
+        title:'Contact'
+    }
+]
 </script>
 <template>
     <section class="committee-page">
@@ -33,8 +54,10 @@ watch(() => router.query.alias, async (newAlias) => {
                     <div class="committee-page__content" v-html="staticStore.data?.short_content"></div>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
-                    <div class="committee-page__sidebar">
-                        <div class="committee-page__sidebar-menu">Menu</div>
+                    <div class="committee-page__sidebar"> 
+                        <div class="committee-page__sidebar-menu">
+                            <SidebarMenu :data="data" />
+                        </div>
                         <div class="committee-page__sidebar-img">
                             <RouterLink to="/:en">
                                 <img src="@/assets/images/olimpic.png" alt="olimpic ">

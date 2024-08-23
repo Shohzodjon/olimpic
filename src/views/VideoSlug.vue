@@ -3,13 +3,11 @@ import { ref, onMounted } from 'vue';
 import { useMediaStore } from '@/stores/gallery';
 import { useRoute } from 'vue-router';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
-import news1 from '@/assets/images/news1.jpg'
 const breads = [
     { label: 'Home', url: '/oz', id: 1 },
     { label: "Video", id: 2, url: '/oz/video' },
 ];
 
-const lang = localStorage.getItem('locale');
 const router = useRoute();
 const slug = router.params.id;
 const galleryStore = useMediaStore();

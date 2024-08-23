@@ -3,13 +3,13 @@ import { ref, onMounted } from 'vue';
 import { useMediaStore } from '@/stores/gallery';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import GalleryCard from '@/components/card/GalleryCard.vue';
+import { lang } from '@/uitiles/currentLang';
 
 const breads = [
     { label: 'Home', url: '/oz', id: 1 },
     { label: "Media galereya", id: 2 },
 ];
 
-const lang = localStorage.getItem('locale');
 const galleryStore = useMediaStore();
 const isLoad = ref(false);
 onMounted(async () => {

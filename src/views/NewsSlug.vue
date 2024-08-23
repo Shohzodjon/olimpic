@@ -8,13 +8,14 @@ import VK from '@/components/icons/VK.vue';
 import Telegram from '@/components/icons/Telegram.vue';
 import Twitter from '@/components/icons/Twitter.vue';
 import OK from '@/components/icons/OK.vue';
+import { lang } from '@/uitiles/currentLang';
 const newsStore = useNewsStore();
 const isLoad = ref(false);
 const router = useRoute();
 const infoId = router.params.id;
 const breads = [
     { label: 'Home', url: '/:en', id: 1 },
-    { label: "Yangiliklar", id: 2, url: '/oz/news' },
+    { label: "Yangiliklar", id: 2, url: `/${lang}/news` },
 ];
 
 onMounted(async () => {

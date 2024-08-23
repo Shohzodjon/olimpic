@@ -1,0 +1,41 @@
+.sidebar__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    &-item {
+        position: relative;
+        cursor: pointer;
+        a{
+            font-size: 1.8rem !important;
+            font-weight: 500;
+            cursor: pointer;
+            color: $gray-800;
+        }
+    }
+
+    &-item-flex {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+
+    }
+
+    &-sub {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: all linear .4s;
+        margin-top: 5px;
+        height: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+
+       
+    }
+
+    &-item:hover &-sub{
+        height: 100%;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}

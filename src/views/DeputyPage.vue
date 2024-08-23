@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue';
 import { useEmployeesStore } from '@/stores/employees';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import EmployeesCard from '@/components/card/EmployeesCard.vue';
-const lang = localStorage.getItem('locale');
+import { lang } from '@/uitiles/currentLang';
 const employeesStore=useEmployeesStore();
 const isLoad=ref(false);
 const breads = [

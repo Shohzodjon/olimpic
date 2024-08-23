@@ -10,6 +10,7 @@ export const useMediaStore = defineStore("media", () => {
   const data = ref([]);
   const galleryDetail = ref([]);
   const videoDetail = ref(null);
+  const announcementDetail = ref([]);
   const galleryList = async () => {
     try {
       const res = await $axios.get(`/gallery?options=options`);
@@ -30,6 +31,14 @@ export const useMediaStore = defineStore("media", () => {
     try {
       const res = await $axios.get(`/main/announcement`);
       announcement.value = res.data.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const fetchAnnouncementDetail = async (id) => {
+    try {
+      const res = await $axios.get(`/announcement/${id}`);
+      announcementDetail.value = res.data.data;
     } catch (error) {
       console.log(error);
     }
@@ -75,6 +84,7 @@ export const useMediaStore = defineStore("media", () => {
     data,
     galleryDetail,
     videoDetail,
+    announcementDetail,
     galleryList,
     videoList,
     fetchAnnouncement,
@@ -82,5 +92,6 @@ export const useMediaStore = defineStore("media", () => {
     fetchVideoList,
     fetchGalleryDetail,
     fetchVideoDetail,
+    fetchAnnouncementDetail,
   };
 });

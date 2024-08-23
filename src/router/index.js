@@ -19,11 +19,11 @@ const router = createRouter({
           name: "committe",
           component: () => import("../views/CommitteePage.vue"),
         },
-        {
-          path: "olimpic-museum",
-          name: "olimpic-museum",
-          component: () => import("../views/OlimpicMuseum.vue"),
-        },
+        // {
+        //   path: "olimpic-museum",
+        //   name: "olimpic-museum",
+        //   component: () => import("../views/OlimpicMuseum.vue"),
+        // },
         {
           path: "partner",
           name: "partner",
@@ -161,11 +161,11 @@ const router = createRouter({
           name: "static-page",
           component: () => import("../views/OlimpicHistory.vue"),
         },
-        {
-          path: "olimpic-modern",
-          name: "olimpic-modern",
-          component: () => import("../views/OlimpicModern.vue"),
-        },
+        // {
+        //   path: "olimpic-modern",
+        //   name: "olimpic-modern",
+        //   component: () => import("../views/OlimpicModern.vue"),
+        // },
         {
           path: "olimpic-summer",
           name: "olimpic-summer",
@@ -183,16 +183,16 @@ const router = createRouter({
         },
 
         // asia
-        {
-          path: "asia-game",
-          name: "asia-game",
-          component: () => import("../views/AsiaGames.vue"),
-        },
-        {
-          path: "asia-history",
-          name: "asia-history",
-          component: () => import("../views/AsiaHistory.vue"),
-        },
+        // {
+        //   path: "asia-game",
+        //   name: "asia-game",
+        //   component: () => import("../views/AsiaGames.vue"),
+        // },
+        // {
+        //   path: "asia-history",
+        //   name: "asia-history",
+        //   component: () => import("../views/AsiaHistory.vue"),
+        // },
         {
           path: "asia-summer",
           name: "asia-summer",
@@ -203,16 +203,16 @@ const router = createRouter({
           name: "asia-winter",
           component: () => import("../views/AsiaWinter.vue"),
         },
-        {
-          path: "asia-beach",
-          name: "asia-beach",
-          component: () => import("../views/AsiaBeachGame.vue"),
-        },
-        {
-          path: "asia-battle",
-          name: "asia-battle",
-          component: () => import("../views/AsiaBattleGame.vue"),
-        },
+        // {
+        //   path: "asia-beach",
+        //   name: "asia-beach",
+        //   component: () => import("../views/AsiaBeachGame.vue"),
+        // },
+        // {
+        //   path: "asia-battle",
+        //   name: "asia-battle",
+        //   component: () => import("../views/AsiaBattleGame.vue"),
+        // },
 
         //   Jahon arenasi
         // xalqaro olimpiya qomitasi
@@ -226,33 +226,33 @@ const router = createRouter({
           name: "international-structure",
           component: () => import("../views/InterOlimpicStructure.vue"),
         },
-        {
-          path: "international-session",
-          name: "international-session",
-          component: () => import("../views/InterOlimpicSession.vue"),
-        },
-        {
-          path: "international-partner",
-          name: "international-partner",
-          component: () => import("../views/InterOlimpicPartner.vue"),
-        },
-        {
-          path: "international-action",
-          name: "international-action",
-          component: () => import("../views/InterOlimpicAction.vue"),
-        },
-        {
-          path: "international-charter",
-          name: "international-charter",
-          component: () => import("../views/InterOlimpicCharter.vue"),
-        },
+        // {
+        //   path: "international-session",
+        //   name: "international-session",
+        //   component: () => import("../views/InterOlimpicSession.vue"),
+        // },
+        // {
+        //   path: "international-partner",
+        //   name: "international-partner",
+        //   component: () => import("../views/InterOlimpicPartner.vue"),
+        // },
+        // {
+        //   path: "international-action",
+        //   name: "international-action",
+        //   component: () => import("../views/InterOlimpicAction.vue"),
+        // },
+        // {
+        //   path: "international-charter",
+        //   name: "international-charter",
+        //   component: () => import("../views/InterOlimpicCharter.vue"),
+        // },
         //  osiyo
         // xalqaro munosabatlar
-        {
-          path: "asia-council",
-          name: "asia-council",
-          component: () => import("../views/AsiaOlimpicCouncil.vue"),
-        },
+        // {
+        //   path: "asia-council",
+        //   name: "asia-council",
+        //   component: () => import("../views/AsiaOlimpicCouncil.vue"),
+        // },
         // {
         //   path: "asia-structure",
         //   name: "asia-structure",
@@ -316,14 +316,5 @@ router.beforeEach((to, from, next) => {
   }
   next();
 });
-// router.beforeEach((to, from, next) => {
-//   const lang = to.params.lang;
-//   const locale = localStorage.getItem("locale");
-//   console.log(locale, "locale from router");
-//   if (lang == locale) {
-//     const language = $i18n.global.locale.value;
-//     return next(`/${language}`);
-//   }
-//   next();
-// });
+
 export default router;
