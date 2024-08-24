@@ -11,6 +11,7 @@
 
 html {
   font-size: 10px;
+  overflow-x: hidden;
 }
 
 ul {
@@ -146,7 +147,8 @@ a {
 
   .navbar,
   .footer,
-  .committee-page__sidebar,
+  .sidebar-container,
+  // img,
   .bread__crumb {
     display: none !important;
   }

@@ -1,42 +1,51 @@
 <script setup>
-import { CaretDownOutlined } from '@ant-design/icons-vue';
 import { RouterLink } from 'vue-router';
-// import { lang } from '@/uitiles/currentLang';
-defineProps({
+import { computed, ref } from 'vue';
+import { lang } from '@/uitiles/currentLang';
+const props = defineProps({
     data: {
-        type: Array,
-        default: []
+        type: Object,
+        default: () => ({})
     }
 });
-
-
-const toggleAction = (event) => {
-    const el = event.target
-    // if (el.classList.contains('sidebar__menu-item-flex')) {
-    //     const sibling = el.nextSibling;
-    //     sibling.classList.toggle('active');
-    // }else{
-    //     return
-    // }
-}
+const mainTitle=ref('');
+const menuItems = computed(() => {
+    const result = [];
+    mainTitle.value=props.data.parent?.title;
+    if (props.data.parent?.child?.siblings) {
+        result.push(...Object.values(props.data.parent.child.siblings).map(sibling => ({
+            title: sibling.title,
+            link: sibling.link,
+            alias: sibling.alias
+        })));
+    }
+    return result;
+});
 </script>
 <template>
-    <ul class="sidebar__menu">
-        <li v-for="(item, i) in data " :key="i" class="sidebar__menu-item">
-            <div class="sidebar__menu-item-flex" @click="toggleAction">
-                <RouterLink to="/oz" active-class="active" exact-active-class="exact-active"> {{ item.title }}
-                </RouterLink>
-                <CaretDownOutlined v-if="item.children" />
-            </div>
-            <ol v-if="item.children" class="sidebar__menu-sub">
-                <li v-for="(child, index) in item.children" :key="index" class="sub-item">
-                    <RouterLink :to="{ name: child.link }" active-class="active" exact-active-class="exact-active">{{
-                        child.title }}</RouterLink>
-                </li>
-            </ol>
-        </li>
-    </ul>
-
+    <div class="sidebar-container">
+        <div class="sidebar-wrapper">
+            <h3>{{mainTitle}}</h3>
+        <ul class="sidebar__menu">
+            <li v-for="(item, i) in menuItems" :key="i" class="sidebar__menu-item">
+                <router-link v-if="item.link" :to="{ name: item.link, query: { alias: item.alias } }"
+                    active-class="active" exact-active-class="exact-active">
+                    {{ item.title }}
+                </router-link>
+                <router-link v-else :to="{ name: 'static-page', query: { alias: item.alias } }" active-class="active"
+                    exact-active-class="exact-active">
+                    {{ item.title }}
+                </router-link>
+            </li>
+        </ul>
+    </div>
+        <div class="sidebar-container__img">
+            <RouterLink :to="`/${lang}`">
+                <img src="@/assets/images/olimpic.png" alt="olimpic ">
+            </RouterLink>
+        </div>
+    </div>
+   
 </template>
 <style scoped>
 .ant-dropdown-menu-submenu {
@@ -46,7 +55,7 @@ const toggleAction = (event) => {
 
 
 .exact-active {
-    font-weight: bold;
-    color: blue;
+    font-weight: 500;
+    color: #335fa9;
 }
 </style>

@@ -1,0 +1,17 @@
+.base-button {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    background: none;
+    margin-top: 10px;
+
+    .print-icon {
+        font-size: 20px !important;
+    }
+
+}

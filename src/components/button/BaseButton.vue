@@ -1,25 +1,9 @@
 <script setup>
-defineProps({
-    content: {
-        type: String,
-        default: ''
-    },
-    url: {
-        type: String,
-        default: 'home'
-    }
-})
+import { PrinterOutlined } from '@ant-design/icons-vue';
 </script>
 <template>
-    <RouterLink :to="{name:url}" class="ability">
-        <div class="div-hide">
-            <div class="button-label-absolute-wrapper unactive">
-                <div class="button-small-text">{{ content }}</div>
-            </div>
-            <div class="button-label-relative-wrapper active">
-                <div class="button-small-text ">{{ content }}</div>
-            </div>
-        </div>
-    </RouterLink>
-
+    <button class="base-button">
+            <PrinterOutlined class="print-icon"/>
+        <span>Chop etish</span>
+    </button>
 </template>

@@ -5,26 +5,29 @@ import { useRoute } from 'vue-router';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import NewsCard from '@/components/card/NewsCard.vue';
 import { lang } from '@/uitiles/currentLang';
+import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
+import SidebarMenu from '@/components/menu/SidebarMenu.vue';
+
+const breadCrumb = useBreadCrumbsStore();
 const newsStore = useNewsStore();
 const router = useRoute();
 const slug = router.query.alias;
 const isLoad = ref(false);
 
 onMounted(async () => {
-    await newsStore.fetchOpenData(slug);
+    await Promise.all([
+        newsStore.fetchOpenData(slug),
+        breadCrumb.fetchList(slug)
+    ])
     isLoad.value = true
 })
-const breads = [
-    { label: 'Home', url: '/:en', id: 1 },
-    { label: "Yangiliklar", id: 2 },
-    { label: "Ochiq ma'lumotlar", id: 3 },
-];
+
 
 </script>
 <template>
     <section class="committee-page">
         <div class="container">
-            <BreadCrump :data="breads" />
+            <BreadCrump :data="breadCrumb.list" />
             <h2>Ochiq ma'lumotlar</h2>
             <a-row :gutter="[20, 20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
@@ -37,14 +40,7 @@ const breads = [
                     <a-pagination v-model:current="current" :total="500" show-less-items />
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
-                    <div class="committee-page__sidebar">
-                        <div class="committee-page__sidebar-menu">Menu</div>
-                        <div class="committee-page__sidebar-img">
-                            <RouterLink to="/:en">
-                                <img src="@/assets/images/olimpic.png" alt="olimpic ">
-                            </RouterLink>
-                        </div>
-                    </div>
+                  <SidebarMenu :data="breadCrumb.list"/>
                 </a-col>
             </a-row>
         </div>

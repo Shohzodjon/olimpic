@@ -7,10 +7,12 @@ import 'vue-easy-lightbox/external-css/vue-easy-lightbox.css';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import { lang } from '@/uitiles/currentLang';
 
-const breads = [
-    { label: 'Home', url:`/${lang}`, id: 1 },
-    { label: "Media galereya", id: 2, url: `/${lang}/gallery` },
-];
+const breads = {
+parent:{
+    title: "Media galereya", id: 2, url: `/${lang}/gallery` 
+}
+}
+    
 const router = useRoute();
 const slug = router.params.id;
 const galleryStore = useMediaStore();
@@ -35,7 +37,7 @@ const onHide = () => visibleRef.value = false
             <a-row :gutter="[20, 20]">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="gallery-slug__content">
-                        <h3 class="gallery-slug__sub-title">{{ galleryStore.galleryDetail.title  }}</h3>
+                        <!-- <h3 class="gallery-slug__sub-title">{{ galleryStore.galleryDetail.title  }}</h3> -->
                         <a-row :gutter="[20, 20]">
                             <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="(img, i) in galleryStore.galleryDetail.images" :key="i">
                                 <div class="gallery-slug__card pic" @click="() => showImg(i)">

@@ -1,39 +1,36 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useGamesStore } from '@/stores/games';
+import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
+import { useRoute } from 'vue-router';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
-import { lang } from '@/uitiles/currentLang';
+import SidebarMenu from '@/components/menu/SidebarMenu.vue';
 const gamesStore= useGamesStore();
+const router=useRoute();
+const slug=router.name;
+const breadCrumb=useBreadCrumbsStore();
 const isLoad=ref(false);
 
 onMounted(async()=>{
-  await gamesStore.fetchAsiaSummer();
+    await Promise.all([
+        gamesStore.fetchAsiaSummer(),
+        breadCrumb.fetchList(slug)
+    ])
   isLoad.value=true;
 })
-const breads = [
-    { label: 'Home', url: `/${lang}`, id: 1 },
-    { label: "Osiyo o'yinlari", id: 2 },
-    { label: "Yozgi Osiyo o‘yinlari", id: 3 },
-]
+
 </script>
 <template>
     <section class="committee-page">
         <div class="container">
-            <BreadCrump :data="breads" />
+            <BreadCrump :data="breadCrumb.list" />
             <h2>Yozgi Osiyo o'yinlari</h2>
             <a-row :gutter="[20,20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="committee-page__content" v-html="gamesStore.asiaSummer"></div>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
-                    <div class="committee-page__sidebar">
-                        <div class="committee-page__sidebar-menu">Menu</div>
-                        <div class="committee-page__sidebar-img">
-                            <RouterLink to="/:en">
-                                <img src="@/assets/images/olimpic.png" alt="olimpic ">
-                            </RouterLink>
-                        </div>
-                    </div>
+                    <SidebarMenu :data="breadCrumb.list"/>
                 </a-col>
             </a-row>
         </div>

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useMenuStore } from '@/stores/menu';
 import { lang } from '@/uitiles/currentLang';
 import router from '@/router';
@@ -108,9 +108,9 @@ const menuItems = [
 
 const open = ref(false);
 const search = ref('');
-const menuStore=useMenuStore();
-onMounted(async()=>{
-await menuStore.fetchList();
+const menuStore = useMenuStore();
+onMounted(async () => {
+    await menuStore.fetchList();
 })
 
 
@@ -125,8 +125,10 @@ const searchFunc = () => {
 const handleOk = (e) => {
     open.value = false;
 };
-
-
+const menuToggle=()=>{
+    menuStore.toggleFunc();
+    console.log(menuStore.show)
+}
 </script>
 <template>
     <nav class="navbar">
@@ -148,7 +150,11 @@ const handleOk = (e) => {
                 <div class="navbar-right">
                     <div class="navbar-header">
                         <div class="navbar-header__left">
-                            <RouterLink :to="`/${lang}/announce`" class="header-child">
+                            <RouterLink :to="{
+                                path: `/${lang}/announce`, query: {
+                                    alias: 'announcement',
+                                }
+                            }" class="header-child">
                                 <NotificationOutlined /><span>Объявления</span>
                             </RouterLink>
                             <RouterLink :to="`/${lang}/gallery`" class="header-child">
@@ -167,7 +173,7 @@ const handleOk = (e) => {
                         <div class="navbar-bottom__item" v-for="(item, i) in menuStore.list.data" :key="i">
                             <MenuDrop :data="item" />
                         </div>
-                        <div class="navbar-menu">
+                        <div class="navbar-menu" @click="menuToggle">
                             <MenuOutlined />
                         </div>
                     </div>

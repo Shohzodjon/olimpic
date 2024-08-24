@@ -8,17 +8,19 @@ import VK from '@/components/icons/VK.vue';
 import Telegram from '@/components/icons/Telegram.vue';
 import Twitter from '@/components/icons/Twitter.vue';
 import OK from '@/components/icons/OK.vue';
+import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
+import SidebarMenu from '@/components/menu/SidebarMenu.vue';
+
 const newsStore = useNewsStore();
+const breadCrumb = useBreadCrumbsStore();
 const isLoad = ref(false);
 const router = useRoute();
 const infoId = router.params.id;
-const breads = [
-    { label: 'Home', url: '/:en', id: 1 },
-    { label: "Yangiliklar", id: 2, url: '/oz/news' },
-];
-
 onMounted(async () => {
-    await newsStore.fetchInterviewDetail(infoId);
+    await Promise.all([
+        newsStore.fetchInterviewDetail(infoId),
+        breadCrumb.fetchList(infoId)
+    ])
     isLoad.value = true;
 })
 const printPage = () => {
@@ -28,7 +30,7 @@ const printPage = () => {
 <template>
     <section class="news-slug">
         <div class="container">
-            <BreadCrump :data="breads" />
+            <BreadCrump :data="breadCrumb.list" />
             <a-row :gutter="[20, 20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="news-slug__content">
@@ -75,15 +77,7 @@ const printPage = () => {
                     </div>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
-                    <div class="committee-page__sidebar">
-                        <div class="committee-page__sidebar-menu">Menu</div>
-                        <div class="committee-page__sidebar-img">
-                            <RouterLink to="/:en">
-                                <img src="@/assets/images/olimpic.png" alt="olimpic ">
-                            </RouterLink>
-
-                        </div>
-                    </div>
+                 <SidebarMenu :data="breadCrumb.list"/>
                 </a-col>
             </a-row>
         </div>

@@ -1,24 +1,25 @@
 <script setup>
-import { ref, onMounted} from 'vue';
+import { ref, onMounted } from 'vue';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import { useNewsStore } from '@/stores/news';
 import { useRoute } from 'vue-router';
 import NewsCard from '@/components/card/NewsCard.vue';
 import { lang } from '@/uitiles/currentLang';
-
-const newsStore=useNewsStore();
-const router=useRoute();
-const slug=router.query.alias;
-const isLoad=ref(false);
-onMounted(async()=>{
-await newsStore.fetchSport(slug);
-isLoad.value=true
+import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
+import SidebarMenu from '@/components/menu/SidebarMenu.vue';
+const breadCrumb = useBreadCrumbsStore();
+const router = useRoute();
+const slug = router.query.alias;
+const isLoad = ref(false);
+const newsStore = useNewsStore();
+onMounted(async () => {
+    await Promise.all([
+        newsStore.fetchSport(slug),
+        breadCrumb.fetchList(slug)
+    ])
+    isLoad.value = true;
 })
-const breads = [
-    { label: 'Home', url: '/:en', id: 1 },
-    { label: "Yangiliklar", id: 2 },
-    { label: "Sport tibbiyoti", id: 3 },
-];
+
 
 const current = ref(2);
 
@@ -26,7 +27,7 @@ const current = ref(2);
 <template>
     <section class="committee-page">
         <div class="container">
-            <BreadCrump :data="breads" />
+            <BreadCrump :data="breadCrumb.list" />
             <h2>Sport tibbiyoti</h2>
             <a-row :gutter="[20, 20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
@@ -38,14 +39,7 @@ const current = ref(2);
                     <a-pagination v-model:current="current" :total="500" show-less-items />
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
-                    <div class="committee-page__sidebar">
-                        <div class="committee-page__sidebar-menu">Menu</div>
-                        <div class="committee-page__sidebar-img">
-                            <RouterLink to="/:en">
-                                <img src="@/assets/images/olimpic.png" alt="olimpic ">
-                            </RouterLink>
-                        </div>
-                    </div>
+                    <SidebarMenu :data="breadCrumb.list" />
                 </a-col>
             </a-row>
         </div>

@@ -46,7 +46,7 @@ const breads = [
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                     <div class="committee-page__sidebar">
                         <div class="committee-page__sidebar-img">
-                            <RouterLink to="/:en">
+                            <RouterLink :to="`/${lang}`">
                                 <img src="@/assets/images/olimpic.png" alt="olimpic ">
                             </RouterLink>
 

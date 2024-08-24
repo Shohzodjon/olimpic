@@ -4,25 +4,31 @@ import { useLicenseesStore } from '@/stores/licensees';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import NewsCard from '@/components/card/NewsCard.vue';
 import { lang } from '@/uitiles/currentLang';
+import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
+import { useRoute } from 'vue-router';
+import SidebarMenu from '@/components/menu/SidebarMenu.vue';
+
+const breadCrumb = useBreadCrumbsStore();
+const router = useRoute();
+const slug = router.name;
 const licenseesStore = useLicenseesStore();
 const isLoad = ref(false);
 
 
 onMounted(async () => {
-    licenseesStore.fetchLicensees();
+    await Promise.all([
+        licenseesStore.fetchLicensees(),
+        breadCrumb.fetchList(slug)
+    ])
     isLoad.value = true;
 })
-const breads = [
-    { label: 'Home', url: `/${lang}`, id: 1 },
-    { label: "Yangiliklar", id: 2, url: `/${lang}` },
-    { label: "Davlat dasturi ijrosi", id: 3 },
-];
+
 
 </script>
 <template>
     <section class="committee-page">
         <div class="container">
-            <BreadCrump :data="breads" />
+            <BreadCrump :data="breadCrumb.list" />
             <h2>Parij 2024</h2>
             <a-row :gutter="[20, 20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
@@ -35,14 +41,7 @@ const breads = [
                     <a-pagination v-model:current="current" :total="500" show-less-items />
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
-                    <div class="committee-page__sidebar">
-                        <div class="committee-page__sidebar-menu">Menu</div>
-                        <div class="committee-page__sidebar-img">
-                            <RouterLink to="/:en">
-                                <img src="@/assets/images/olimpic.png" alt="olimpic ">
-                            </RouterLink>
-                        </div>
-                    </div>
+                    <SidebarMenu :data="breadCrumb.list" />
                 </a-col>
             </a-row>
         </div>

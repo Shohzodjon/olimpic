@@ -3,7 +3,7 @@ import { ref } from "vue";
 import $axios from "@/plugins/axios";
 export const useMenuStore = defineStore("menu", () => {
   const list = ref([]);
-
+  const show = ref(false);
   const fetchList = async () => {
     try {
       const res = await $axios.get("/menu");
@@ -12,6 +12,9 @@ export const useMenuStore = defineStore("menu", () => {
       console.log(error);
     }
   };
+  const toggleFunc = () => {
+    show.value = !show.value;
+  };
 
-  return { list, fetchList };
+  return { list, show, fetchList, toggleFunc };
 });

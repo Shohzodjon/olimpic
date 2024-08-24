@@ -3,17 +3,21 @@ import { ref, onMounted } from 'vue';
 import { useFederationStore } from '@/stores/federation';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import AccardionFed from '@/components/dropdown/AccardionFed.vue';
-import { lang } from '@/uitiles/currentLang';
+import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
+import { useRoute } from 'vue-router';
+import SidebarMenu from '@/components/menu/SidebarMenu.vue';
 const federationStore = useFederationStore();
+const breadCrumb = useBreadCrumbsStore();
+const router = useRoute();
+const slug = router.name;
 const isLoad = ref(false);
-const breads = [
-    { label: 'Home', url: `/${lang}`, id: 1 },
-    { label: "Federatsiyalar", id: 2 },
-    { label: "O’zbekiston sport federatsiyalari", id: 3 },
-];
+
 
 onMounted(async () => {
-    await federationStore.fetchLocal();
+    await Promise.all([
+        federationStore.fetchLocal(),
+        breadCrumb.fetchList(slug)
+    ])
     isLoad.value = true;
 })
 
@@ -21,7 +25,7 @@ onMounted(async () => {
 <template>
     <section class="committee-page local-federation">
         <div class="container">
-            <BreadCrump :data="breads" />
+            <BreadCrump :data="breadCrumb.list" />
             <h2>O’zbekiston sport federatsiyalari</h2>
             <a-row :gutter="[20, 20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
@@ -37,14 +41,7 @@ onMounted(async () => {
                     </a-row>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
-                    <div class="committee-page__sidebar">
-                        <div class="committee-page__sidebar-menu">Menu</div>
-                        <div class="committee-page__sidebar-img">
-                            <RouterLink to="/:en">
-                                <img src="@/assets/images/olimpic.png" alt="olimpic ">
-                            </RouterLink>
-                        </div>
-                    </div>
+                    <SidebarMenu :data="breadCrumb.list" />
                 </a-col>
             </a-row>
         </div>
