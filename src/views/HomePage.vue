@@ -75,7 +75,7 @@ const isGradient = computed(() => windowWidth.value > 800);
             :season="item.season" :img="item.images">
             <template #season-icon><img src="@/assets/images/sun-icon.svg" width="24" height="24" /></template>
           </OlimpicCard>
-          <RouterLink to="/:en" class="last-item">
+          <RouterLink :to="`/${lang}/olimpic-summer`" class="last-item">
             <h3>Barchasi
               <RightOutlined />
             </h3>
@@ -83,7 +83,7 @@ const isGradient = computed(() => windowWidth.value > 800);
               <img src="@/assets/images/sun-icon.svg" width="24" height="24" /> <span>Yozgi sport turi : 7</span>
             </div>
             <div class="item-flex">
-              <img src="@/assets/images/winter.png" /> <span>Yozgi sport turi : 15</span>
+              <img src="@/assets/images/winter.png" /> <span>Qishgi sport turi : 15</span>
             </div>
           </RouterLink>
         </div>
@@ -94,7 +94,7 @@ const isGradient = computed(() => windowWidth.value > 800);
         <h2>O‘zbekiston Olimpiya o‘yinlarida</h2>
         <Vue3Marquee :gradient="isGradient" :pauseOnHover="true" :duration="35">
           <PartnerCard v-for="item in homeStore.olimpicGame.data" :key="item.id" :img="item.images" :title="item.title"
-            :url="`/${lang}`" style="margin: 1rem;min-width:250px" />
+            :url="`/${lang}/uz-olimpic/${item.id}`" style="margin: 1rem;min-width:250px" />
         </Vue3Marquee>
       </div>
     </section>

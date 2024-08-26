@@ -20,13 +20,12 @@ const isLoad = ref(false);
 const slug = router.params.id
 const breads = [
     { label: 'Home', url: `/${lang}`, id: 1 },
-    { label: "Yangiliklar", id: 2, url: `/${lang}/news` },
+    { label: "O‘zbekiston Olimpiya o‘yinlarida", id: 2,  },
 ];
 
 onMounted(async () => {
     await Promise.all([
         socialStore.fetchDetail(slug),
-        // breadCrumb.fetchList(slug)
     ])
     isLoad.value = true
 
@@ -43,7 +42,7 @@ onMounted(async () => {
                     <div class="news-slug__content">
                         <div class="news-slug__flex">
                             <div class="news-slug__time">
-                                <ClockCircleOutlined /> <span>{{ socialStore.detail.created_at }}</span>
+                                <!-- <ClockCircleOutlined /> <span>{{ socialStore.detail.created_at }}</span> -->
                             </div>
                             <ul class="news-slug__social">
                                 <li>
@@ -69,21 +68,21 @@ onMounted(async () => {
                             </ul>
 
                             <div class="news-slug__statistic">
-                                <EyeOutlined /> <span>{{ socialStore.detail.views }}</span>
+                                <!-- <EyeOutlined /> <span>{{ socialStore.detail.views }}</span> -->
                             </div>
 
                         </div>
-                        <div v-html="socialStore.detail.content"></div>
-                        <a-carousel autoplay :dots="false" :autoplaySpeed="3000" :slidesToShow="1">
+                        <!-- <div v-html="socialStore.detail.content"></div> -->
+                        <!-- <a-carousel autoplay :dots="false" :autoplaySpeed="3000" :slidesToShow="1">
                             <div v-for="(img, i) in socialStore.detail.images" :key="i">
                                 <img :src="img" alt="img">
                             </div>
-                        </a-carousel>
+                        </a-carousel> -->
                     </div>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                     <div class="committee-page__sidebar">
-                        <!-- <div class="committee-page__sidebar-menu">Menu</div> -->
+                        
                         <div class="committee-page__sidebar-img">
                             <RouterLink :to="`/${lang}`">
                                 <img src="@/assets/images/olimpic.png" alt="olimpic ">

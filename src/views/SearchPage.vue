@@ -1,14 +1,15 @@
 <script setup>
-import BreadCrump from '@/components/menu/BreadCrump.vue';
+import StaticBreadcrumb from '@/components/menu/StaticBreadcrumb.vue';
+import { lang } from '@/uitiles/currentLang';
 const breads = [
-    { label: 'Home', url: '/:en', id: 1 },
+    { label: 'Home', url: `/${lang}`, id: 1 },
     { label: "Qidiruv natijasi", id: 2 },
 ]
 </script>
 <template>
     <section class="committee-page">
         <div class="container">
-            <BreadCrump :data="breads" />
+            <StaticBreadcrumb :data="breads" />
             <h2>Qidiruv natijasi</h2>
             <a-row :gutter="[20,20]">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
@@ -19,7 +20,7 @@ const breads = [
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                     <div class="committee-page__sidebar">
                         <div class="committee-page__sidebar-img">
-                            <RouterLink to="/:en">
+                            <RouterLink :to="`/${lang}`">
                                 <img src="@/assets/images/olimpic.png" alt="olimpic ">
                             </RouterLink>
                         </div>

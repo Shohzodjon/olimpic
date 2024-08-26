@@ -10,7 +10,7 @@ const employeesStore = useEmployeesStore();
 const isLoad = ref(false)
 const breadCrumb = useBreadCrumbsStore();
 const router = useRoute();
-const slug = router.query.alias;
+const slug = router.name;
 
 onMounted(async () => {
     await Promise.all([

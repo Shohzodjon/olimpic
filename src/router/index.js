@@ -300,6 +300,11 @@ const router = createRouter({
           name: "search",
           component: () => import("../views/SearchPage.vue"),
         },
+        {
+          path: "uz-olimpic/:id",
+          name: "uzolimpic-games",
+          component: () => import("../views/UzOlimpicGames.vue"),
+        },
       ],
     },
   ],

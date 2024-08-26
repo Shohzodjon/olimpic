@@ -127,7 +127,6 @@ const handleOk = (e) => {
 };
 const menuToggle=()=>{
     menuStore.toggleFunc();
-    console.log(menuStore.show)
 }
 </script>
 <template>
@@ -168,7 +167,6 @@ const menuToggle=()=>{
                         </div>
                         <LangComp />
                     </div>
-                    <!-- <pre>{{menuStore.list.data}}</pre> -->
                     <div class="navbar-bottom">
                         <div class="navbar-bottom__item" v-for="(item, i) in menuStore.list.data" :key="i">
                             <MenuDrop :data="item" />

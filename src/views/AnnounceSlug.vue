@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue';
 import { useMediaStore } from '@/stores/gallery';
 import { useRoute } from 'vue-router';
-import BreadCrump from '@/components/menu/BreadCrump.vue';
+import StaticBreadcrumb from '@/components/menu/StaticBreadcrumb.vue';
 import { ClockCircleOutlined, EyeOutlined } from '@ant-design/icons-vue';
 import { lang } from '@/uitiles/currentLang';
 
@@ -16,14 +16,13 @@ onMounted(async () => {
 })
 const breads = [
     { label: 'Home', url: `/${lang}`, id: 1 },
-    { label: "Yangiliklar", id: 2, url: `/${lang}` },
+    { label: "Yangiliklar", id: 2, url: `/${lang}/announce` },
 ];
 </script>
 <template>
     <section class="news-slug">
         <div class="container">
-            <BreadCrump :data="mediaStore.announcementDetail.breadcrumbs" />
-            <pre>{{ mediaStore.announcementDetail }}</pre>
+            <StaticBreadcrumb :data="breads"/>
             <a-row :gutter="[20, 20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="news-slug__content">
@@ -49,7 +48,6 @@ const breads = [
                             <RouterLink :to="`/${lang}`">
                                 <img src="@/assets/images/olimpic.png" alt="olimpic ">
                             </RouterLink>
-
                         </div>
                     </div>
                 </a-col>

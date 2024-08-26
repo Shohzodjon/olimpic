@@ -37,7 +37,7 @@ const handleSubMenuClick = (path) => {
                             {{ item.title }}
                         </router-link>
                     </a-menu-item>
-                    <a-sub-menu v-else :title="`${item.title}33`" @click="handleSubMenuClick(item?.alias)"
+                    <a-sub-menu v-else :title="`${item.title}`" @click="handleSubMenuClick(item?.alias)"
                         :key="item.id" :class="{ 'custom-sub-menu': true }">
                         <template v-if="item.children.length != 0" v-for="subItem in item.children" :key="subItem.id">
                             <a-menu-item :class="{ 'custom-sub-menu-item': true }">

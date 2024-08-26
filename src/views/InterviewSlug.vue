@@ -1,8 +1,10 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useNewsStore } from '@/stores/news';
+import { lang } from '@/uitiles/currentLang';
 import { useRoute } from 'vue-router';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
+import StaticBreadcrumb from '@/components/menu/StaticBreadcrumb.vue';
 import { ClockCircleOutlined, EyeOutlined } from '@ant-design/icons-vue';
 import VK from '@/components/icons/VK.vue';
 import Telegram from '@/components/icons/Telegram.vue';
@@ -10,16 +12,21 @@ import Twitter from '@/components/icons/Twitter.vue';
 import OK from '@/components/icons/OK.vue';
 import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
 import SidebarMenu from '@/components/menu/SidebarMenu.vue';
+import BaseButton from '@/components/button/BaseButton.vue';
 
 const newsStore = useNewsStore();
 const breadCrumb = useBreadCrumbsStore();
 const isLoad = ref(false);
 const router = useRoute();
 const infoId = router.params.id;
+const breads = [
+    { label: 'Home', url:`/${lang}`, id: 1 },
+    { label: "Yangiliklar", id: 2, url: `/${lang}/news` },
+];
 onMounted(async () => {
     await Promise.all([
         newsStore.fetchInterviewDetail(infoId),
-        breadCrumb.fetchList(infoId)
+        // breadCrumb.fetchList(infoId)
     ])
     isLoad.value = true;
 })
@@ -30,7 +37,7 @@ const printPage = () => {
 <template>
     <section class="news-slug">
         <div class="container">
-            <BreadCrump :data="breadCrumb.list" />
+            <StaticBreadcrumb :data="breads" />
             <a-row :gutter="[20, 20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="news-slug__content">
@@ -73,11 +80,19 @@ const printPage = () => {
                         </div>
                         <h2>{{ newsStore.interviewDetail.title }}</h2>
                         <div v-html="newsStore.interviewDetail.content"></div>
-                        <button @click="printPage">Print Page</button>
+                        <BaseButton @click="printPage"/>
                     </div>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
-                 <SidebarMenu :data="breadCrumb.list"/>
+                 <!-- <SidebarMenu :data="breadCrumb.list"/> -->
+                 <div class="committee-page__sidebar">
+                    <div class="committee-page__sidebar-img">
+                        <RouterLink :to="`/${lang}`">
+                            <img src="@/assets/images/olimpic.png" alt="olimpic ">
+                        </RouterLink>
+
+                    </div>
+                </div>
                 </a-col>
             </a-row>
         </div>

@@ -46,7 +46,7 @@ const tabClick = (tab) => {
                 
                 <a-row :gutter="[20, 20]" v-if="currentTab == 'video'">
                     <a-col :sm="24" :md="12" :lg="12" :xl="12">
-                        <HomeGallery :img="mediaStore.video[0]?.images" :title="mediaStore.video[0].title"
+                        <HomeGallery :img="mediaStore.video[0]?.images" :title="mediaStore.video[0]?.title"
                             :time="mediaStore.video[0]?.created_at" :url="`/${lang}/video`" class="main-interview-card"  />
                     </a-col>
                     <a-col :sm="24" :md="12" :lg="12" :xl="12" class="home-media__right-side">

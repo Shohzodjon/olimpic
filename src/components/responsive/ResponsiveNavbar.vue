@@ -3,6 +3,7 @@ import { reactive, onMounted, onUnmounted } from 'vue';
 import { useMenuStore } from '@/stores/menu';
 import { RouterLink } from 'vue-router';
 import { CloseOutlined, RightOutlined } from '@ant-design/icons-vue';
+import $i18n from "@/plugins/i18n";
 defineProps({
     data: {
         type: Array,
@@ -14,24 +15,34 @@ const childList = reactive({
     title: '',
     list: [],
 });
+const langList = reactive([
+    { label: "O'z", locale: 'oz', active: true, id: 1 },
+    { label: "Ўз", locale: 'uz', active: false, id: 2 },
+    { label: "Ру", locale: 'ru', active: false, id: 3 },
+    { label: "En", locale: 'en', active: false, id: 4 },
+])
 const grandChildList = reactive({
     title: '',
     list: [],
 });
-
-
-const handleResize = () => {
-    menuStore.show = false;
-};
+let locale = '';
 onMounted(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
+    let storeLocale = localStorage.getItem('locale');
+    if (storeLocale) {
+        locale = storeLocale;
+    } else {
+        locale = 'oz'
+    }
 });
 
 onUnmounted(() => {
     window.removeEventListener("resize", handleResize);
 });
-
+const handleResize = () => {
+    menuStore.show = false;
+};
 const handleClick = (child, title) => {
     const parentMenu = document.querySelector('.parent__menu');
     const childMenu = document.querySelector('.second__menu')
@@ -64,7 +75,15 @@ const closeThirdMenu = () => {
 }
 const menuToggle = () => {
     menuStore.toggleFunc();
-    console.log(menuStore.show)
+}
+
+const chooseLang = (event) => {
+    let element = event.target;
+    let chooseLocale = element.dataset.lang;
+    if (chooseLocale == locale) return;
+    $i18n.global.locale.value = chooseLocale;
+    localStorage.setItem('locale', chooseLocale)
+    window.location.reload();
 }
 
 </script>
@@ -75,10 +94,8 @@ const menuToggle = () => {
             <ul class="responsive-nav__box">
                 <li class="responsive-nav__header">
                     <div class="lang">
-                        <span>O'z</span>
-                        <span>Ўз</span>
-                        <span>Ру</span>
-                        <span>En</span>
+                        <span v-for="item in langList" :key="item.id" :data-lang="item.locale"
+                            @click="(e) => chooseLang(e)">{{ item.label }}</span>
                     </div>
                     <span class="close-icon" @click="menuToggle">
                         <CloseOutlined />
@@ -113,10 +130,12 @@ const menuToggle = () => {
                                 </div>
                                 <div v-else>
                                     <router-link v-if="child.link"
-                                        :to="{ name: child.link, query: { alias: child.alias } }">
+                                        :to="{ name: child.link, query: { alias: child.alias } }"
+                                        @click="menuStore.toggleFunc()">
                                         {{ child.title }}
                                     </router-link>
-                                    <router-link v-else :to="{ name: 'static-page', query: { alias: child.alias } }">
+                                    <router-link v-else :to="{ name: 'static-page', query: { alias: child.alias } }"
+                                        @click="menuStore.toggleFunc()">
                                         {{ child.title }}
                                     </router-link>
                                 </div>
@@ -128,10 +147,12 @@ const menuToggle = () => {
                                 <span>{{ grandChildList.title }}</span>
                             </li>
                             <li v-for="item in grandChildList.list" :key="item.id" class="child__menu-item">
-                                <router-link v-if="item.link" :to="{ name: item.link, query: { alias: item.alias } }">
+                                <router-link v-if="item.link" :to="{ name: item.link, query: { alias: item.alias } }"
+                                    @click="menuStore.toggleFunc()">
                                     {{ item.title }}
                                 </router-link>
-                                <router-link v-else :to="{ name: 'static-page', query: { alias: item.alias } }">
+                                <router-link v-else :to="{ name: 'static-page', query: { alias: item.alias } }"
+                                    @click="menuStore.toggleFunc()">
                                     {{ item.title }}
                                 </router-link>
                             </li>

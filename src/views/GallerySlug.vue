@@ -4,15 +4,14 @@ import { useMediaStore } from '@/stores/gallery';
 import { useRoute } from 'vue-router';
 import VueEasyLightbox from 'vue-easy-lightbox/external-css';
 import 'vue-easy-lightbox/external-css/vue-easy-lightbox.css';
-import BreadCrump from '@/components/menu/BreadCrump.vue';
+import StaticBreadcrumb from '@/components/menu/StaticBreadcrumb.vue';
 import { lang } from '@/uitiles/currentLang';
 
-const breads = {
-parent:{
-    title: "Media galereya", id: 2, url: `/${lang}/gallery` 
-}
-}
-    
+const breads = [
+    { label: 'Home', url: `/${lang}`, id: 1 },
+    { label: "Media galereya", id: 2, url: `/${lang}/gallery` },
+];
+
 const router = useRoute();
 const slug = router.params.id;
 const galleryStore = useMediaStore();
@@ -32,30 +31,30 @@ const onHide = () => visibleRef.value = false
 <template>
     <section class="gallery-slug">
         <div class="container" v-if="isLoad">
-            <BreadCrump :data="breads" />
-            <h2 class="gallery-slug__title">{{ galleryStore.galleryDetail.title }}</h2>
+            <StaticBreadcrumb :data="breads" />
+            <h2 class="gallery-slug__title"> Media galereya</h2>
             <a-row :gutter="[20, 20]">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="gallery-slug__content">
-                        <!-- <h3 class="gallery-slug__sub-title">{{ galleryStore.galleryDetail.title  }}</h3> -->
+                        <h3 class="gallery-slug__sub-title">{{ galleryStore.galleryDetail.title }}</h3>
                         <a-row :gutter="[20, 20]">
-                            <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="(img, i) in galleryStore.galleryDetail.images" :key="i">
+                            <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8"
+                                v-for="(img, i) in galleryStore.galleryDetail.images" :key="i">
                                 <div class="gallery-slug__card pic" @click="() => showImg(i)">
                                     <div class="pic">
                                         <img :src="img" />
                                     </div>
-
                                 </div>
                             </a-col>
                         </a-row>
-                        <vue-easy-lightbox :visible="visibleRef" :imgs="galleryStore.galleryDetail.images" :index="indexRef"
-                            @hide="onHide"></vue-easy-lightbox>
+                        <vue-easy-lightbox :visible="visibleRef" :imgs="galleryStore.galleryDetail.images"
+                            :index="indexRef" @hide="onHide"></vue-easy-lightbox>
                     </div>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                     <div class="gallery-slug__sidebar">
                         <div class="gallery-slug__sidebar-img">
-                            <RouterLink to="/:en">
+                            <RouterLink :to="`/${lang}`">
                                 <img src="@/assets/images/olimpic.png" alt="olimpic ">
                             </RouterLink>
 

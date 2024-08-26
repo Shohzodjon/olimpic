@@ -75,7 +75,7 @@ a {
 }
 
 .ant-modal-wrap {
-  cursor: pointer !important;
+  // cursor: pointer !important;
 }
 
 .ant-modal-mask {
@@ -148,6 +148,8 @@ a {
   .navbar,
   .footer,
   .sidebar-container,
+  .committee-page__sidebar,
+  .base-button,
   // img,
   .bread__crumb {
     display: none !important;

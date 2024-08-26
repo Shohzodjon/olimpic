@@ -10,7 +10,7 @@ import SidebarMenu from '@/components/menu/SidebarMenu.vue';
 
 const breadCrumb = useBreadCrumbsStore();
 const router = useRoute();
-const slug = router.query.alias;
+const slug = router.name;
 const employeesStore = useEmployeesStore();
 const isLoad = ref(false);
 onMounted(async () => {
