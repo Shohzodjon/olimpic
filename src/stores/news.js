@@ -9,9 +9,9 @@ export const useNewsStore = defineStore("news", () => {
   const openData = ref([]);
   const execution = ref([]);
   const interviewDetail = ref(null);
-  const fetchList = async () => {
+  const fetchList = async (offset) => {
     try {
-      const res = await $axios.get("/news");
+      const res = await $axios.get(`/news?page=${offset}`);
       list.value = res.data;
     } catch (error) {
       console.log(error);
@@ -25,10 +25,10 @@ export const useNewsStore = defineStore("news", () => {
       console.log(error);
     }
   };
-  const fetchSport = async (slug) => {
+  const fetchSport = async (slug, offset) => {
     try {
-      const res = await $axios.get(`/news/category/${slug}`);
-      sport.value = res.data.data;
+      const res = await $axios.get(`/news/category/${slug}?page=${offset}`);
+      sport.value = res.data;
     } catch (error) {
       console.log(error);
     }
@@ -41,10 +41,10 @@ export const useNewsStore = defineStore("news", () => {
       console.log(error);
     }
   };
-  const fetchOpenData = async (slug) => {
+  const fetchOpenData = async (slug, offset) => {
     try {
-      const res = await $axios.get(`/news/category/${slug}`);
-      openData.value = res.data.data;
+      const res = await $axios.get(`/news/category/${slug}?page=${offset}`);
+      openData.value = res.data;
     } catch (error) {
       console.log(error);
     }

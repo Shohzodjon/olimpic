@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted,watch } from 'vue';
 import { useMediaStore } from '@/stores/gallery';
 import GalleryCard from '@/components/card/GalleryCard.vue';
 import StaticBreadcrumb from '@/components/menu/StaticBreadcrumb.vue';
@@ -10,10 +10,17 @@ const breads = [
 ];
 const galleryStore = useMediaStore();
 const isLoad = ref(false);
+const current = ref(1);
 onMounted(async () => {
-    await galleryStore.fetchList();
+    await galleryStore.fetchList(current.value);
     isLoad.value = true;
 })
+watch(current, async (newPage) => {
+    await galleryStore.fetchList(newPage)
+});
+const paginationFunc = async (pageNum) => {
+    current.value = pageNum;
+};
 
 </script>
 <template>
@@ -36,13 +43,14 @@ onMounted(async () => {
                     <div class="gallery-page__content">
 
                         <a-row :gutter="[22, 22]">
-                            <a-col v-for="item in galleryStore.list" :key="item.id" :xs="24" :sm="12" :md="8" :lg="6"
-                                :xl="6">
+                            <a-col v-for="item in galleryStore.list?.data" :key="item.id" :xs="24" :sm="12" :md="8"
+                                :lg="6" :xl="6">
                                 <GalleryCard :desc="item.title" :img="item.images[0]"
                                     :url="`/${lang}/gallery-slug/${item.alias}`" />
                             </a-col>
                         </a-row>
-                        <a-pagination v-model:current="current" :total="500" show-less-items />
+                        <a-pagination v-model:current="current" :total="galleryStore.list?.meta.total"
+                            @click="paginationFunc" show-less-items />
                     </div>
                 </a-col>
 

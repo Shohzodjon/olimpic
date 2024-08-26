@@ -43,10 +43,10 @@ export const useMediaStore = defineStore("media", () => {
       console.log(error);
     }
   };
-  const fetchList = async () => {
+  const fetchList = async (offset) => {
     try {
-      const res = await $axios.get(`/gallery`);
-      list.value = res.data.data;
+      const res = await $axios.get(`/gallery?page=${offset}`);
+      list.value = res.data;
     } catch (error) {
       console.log(error);
     }

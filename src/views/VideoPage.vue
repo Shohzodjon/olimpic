@@ -2,11 +2,12 @@
 import { ref, onMounted } from 'vue';
 import { useMediaStore } from '@/stores/gallery';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
+import StaticBreadcrumb from '@/components/menu/StaticBreadcrumb.vue';
 import GalleryCard from '@/components/card/GalleryCard.vue';
 import { lang } from '@/uitiles/currentLang';
 
 const breads = [
-    { label: 'Home', url: '/oz', id: 1 },
+    { label: 'Home', url: `/${lang}`, id: 1 },
     { label: "Media galereya", id: 2 },
 ];
 
@@ -21,15 +22,15 @@ onMounted(async () => {
 <template>
     <section class="gallery-page">
         <div class="container" v-if="isLoad">
-            <BreadCrump :data="breads" />
+            <StaticBreadcrumb :data="breads" />
             <div class="gallery-page__flex">
                 <h2>Media galereya</h2>
                 <ul>
                     <li>
-                        <RouterLink to="/oz/gallery">Rasmlar</RouterLink>
+                        <RouterLink :to="`/${lang}/gallery`">Rasmlar</RouterLink>
                     </li>
                     <li>
-                        <RouterLink to="/oz/video">Videolar</RouterLink>
+                        <RouterLink :to="`/${lang}/video`">Videolar</RouterLink>
                     </li>
                 </ul>
             </div>

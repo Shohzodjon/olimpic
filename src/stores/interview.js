@@ -3,10 +3,10 @@ import { ref } from "vue";
 import $axios from "@/plugins/axios";
 export const useInterviewStore = defineStore("interview", () => {
   const list = ref([]);
-  const listLimit=ref([]);
-  const fetchList = async () => {
+  const listLimit = ref([]);
+  const fetchList = async (offset) => {
     try {
-      const res = await $axios.get("/video-materials/interview");
+      const res = await $axios.get(`/video-materials/interview?page=${offset}`);
       list.value = res.data;
     } catch (error) {
       console.log(error);
@@ -15,11 +15,13 @@ export const useInterviewStore = defineStore("interview", () => {
 
   const fetchInterviewLimit = async () => {
     try {
-      const res = await $axios.get("/video-materials/interview?options=options");
+      const res = await $axios.get(
+        "/video-materials/interview?options=options"
+      );
       listLimit.value = res.data.data;
     } catch (error) {
       console.log(error);
     }
   };
-  return { list,listLimit, fetchList, fetchInterviewLimit };
+  return { list, listLimit, fetchList, fetchInterviewLimit };
 });

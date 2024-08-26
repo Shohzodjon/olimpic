@@ -4,10 +4,10 @@ import $axios from "@/plugins/axios";
 export const useLicenseesStore = defineStore("licensees", () => {
   const licensees = ref([]);
   const detail = ref(null);
-  const fetchLicensees = async () => {
+  const fetchLicensees = async (offset) => {
     try {
-      const res = await $axios.get(`/main/licensees`);
-      licensees.value = res.data.data;
+      const res = await $axios.get(`/main/licensees?page=${offset}`);
+      licensees.value = res.data;
     } catch (error) {
       console.log(error);
     }
