@@ -4,9 +4,12 @@ import { useMediaStore } from '@/stores/gallery';
 import GalleryCard from '@/components/card/GalleryCard.vue';
 import StaticBreadcrumb from '@/components/menu/StaticBreadcrumb.vue';
 import { lang } from '@/uitiles/currentLang';
+import { useI18n } from 'vue-i18n';
+
+const {t} =useI18n();
 const breads = [
-    { label: 'Home', url: `/${lang}`, id: 1 },
-    { label: "Media galereya", id: 2 },
+    { label: t('home'), url: `/${lang}`, id: 1 },
+    { label:t('media'), id: 2 },
 ];
 const galleryStore = useMediaStore();
 const isLoad = ref(false);
@@ -28,13 +31,13 @@ const paginationFunc = async (pageNum) => {
         <div class="container" v-if="isLoad">
             <StaticBreadcrumb :data="breads" />
             <div class="gallery-page__flex">
-                <h2>Media galereya</h2>
+                <h2>{{$t('media')}}</h2>
                 <ul>
                     <li>
-                        <RouterLink :to="`/${lang}/gallery`">Rasmlar</RouterLink>
+                        <RouterLink :to="`/${lang}/gallery`">{{$t('images')}}</RouterLink>
                     </li>
                     <li>
-                        <RouterLink :to="`/${lang}/video`">Videolar</RouterLink>
+                        <RouterLink :to="`/${lang}/video`">{{$t('videos')}}</RouterLink>
                     </li>
                 </ul>
             </div>

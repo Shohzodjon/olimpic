@@ -13,15 +13,17 @@ import OK from '@/components/icons/OK.vue';
 import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
 import SidebarMenu from '@/components/menu/SidebarMenu.vue';
 import BaseButton from '@/components/button/BaseButton.vue';
+import { useI18n } from 'vue-i18n';
 
 const newsStore = useNewsStore();
 const breadCrumb = useBreadCrumbsStore();
 const isLoad = ref(false);
 const router = useRoute();
 const infoId = router.params.id;
+const { t } = useI18n();
 const breads = [
-    { label: 'Home', url:`/${lang}`, id: 1 },
-    { label: "Yangiliklar", id: 2, url: `/${lang}/news` },
+    { label: t('home'), url: `/${lang}`, id: 1 },
+    { label: t("news"), id: 2, url: `/${lang}/news` },
 ];
 onMounted(async () => {
     await Promise.all([
@@ -80,19 +82,19 @@ const printPage = () => {
                         </div>
                         <h2>{{ newsStore.interviewDetail.title }}</h2>
                         <div v-html="newsStore.interviewDetail.content"></div>
-                        <BaseButton @click="printPage"/>
+                        <BaseButton @click="printPage" />
                     </div>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
-                 <!-- <SidebarMenu :data="breadCrumb.list"/> -->
-                 <div class="committee-page__sidebar">
-                    <div class="committee-page__sidebar-img">
-                        <RouterLink :to="`/${lang}`">
-                            <img src="@/assets/images/olimpic.png" alt="olimpic ">
-                        </RouterLink>
+                    <!-- <SidebarMenu :data="breadCrumb.list"/> -->
+                    <div class="committee-page__sidebar">
+                        <div class="committee-page__sidebar-img">
+                            <RouterLink :to="`/${lang}`">
+                                <img src="@/assets/images/olimpic.png" alt="olimpic ">
+                            </RouterLink>
 
+                        </div>
                     </div>
-                </div>
                 </a-col>
             </a-row>
         </div>

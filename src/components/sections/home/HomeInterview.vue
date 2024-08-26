@@ -15,9 +15,9 @@ onMounted(async () => {
     <section class="home-interview-section">
         <div class="container">
             <div class="home-interview-section__flex">
-                <h2 class="home-interview-section__title">Intervyu</h2>
+                <h2 class="home-interview-section__title">{{$t('interview')}}</h2>
                 <RouterLink :to="`/${lang}/interview`" class="home-interview-section__btn">
-                    Barcha intervyular
+                    {{ $t('interviews') }}
                 </RouterLink>
             </div>
             <a-row :gutter="[20, 0]" v-if="isLoad">

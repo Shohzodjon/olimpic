@@ -2,17 +2,21 @@
 import { computed } from 'vue';
 import { HomeOutlined } from '@ant-design/icons-vue'
 import { lang } from '@/uitiles/currentLang';
+import { useI18n } from 'vue-i18n';
+
 const props = defineProps({
     data: {
         type: Object,
         required: true,
     },
-   
+
 });
+const { t } = useI18n();
+
 const breadcrumbItems = computed(() => {
     const items = [{
         id: 'home',
-        label: 'Home',
+        label: t('home'),
         url: `/${lang}`
     }];
 

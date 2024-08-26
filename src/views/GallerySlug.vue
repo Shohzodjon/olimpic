@@ -6,10 +6,12 @@ import VueEasyLightbox from 'vue-easy-lightbox/external-css';
 import 'vue-easy-lightbox/external-css/vue-easy-lightbox.css';
 import StaticBreadcrumb from '@/components/menu/StaticBreadcrumb.vue';
 import { lang } from '@/uitiles/currentLang';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const breads = [
-    { label: 'Home', url: `/${lang}`, id: 1 },
-    { label: "Media galereya", id: 2, url: `/${lang}/gallery` },
+    { label: t('home'), url: `/${lang}`, id: 1 },
+    { label: t('media'), id: 2, url: `/${lang}/gallery` },
 ];
 
 const router = useRoute();
@@ -32,7 +34,7 @@ const onHide = () => visibleRef.value = false
     <section class="gallery-slug">
         <div class="container" v-if="isLoad">
             <StaticBreadcrumb :data="breads" />
-            <h2 class="gallery-slug__title"> Media galereya</h2>
+            <h2 class="gallery-slug__title"> {{ $t('media') }}</h2>
             <a-row :gutter="[20, 20]">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="gallery-slug__content">

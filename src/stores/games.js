@@ -8,18 +8,19 @@ export const useGamesStore = defineStore("games", () => {
   const teenager = ref([]);
   const asiaSummer = ref(null);
   const asiaWinter = ref(null);
+  const gameDetail = ref(null);
 
-  const fetchOlimpicSummer = async () => {
+  const fetchOlimpicSummer = async (slug) => {
     try {
-      const res = await $axios.get(`/main/summer`);
+      const res = await $axios.get(`/sports/list/${slug}`);
       olimpicSummer.value = res.data.data;
     } catch (error) {
       console.log(error);
     }
   };
-  const fetchOlimpicWinter = async () => {
+  const fetchOlimpicWinter = async (slug) => {
     try {
-      const res = await $axios.get(`/main/winter`);
+      const res = await $axios.get(`/sports/list/${slug}`);
       olimpicWinter.value = res.data.data;
     } catch (error) {
       console.log(error);
@@ -49,17 +50,26 @@ export const useGamesStore = defineStore("games", () => {
       console.log(error);
     }
   };
-
+  const fetchGameDetail = async (id) => {
+    try {
+      const res = await $axios.get(`/sports/view/${id}`);
+      gameDetail.value = res.data.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return {
     olimpicSummer,
     olimpicWinter,
     teenager,
     asiaSummer,
     asiaWinter,
+    gameDetail,
     fetchOlimpicSummer,
     fetchOlimpicWinter,
     fetchOlimpicTeenager,
     fetchAsiaSummer,
     fetchAsiaWinter,
+    fetchGameDetail,
   };
 });

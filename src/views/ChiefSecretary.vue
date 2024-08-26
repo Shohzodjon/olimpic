@@ -26,7 +26,7 @@ onMounted(async () => {
     <section class="committee-page">
         <div class="container">
             <BreadCrump :data="breadCrumb.list" />
-            <h2>Bosh kotib</h2>
+            <h2 v-if="isLoad">{{ breadCrumb.list?.parent?.child?.title }}</h2>
             <a-row :gutter="[20, 20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <EmployeesCard :img="item.images" :position="item.post" :name="item.title"

@@ -13,14 +13,16 @@ import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
 import SidebarMenu from '@/components/menu/SidebarMenu.vue';
 import BaseButton from '@/components/button/BaseButton.vue';
 import StaticBreadcrumb from '@/components/menu/StaticBreadcrumb.vue';
+import { useI18n } from 'vue-i18n';
 const newsStore = useNewsStore();
 const breadCrumb = useBreadCrumbsStore()
 const isLoad = ref(false);
 const router = useRoute();
+const {t}=useI18n();
 const infoId = router.params.id;
 const breads = [
-    { label: 'Home', url: `/${lang}`, id: 1 },
-    { label: "Yangiliklar", id: 2, url: `/${lang}/news` },
+    { label: t('home'), url: `/${lang}`, id: 1 },
+    { label: t("news"), id: 2, url: `/${lang}/news` },
 ];
 
 onMounted(async () => {

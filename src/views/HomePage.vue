@@ -51,7 +51,7 @@ const isGradient = computed(() => windowWidth.value > 800);
     <HomeMedia />
     <section class="home-page__partner">
       <div class="container">
-        <h2>Harakatni qo'llab-quvvatlash</h2>
+        <h2>{{ $t('support') }}</h2>
         <Vue3Marquee :gradient="isGradient" :pauseOnHover="true" :duration="35">
           <PartnerCard v-for="item in partnerStore.support.data" :key="item.id" :img="item.images" :title="item.title"
             :url="`/${lang}`" style="margin:  1rem;min-width:320px" />
@@ -60,7 +60,7 @@ const isGradient = computed(() => windowWidth.value > 800);
     </section>
     <section class="home-page__partner">
       <div class="container">
-        <h2>XOQ hamkorlari</h2>
+        <h2>{{ $t('globalPartner') }}</h2>
         <Vue3Marquee :gradient="isGradient" :pauseOnHover="true" :duration="35" direction="reverse">
           <PartnerCard v-for="item in partnerStore.list.data" :key="item.id" :img="item.images" :title="item.title"
             :url="`/${lang}`" style="margin: 1rem;" />
@@ -69,21 +69,21 @@ const isGradient = computed(() => windowWidth.value > 800);
     </section>
     <section class="home-page__olimpic">
       <div class="container">
-        <h2>Olimpiya sport turlari</h2>
+        <h2>{{ $t('olimpicSport') }}</h2>
         <div class="olimpic-grid">
           <OlimpicCard v-for="item in homeStore.olimpicType.data" :key="item.id" :title="item.title"
             :season="item.season" :img="item.images">
             <template #season-icon><img src="@/assets/images/sun-icon.svg" width="24" height="24" /></template>
           </OlimpicCard>
           <RouterLink :to="`/${lang}/olimpic-summer`" class="last-item">
-            <h3>Barchasi
+            <h3>{{ $t('all') }}
               <RightOutlined />
             </h3>
             <div class="item-flex">
-              <img src="@/assets/images/sun-icon.svg" width="24" height="24" /> <span>Yozgi sport turi : 7</span>
+              <img src="@/assets/images/sun-icon.svg" width="24" height="24" /> <span>{{ $t('summer') }} : 7</span>
             </div>
             <div class="item-flex">
-              <img src="@/assets/images/winter.png" /> <span>Qishgi sport turi : 15</span>
+              <img src="@/assets/images/winter.png" /> <span>{{ $t('winter') }} : 15</span>
             </div>
           </RouterLink>
         </div>
@@ -91,7 +91,7 @@ const isGradient = computed(() => windowWidth.value > 800);
     </section>
     <section class="home-page__partner">
       <div class="container">
-        <h2>O‘zbekiston Olimpiya o‘yinlarida</h2>
+        <h2>{{$t('uzOlimpic')}}</h2>
         <Vue3Marquee :gradient="isGradient" :pauseOnHover="true" :duration="35">
           <PartnerCard v-for="item in homeStore.olimpicGame.data" :key="item.id" :img="item.images" :title="item.title"
             :url="`/${lang}/uz-olimpic/${item.id}`" style="margin: 1rem;min-width:250px" />

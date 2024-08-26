@@ -29,9 +29,9 @@ onMounted(async () => {
         <img src="@/assets/images/big_logo.png" alt="big logo" class="big__logo">
         <div class="container">
             <div class="home-news-section__flex">
-                <h2 class="home-news-section__title">Yangiliklar</h2>
+                <h2 class="home-news-section__title">{{ $t('news') }}</h2>
                 <RouterLink :to="`/${lang}/news`" class="home-news-section__btn">
-                    Barcha yangiliklar
+                    {{ $t('allNews') }}
                 </RouterLink>
             </div>
             <a-row :gutter="[20, 20]">

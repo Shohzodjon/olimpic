@@ -1,9 +1,17 @@
 <script setup>
 import { lang } from '@/uitiles/currentLang';
+import { useFooterStore } from '@/stores/footer';
+import { ref, onMounted } from 'vue';
+const isLoad = ref(false);
+const footerStore = useFooterStore();
+onMounted(async () => {
+    await footerStore.fetchList();
+    isLoad.value = true
+})
 </script>
 <template>
     <footer class="footer">
-        <div class="container">
+        <div class="container" v-if="isLoad">
             <div class="footer-flex">
                 <div class="footer-header">
                     <div class="left">
@@ -12,7 +20,7 @@ import { lang } from '@/uitiles/currentLang';
                                 <img src="@/assets/images/logo.png" alt="logo ">
                             </div>
                             <div class="footer-logo__info">
-                                <h3>O‘zbekiston Milliy Olimpiya Qo‘mitasi</h3>
+                                <h3>{{ $t('logo') }}</h3>
                                 <ul>
                                     <li>citius</li>
                                     <li>altius</li>
@@ -22,7 +30,7 @@ import { lang } from '@/uitiles/currentLang';
                         </RouterLink>
 
                         <div class="footer-social">
-                            <p>Biz ijtimoiy tarmoqlarda:</p>
+                            <p>{{ $t('social') }}:</p>
                             <ul>
                                 <li><a href="https://www.facebook.com/">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -61,16 +69,21 @@ import { lang } from '@/uitiles/currentLang';
 
                     </div>
                     <ul class="footer-middle">
-                        <li><a href="#" target="_blank">Manzil: Toshkent 100027, Olmazor ko‘chasi, 6</a></li>
-                        <li><a href="mailto:info@olympic.uz" target="_blank">E-pochta: info@olympic.uz,
-                                media@olympic.uz</a></li>
-                        <li><a href="tel:++99871 205 5205" target="_blank">Ishonch telefoni: +99871 205 5205</a></li>
-                        <li><a href="tel:+99871 244 4141" target="_blank">Qo‘mita: +99871 244 4141</a></li>
-                        <li><a href="tel:+99855 502 8844" target="_blank">Tibbiyot markazi: +99855 502 8844</a></li>
+                        <li><a href="#" target="_blank">{{ $t('address') }}: {{ footerStore.list[0]?.title }}</a>
+                        </li>
+                        <li><a :href="`mailto:${footerStore.list[1]?.title}`" target="_blank">{{ $t('email') }}:
+                                {{ footerStore.list[1]?.title }}, {{ footerStore.list[2]?.title }}</a></li>
+                        <li><a href="tel:++99871 205 5205" target="_blank">{{ $t('phone') }}:
+                                {{ footerStore.list[3]?.html_content }}</a></li>
+                        <li><a href="tel:+99871 244 4141" target="_blank">{{ $t('committee') }}:
+                                {{ footerStore.list[4]?.html_content }}</a>
+                        </li>
+                        <li><a href="tel:+99855 502 8844" target="_blank"> {{ $t('medicalCenter') }}:
+                                {{ footerStore.list[7]?.html_content }}</a></li>
                     </ul>
                     <div class="footer-right">
-                        <p>Obuna bo'ling va hech narsani o'tkazib yubormang</p>
-                        <a href="#" target="_blank">
+                        <p>{{ $t('subscribe') }}</p>
+                        <a :href="`${footerStore.list[5]?.html_content}`" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m15 10l-4 4l6 6l4-16l-18 7l4 2l2 6l3-4" />
@@ -83,10 +96,10 @@ import { lang } from '@/uitiles/currentLang';
                 <div class="footer-bottom">
                     <div>
                         <img src="https://i.creativecommons.org/l/by/4.0/80x15.png" alt="img">
-                        <p>Saytdagi barcha materiallardan quyidagi lisenziya bo‘yicha foydalanish mumkin: Creative
+                        <p>{{ $t('licence') }}: Creative
                             Commons Attribution 4.0 International.</p>
                     </div>
-                    <a href="https://osg.uz/" target="_blank">Sayt yaratuvchisi: Online Service Group</a>
+                    <a href="https://osg.uz/" target="_blank">{{ $t('owner') }}: Online Service Group</a>
                 </div>
             </div>
         </div>

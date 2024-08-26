@@ -4,10 +4,13 @@ import { useMediaStore } from '@/stores/gallery';
 import StaticBreadcrumb from '@/components/menu/StaticBreadcrumb.vue'
 import NewsCard from '@/components/card/NewsCard.vue';
 import { lang } from '@/uitiles/currentLang';
+import { useI18n } from 'vue-i18n';
 const mediaStore = useMediaStore();
+const { t } = useI18n();
+
 const breads = [
-    { label: 'Home', url: `/${lang}`, id: 1 },
-    { label: "Elonlar", id: 2, },
+    { label: t('home'), url: `/${lang}`, id: 1 },
+    { label: t('announce'), id: 2, },
 
 ];
 
@@ -19,8 +22,8 @@ onMounted(async () => {
 <template>
     <section class="committee-page">
         <div class="container">
-            <StaticBreadcrumb :data="breads"/>
-            <h2>Elonlar</h2>
+            <StaticBreadcrumb :data="breads" />
+            <h2>{{ $t('announce') }}</h2>
             <a-row :gutter="[20, 20]">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <a-row :gutter="[20, 20]">
@@ -33,7 +36,7 @@ onMounted(async () => {
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                     <div class="committee-page__sidebar">
                         <div class="committee-page__sidebar-img">
-                            <RouterLink to="/:en">
+                            <RouterLink :to="`/${lang}`">
                                 <img src="@/assets/images/olimpic.png" alt="olimpic ">
                             </RouterLink>
                         </div>

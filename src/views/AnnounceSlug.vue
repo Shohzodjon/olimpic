@@ -5,9 +5,10 @@ import { useRoute } from 'vue-router';
 import StaticBreadcrumb from '@/components/menu/StaticBreadcrumb.vue';
 import { ClockCircleOutlined, EyeOutlined } from '@ant-design/icons-vue';
 import { lang } from '@/uitiles/currentLang';
-
+import { useI18n } from 'vue-i18n';
 const mediaStore = useMediaStore();
 const router = useRoute();
+const {t}=useI18n();
 const slug = router.params.id;
 const isLoad = ref(false);
 onMounted(async () => {
@@ -15,8 +16,8 @@ onMounted(async () => {
     isLoad.value = true
 })
 const breads = [
-    { label: 'Home', url: `/${lang}`, id: 1 },
-    { label: "Yangiliklar", id: 2, url: `/${lang}/announce` },
+    { label: t('home'), url: `/${lang}`, id: 1 },
+    { label: t('announce'), id: 2, url: `/${lang}/announce` },
 ];
 </script>
 <template>

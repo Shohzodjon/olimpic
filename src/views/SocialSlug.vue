@@ -11,16 +11,17 @@ import VK from '@/components/icons/VK.vue';
 import Telegram from '@/components/icons/Telegram.vue';
 import Twitter from '@/components/icons/Twitter.vue';
 import OK from '@/components/icons/OK.vue';
-
+import { useI18n } from 'vue-i18n';
 
 const socialStore = useSocialStore();
 const breadCrumb = useBreadCrumbsStore();
 const router = useRoute();
+const {t} = useI18n();
 const isLoad = ref(false);
 const slug = router.params.id
 const breads = [
-    { label: 'Home', url: `/${lang}`, id: 1 },
-    { label: "Yangiliklar", id: 2, url: `/${lang}/news` },
+    { label: t('home'), url: `/${lang}`, id: 1 },
+    { label: t("news"), id: 2, url: `/${lang}/news` },
 ];
 
 onMounted(async () => {

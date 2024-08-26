@@ -6,6 +6,7 @@ import OlimpicCard from '@/components/card/OlimpicCard.vue'
 import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
 import { useRoute } from 'vue-router';
 import SidebarMenu from '@/components/menu/SidebarMenu.vue';
+import { lang } from '@/uitiles/currentLang';
 const gamesStore = useGamesStore();
 const breadCrumb = useBreadCrumbsStore();
 const router = useRoute();
@@ -15,7 +16,7 @@ const isLoad = ref(false);
 
 onMounted(async () => {
     await Promise.all([
-        gamesStore.fetchOlimpicWinter(),
+        gamesStore.fetchOlimpicWinter(slug),
         breadCrumb.fetchList(slug)
     ])
     isLoad.value = true;
@@ -25,14 +26,15 @@ onMounted(async () => {
     <section class="committee-page">
         <div class="container">
             <BreadCrump :data="breadCrumb.list" />
-            <h2>Qishki Olimpiya o'yinlari</h2>
+            <h2 v-if="isLoad">{{ breadCrumb.list?.parent?.child?.title }}</h2>
             <a-row :gutter="[20, 20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="committee-page__content">
                         <a-row :gutter="[20, 20]">
                             <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="item in gamesStore.olimpicWinter"
                                 :key="item.id">
-                                <OlimpicCard :title="item.title" :season="item.season" :img="item.images">
+                                <OlimpicCard :title="item.title" :season="item.season" :img="item.images"
+                                    :url="`/${lang}/olimpic-game-slug/${item.alias}`">
                                     <template #season-icon><img src="@/assets/images/sun-icon.svg" width="24"
                                             height="24" /></template>
                                 </OlimpicCard>
