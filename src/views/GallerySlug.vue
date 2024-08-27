@@ -35,7 +35,7 @@ const onHide = () => visibleRef.value = false
         <div class="container" v-if="isLoad">
             <StaticBreadcrumb :data="breads" />
             <h2 class="gallery-slug__title"> {{ $t('media') }}</h2>
-            <a-row :gutter="[20, 20]">
+            <a-row :gutter="[24, 24]">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="gallery-slug__content">
                         <h3 class="gallery-slug__sub-title">{{ galleryStore.galleryDetail.title }}</h3>

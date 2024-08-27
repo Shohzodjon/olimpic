@@ -41,7 +41,7 @@ const paginationFunc = async (pageNum) => {
                     </li>
                 </ul>
             </div>
-            <a-row :gutter="[20, 20]">
+            <a-row :gutter="[24, 24]">
                 <a-col :span="24">
                     <div class="gallery-page__content">
 

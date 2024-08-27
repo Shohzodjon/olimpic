@@ -24,7 +24,7 @@ onMounted(async () => {
         <div class="container">
             <StaticBreadcrumb :data="breads" />
             <h2>{{ $t('announce') }}</h2>
-            <a-row :gutter="[20, 20]">
+            <a-row :gutter="[24, 24]">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <a-row :gutter="[20, 20]">
                         <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="item in mediaStore.announcement"

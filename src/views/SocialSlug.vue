@@ -39,7 +39,7 @@ onMounted(async () => {
     <section class="news-slug">
         <div class="container">
             <StaticBreadcrumb :data="breads" />
-            <a-row :gutter="[20, 20]" v-if="isLoad" :style="{ marginTop: '20px' }">
+            <a-row :gutter="[24, 24]" v-if="isLoad" :style="{ marginTop: '20px' }">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="news-slug__content">
                         <div class="news-slug__flex">

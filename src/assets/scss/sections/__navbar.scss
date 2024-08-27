@@ -26,9 +26,10 @@
 
         &__info {
             h3 {
-                font-size: 2.1rem;
+                font-size: 21px;
                 color: $black-600;
-                font-weight: 500;
+                font-weight: 400 !important;
+                margin-bottom: 12px;
             }
 
             ul {
@@ -92,7 +93,7 @@
         cursor: pointer;
     }
 
-  
+
 
     /*
 $sm: 576px;
@@ -102,23 +103,27 @@ $lg: 1024px;
 $xl: 1200px;
 $xxl: 1500px;
 */
-    @media (max-width:1380px) {
+    @media (max-width:1440px) {
         &-flex {
-            gap: 30px;
+            gap: 25px;
         }
 
         &-logo {
-            max-width: 400px;
-            padding: 23.5px 28px;
+            max-width: 380px;
+            padding: 23.5px 25px;
 
             &__info {
                 h3 {
-                    font-size: 2rem;
+                    font-size: 16px;
                 }
+            }
+
+            &__img {
+                max-width: 60px;
             }
         }
     }
-
+// 
     @media (max-width:$xl) {
 
         &-bottom {
@@ -146,7 +151,7 @@ $xxl: 1500px;
         }
 
         &-header__left {
-            justify-content: space-around;
+            justify-content: flex-start;
             gap: 3rem;
         }
     }
@@ -166,6 +171,11 @@ $xxl: 1500px;
 
         &-bottom {
             height: 70px;
+        }
+        &-header__left {
+            justify-content: flex-start;
+            gap: 4rem;
+            padding-left: 2rem;
         }
     }
 

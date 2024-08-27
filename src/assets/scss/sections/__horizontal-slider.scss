@@ -24,7 +24,7 @@
     &__card-title {
         font-size: 3.8rem;
         color: #fff;
-        font-weight: 900;
+        font-weight: 800;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
@@ -51,6 +51,13 @@
         display: none !important;
     }
 
+    @media (max-width:1440px) {
+        &__card-title {
+            font-size: 3.7rem;
+
+        }
+      
+    }
     @media (max-width:$xl) {
         &__card {
             height: 200px !important;
@@ -75,6 +82,7 @@
         }
     }
 
+  
     @media (max-width:$md) {
         &__card {
             height: 180px !important;

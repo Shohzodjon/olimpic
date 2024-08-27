@@ -14,7 +14,7 @@ defineProps({
 })
 </script>
 <template>
-    <RouterLink class="partner-card" :to="url">
+    <RouterLink class="partner-card" :to="url">    
         <div class="partner-card__img">
             <img :src="img" alt="parnet img">
         </div>

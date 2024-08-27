@@ -32,6 +32,8 @@
     "all":"Все",
     "reception":"Дни приёма",
     "images":"Изображения",
-    "videos":"Видео"
+    "videos":"Видео",
+     "summerSeason": "Лето",
+    "winterSeason": "Зима"
     
 }

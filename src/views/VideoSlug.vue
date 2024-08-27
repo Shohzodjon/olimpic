@@ -21,11 +21,11 @@ onMounted(async () => {
     <section class="video-slug">
         <div class="container">
             <BreadCrump :data="breads" />
-            <h2 class="video-slug__title">Videolar</h2>
-            <a-row :gutter="[20,20]" v-if="isLoad">
+            <h2 class="video-slug__title">{{ $t('videos') }}</h2>
+            <a-row :gutter="[20, 20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="video-slug__content">
-                        <h3 class="video-slug__sub-title">{{galleryStore.videoDetail.title}}</h3>
+                        <h3 class="video-slug__sub-title">{{ galleryStore.videoDetail.title }}</h3>
                         <div class="video-slug__card " v-html="galleryStore.videoDetail.content">
                         </div>
                     </div>

@@ -53,8 +53,11 @@ const isGradient = computed(() => windowWidth.value > 800);
       <div class="container">
         <h2>{{ $t('support') }}</h2>
         <Vue3Marquee :gradient="isGradient" :pauseOnHover="true" :duration="35">
-          <PartnerCard v-for="item in partnerStore.support.data" :key="item.id" :img="item.images" :title="item.title"
-            :url="`/${lang}`" style="margin:  1rem;min-width:320px" />
+          <div v-for="item in partnerStore.support.data" :key="item.id">
+            <PartnerCard :img="item.images" :title="item.title" :url="`/${lang}`"
+              style="margin:  1rem;min-width:320px" />
+          </div>
+
         </Vue3Marquee>
       </div>
     </section>
@@ -62,8 +65,10 @@ const isGradient = computed(() => windowWidth.value > 800);
       <div class="container">
         <h2>{{ $t('globalPartner') }}</h2>
         <Vue3Marquee :gradient="isGradient" :pauseOnHover="true" :duration="35" direction="reverse">
-          <PartnerCard v-for="item in partnerStore.list.data" :key="item.id" :img="item.images" :title="item.title"
-            :url="`/${lang}`" style="margin: 1rem;" />
+          <div v-for="item in partnerStore.list.data" :key="item.id">
+            <PartnerCard :img="item.images" :title="item.title" :url="`/${lang}`" class="global__partner" />
+          </div>
+
         </Vue3Marquee>
       </div>
     </section>
@@ -72,7 +77,7 @@ const isGradient = computed(() => windowWidth.value > 800);
         <h2>{{ $t('olimpicSport') }}</h2>
         <div class="olimpic-grid">
           <OlimpicCard v-for="item in homeStore.olimpicType.data" :key="item.id" :title="item.title"
-            :season="item.season" :img="item.images">
+            season="summerSeason" :img="item.images" style="">
             <template #season-icon><img src="@/assets/images/sun-icon.svg" width="24" height="24" /></template>
           </OlimpicCard>
           <RouterLink :to="`/${lang}/olimpic-summer`" class="last-item">
@@ -91,10 +96,13 @@ const isGradient = computed(() => windowWidth.value > 800);
     </section>
     <section class="home-page__partner">
       <div class="container">
-        <h2>{{$t('uzOlimpic')}}</h2>
+        <h2>{{ $t('uzOlimpic') }}</h2>
         <Vue3Marquee :gradient="isGradient" :pauseOnHover="true" :duration="35">
-          <PartnerCard v-for="item in homeStore.olimpicGame.data" :key="item.id" :img="item.images" :title="item.title"
-            :url="`/${lang}/uz-olimpic/${item.id}`" style="margin: 1rem;min-width:250px" />
+          <div v-for="item in homeStore.olimpicGame.data" :key="item.id">
+            <PartnerCard :img="item.images" :title="item.title" :url="`/${lang}/uz-olimpic/${item.id}`"
+              class="global__partner" />
+          </div>
+
         </Vue3Marquee>
       </div>
     </section>

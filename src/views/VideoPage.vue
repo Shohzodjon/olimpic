@@ -24,13 +24,13 @@ onMounted(async () => {
         <div class="container" v-if="isLoad">
             <StaticBreadcrumb :data="breads" />
             <div class="gallery-page__flex">
-                <h2>Media galereya</h2>
+                <h2>{{$t('media')}}</h2>
                 <ul>
                     <li>
-                        <RouterLink :to="`/${lang}/gallery`">Rasmlar</RouterLink>
+                        <RouterLink :to="`/${lang}/gallery`">{{$t('images')}}</RouterLink>
                     </li>
                     <li>
-                        <RouterLink :to="`/${lang}/video`">Videolar</RouterLink>
+                        <RouterLink :to="`/${lang}/video`">{{$t('videos')}}</RouterLink>
                     </li>
                 </ul>
             </div>

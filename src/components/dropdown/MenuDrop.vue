@@ -29,11 +29,11 @@ const handleSubMenuClick = (path) => {
                 <template v-for="(item, index) in data?.children" :key="index">
                     <a-menu-item v-if="item.children.length == 0" :class="{ 'custom-menu-item': true }">
                         <router-link v-if="item.link" :to="{ name: item.link, query: { alias: item.alias } }"
-                            style="color: #333 !important;">
+                            style="color: #363c44 !important;">
                             {{ item.title }}
                         </router-link>
                         <router-link v-else :to="{ name: 'static-page', query: { alias: item.alias } }"
-                            style="color: #333 !important;">
+                            style="color: #363c44 !important;">
                             {{ item.title }}
                         </router-link>
                     </a-menu-item>
@@ -42,10 +42,10 @@ const handleSubMenuClick = (path) => {
                         <template v-if="item.children.length != 0" v-for="subItem in item.children" :key="subItem.id">
                             <a-menu-item :class="{ 'custom-sub-menu-item': true }">
                                 <router-link v-if="subItem.link" :to="{ name: subItem.link }"
-                                    style="color: #333 !important;">{{
+                                    style="color: #363c44 !important;">{{
                                         subItem.title }} </router-link>
                                 <router-link v-else :to="{ name: 'static-page', query: { alias: subItem.alias } }"
-                                    style="color: #333 !important;">{{
+                                    style="color: #363c44 !important;">{{
                                         subItem.title }} </router-link>
                             </a-menu-item>
                         </template>
@@ -91,25 +91,25 @@ const handleSubMenuClick = (path) => {
 
 .custom-sub-menu span {
     font-size: 1.6rem !important;
-    font-weight: 500;
-    color: #333 !important;
+    font-weight: 400 !important;
+    color: #363c44 !important;
 }
 
 .custom-sub-menu .ant-dropdown-menu-title-content a {
     font-size: 1.6rem !important;
-    font-weight: 500;
-    color: #333 !important;
+    font-weight: 400;
+    color: #363c44 !important;
 }
 
 .custom-sub-menu-item {
     font-size: 1.6rem !important;
-    font-weight: 500 !important;
+    font-weight: 400 !important;
     border-radius: 0 !important;
     border-bottom: 1px solid #cacaca;
 }
 
 .custom-sub-menu-item a {
-    color: #333 !important;
+    color: #363c44 !important;
 }
 
 .custom-sub-menu-item:last-child {
@@ -117,11 +117,11 @@ const handleSubMenuClick = (path) => {
 }
 
 .custom-menu-item {
-    color: #333 !important;
+    color: #363c44 !important;
     border-radius: 0 !important;
     border-bottom: 1px solid #cacaca;
     font-size: 1.6rem !important;
-    font-weight: 500 !important;
+    font-weight: 400 !important;
 }
 
 
@@ -132,4 +132,10 @@ const handleSubMenuClick = (path) => {
 .custom-menu-item:last-child {
     border-bottom: none;
 }
+.ant-dropdown-link{
+    span{
+        color: #363c44 !important;
+    }
+}
+
 </style>

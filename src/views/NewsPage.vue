@@ -38,8 +38,8 @@ const paginationFunc = async (pageNum) => {
     <section class="committee-page">
         <div class="container">
             <StaticBreadcrumb :data="breads" />
-            <h2>Yangiliklar</h2>
-            <a-row :gutter="[20, 20]" v-if="isLoad">
+            <h2>{{$t('news')}}</h2>
+            <a-row :gutter="[24, 24]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <a-row :gutter="[20, 20]">
                         <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="item in newsStore.list.data"

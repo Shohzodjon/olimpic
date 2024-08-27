@@ -27,7 +27,7 @@ onMounted(async () => {
         <div class="container">
             <BreadCrump :data="breadCrumb.list" />
             <h2 v-if="isLoad">{{ breadCrumb.list?.parent?.child?.title }}</h2>
-            <a-row :gutter="[20, 20]" v-if="isLoad">
+            <a-row :gutter="[24, 24]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="committee-page__content">
                         <a-row :gutter="[15, 15]">

@@ -24,7 +24,7 @@ const breads = [
     <section class="news-slug">
         <div class="container">
             <StaticBreadcrumb :data="breads"/>
-            <a-row :gutter="[20, 20]" v-if="isLoad">
+            <a-row :gutter="[24, 24]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="news-slug__content">
                         <!-- <a-carousel autoplay :dots="false" :autoplaySpeed="3000" :slidesToShow="1">

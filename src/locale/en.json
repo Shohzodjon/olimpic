@@ -27,10 +27,12 @@
     "globalPartner": "IOC partners",
     "olimpicSport": "Olympic Sports",
     "uzOlimpic": "Uzbekistan At The Olympics",
-    "summer":"Summer views",
-    "winter":"Winter views",
-    "all":"All",
-    "reception":"Admission days",
-    "images":"Images",
-    "videos":"Videos"
+    "summer": "Summer views",
+    "winter": "Winter views",
+    "all": "All",
+    "reception": "Admission days",
+    "images": "Images",
+    "videos": "Videos",
+    "summerSeason": "Summer",
+    "winterSeason": "Winter"
 }
