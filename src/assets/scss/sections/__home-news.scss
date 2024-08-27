@@ -20,7 +20,7 @@
 
     &__title {
         @include title($black-800);
-        font-weight: 700;
+        // font-weight: 700;
     }
 
     &__btn {
@@ -60,7 +60,7 @@
 
         h3 {
             @include card-title($black-800);
-            margin: 10px 0;
+            
         }
 
         p {

@@ -1,6 +1,7 @@
 @mixin title($color) {
   font-size: 3rem;
   color: $color;
+  font-weight: 700;
   line-height: 3.6rem;
 
   @media (max-width: $xl) {
@@ -36,6 +37,7 @@
   color: $color;
   font-size: 2rem;
   line-height: 120%;
+  margin: 10px 0;
 
   @media (max-width:$xl) {
     font-size: 1.8rem;
