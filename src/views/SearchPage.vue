@@ -30,10 +30,12 @@ watch(slug, async (newSlug) => {
         <div class="container">
             <StaticBreadcrumb :data="breads" />
             <h2>{{ $t('searchResult') }}</h2>
-            <!-- <pre>{{ searchStore.list }}</pre> -->
+
             <a-row :gutter="[24, 24]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="committee-page__content">
+                        <h3 v-if="searchStore.list.data.length == 0" >{{ $t('notFound') }}</h3>
+                        <h3 v-for="item in searchStore.list.data" :key="item.id">{{ item.title }}</h3>
                     </div>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
