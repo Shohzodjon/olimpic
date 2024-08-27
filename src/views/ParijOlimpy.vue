@@ -6,6 +6,7 @@ import NewsCard from '@/components/card/NewsCard.vue';
 import { lang } from '@/uitiles/currentLang';
 import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
 import { useRoute } from 'vue-router';
+
 import SidebarMenu from '@/components/menu/SidebarMenu.vue';
 
 const breadCrumb = useBreadCrumbsStore();
@@ -21,6 +22,7 @@ onMounted(async () => {
         breadCrumb.fetchList(slug)
     ])
     isLoad.value = true;
+    localStorage.setItem('last-alias', slug)
 })
 
 watch(current, async (newPage) => {

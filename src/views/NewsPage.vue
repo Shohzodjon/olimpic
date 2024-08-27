@@ -13,18 +13,19 @@ const isLoad = ref(false);
 const newsStore = useNewsStore();
 const breadCrumb = useBreadCrumbsStore();
 const router = useRoute();
-// const slug = router.name;
-const breads = [
-    { label: 'Home', url: `/${lang}`, id: 1 },
-    { label: "Yangiliklar", id: 2 },
-];
+const slug = 'news';
+// const breads = [
+//     { label: 'Home', url: `/${lang}`, id: 1 },
+//     { label: "Yangiliklar", id: 2 },
+// ];
 const current = ref(1);
 onMounted(async () => {
     await Promise.all([
         newsStore.fetchList(current.value),
-        // breadCrumb.fetchList(slug)
+        breadCrumb.fetchList(slug)
     ])
     isLoad.value = true;
+    localStorage.setItem('last-alias', slug)
 })
 
 watch(current, async (newPage) => {
@@ -37,8 +38,8 @@ const paginationFunc = async (pageNum) => {
 <template>
     <section class="committee-page">
         <div class="container">
-            <StaticBreadcrumb :data="breads" />
-            <h2>{{$t('news')}}</h2>
+            <BreadCrump :data="breadCrumb.list" />
+            <h2>{{ $t('news') }}</h2>
             <a-row :gutter="[24, 24]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <a-row :gutter="[20, 20]">
@@ -51,15 +52,7 @@ const paginationFunc = async (pageNum) => {
                         @click="paginationFunc" />
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
-                    <div class="gallery-slug__sidebar">
-                        <div class="gallery-slug__sidebar-img">
-                            <RouterLink :to="`/${lang}`">
-                                <img src="@/assets/images/olimpic.png" alt="olimpic ">
-                            </RouterLink>
-
-                        </div>
-                    </div>
-                    <!-- <SidebarMenu :data="breadCrumb.list" /> -->
+                    <SidebarMenu :data="breadCrumb.list" />
                 </a-col>
             </a-row>
         </div>

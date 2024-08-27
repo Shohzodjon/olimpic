@@ -19,7 +19,8 @@ onMounted(async () => {
         newsStore.fetchOpenData(slug, current.value),
         breadCrumb.fetchList(slug)
     ])
-    isLoad.value = true
+    isLoad.value = true;
+    localStorage.setItem('last-alias', slug)
 })
 watch(current, async (newPage) => {
     await newsStore.fetchOpenData(slug, newPage)

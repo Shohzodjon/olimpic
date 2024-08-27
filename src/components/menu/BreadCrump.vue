@@ -19,21 +19,18 @@ const breadcrumbItems = computed(() => {
         label: t('home'),
         url: `/${lang}`
     }];
-
-    if (props.data.parent) {
+    if (props.data?.parent !=null) {
         items.push({
-            id: props.data.parent.id,
-            label: props.data.parent.title,
+            id: props.data.parent[0]?.id,
+            label: props.data.parent[0]?.title,
         });
     }
-
-    if (props.data.parent?.child) {
+    if (props.data?.child) {
         items.push({
-            id: props.data.parent.child.id,
-            label: props.data.parent.child.title,
+            id: props.data?.child.id,
+            label: props.data?.child.title,
         });
     }
-
     return items;
 });
 
@@ -53,6 +50,9 @@ const breadcrumbItems = computed(() => {
     </a-breadcrumb>
 </template>
 <style>
+.bread__crumb{
+    margin-bottom: 1.5rem;
+}
 .ant-breadcrumb-link {
     font-size: 1.7rem;
     color: #717b83 !important;

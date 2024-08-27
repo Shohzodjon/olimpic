@@ -28,7 +28,7 @@ const showModal = () => {
 };
 const searchFunc = async () => {
     open.value = false;
-    router.push(`/${lang}/search?text=${search.value.replaceAll(' ', '')}`);
+    router.push(`/${lang}/search?text=${search.value}`);
     if (currentPage.value == 'search') {
         await searchStore.fetchList(search.value);
     }

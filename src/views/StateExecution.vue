@@ -18,7 +18,8 @@ onMounted(async () => {
         newsStore.fetchExecution(slug),
         breadCrumb.fetchList(slug)
     ])
-    isLoad.value = true
+    isLoad.value = true;
+    localStorage.setItem('last-alias', slug)
 })
 
 </script>

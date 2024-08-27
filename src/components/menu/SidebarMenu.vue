@@ -4,6 +4,7 @@ import { computed, ref } from 'vue';
 import { lang } from '@/uitiles/currentLang';
 
 const route = useRoute();
+const name=route.name
 const props = defineProps({
     data: {
         type: Object,
@@ -14,13 +15,17 @@ const props = defineProps({
 const mainTitle = ref('');
 const menuItems = computed(() => {
     const result = [];
-    mainTitle.value = props.data.parent?.title;
-    if (props.data.parent?.child?.siblings) {
-        result.push(...Object.values(props.data.parent.child.siblings).map(sibling => ({
+    if (props.data.child?.siblings) {
+        result.push(...Object.values(props.data.child.siblings).map(sibling => ({
             title: sibling.title,
             link: sibling.link,
             alias: sibling.alias
         })));
+    }
+    if (props.data?.parent) {
+        mainTitle.value = props.data?.parent[0]?.title;
+    }else{
+        mainTitle.value = props.data?.child?.title; 
     }
     return result;
 });
@@ -36,8 +41,7 @@ const isActiveLink = (item) => {
             <h3>{{ mainTitle }}</h3>
             <ul class="sidebar__menu">
                 <li v-for="(item, i) in menuItems" :key="i" class="sidebar__menu-item">
-                    <router-link 
-                        :to="{ name: item.link || 'static-page', query: { alias: item.alias } }"
+                    <router-link :to="{ name: item.link || 'static-page', query: { alias: item.alias } }"
                         :class="{ 'exact-active': isActiveLink(item) }">
                         {{ item.title }}
                     </router-link>
@@ -56,6 +60,7 @@ const isActiveLink = (item) => {
 .ant-dropdown-menu-submenu {
     position: relative;
 }
+
 .exact-active {
     font-weight: 500;
     color: #335fa9;

@@ -102,9 +102,9 @@ const isGradient = computed(() => windowWidth.value > 800);
             <PartnerCard :img="item.images" :title="item.title" :url="`/${lang}/uz-olimpic/${item.id}`"
               class="global__partner" />
           </div>
-
         </Vue3Marquee>
       </div>
+      
     </section>
   </section>
 

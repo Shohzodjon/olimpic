@@ -1,36 +1,28 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useNewsStore } from '@/stores/news';
-import { lang } from '@/uitiles/currentLang';
 import { useRoute } from 'vue-router';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
-import StaticBreadcrumb from '@/components/menu/StaticBreadcrumb.vue';
 import { ClockCircleOutlined, EyeOutlined } from '@ant-design/icons-vue';
-import VK from '@/components/icons/VK.vue';
-import Telegram from '@/components/icons/Telegram.vue';
-import Twitter from '@/components/icons/Twitter.vue';
-import OK from '@/components/icons/OK.vue';
 import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
 import SidebarMenu from '@/components/menu/SidebarMenu.vue';
 import BaseButton from '@/components/button/BaseButton.vue';
-import { useI18n } from 'vue-i18n';
-
+import SocialShare from '@/components/social/SocialShare.vue';
 const newsStore = useNewsStore();
 const breadCrumb = useBreadCrumbsStore();
 const isLoad = ref(false);
 const router = useRoute();
 const infoId = router.params.id;
-const { t } = useI18n();
-const breads = [
-    { label: t('home'), url: `/${lang}`, id: 1 },
-    { label: t("news"), id: 2, url: `/${lang}/news` },
-];
+const alias = localStorage.getItem('last-alias');
+const currentUrl = ref('');
+
 onMounted(async () => {
     await Promise.all([
         newsStore.fetchInterviewDetail(infoId),
-        // breadCrumb.fetchList(infoId)
+        breadCrumb.fetchList(alias)
     ])
     isLoad.value = true;
+    currentUrl.value = window.location.href
 })
 const printPage = () => {
     window.print();
@@ -39,12 +31,12 @@ const printPage = () => {
 <template>
     <section class="news-slug">
         <div class="container">
-            <StaticBreadcrumb :data="breads" />
+            <BreadCrump :data="breadCrumb.list" />
             <a-row :gutter="[24, 24]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="news-slug__content">
                         <a-carousel autoplay :dots="false" :autoplaySpeed="3000" :slidesToShow="1">
-                            <div v-for="(img, i) in newsStore.interviewDetail.images" :key="i">
+                            <div v-for="(img, i) in newsStore.interviewDetail.images" :key="i" class="news-slug__img">
                                 <img :src="img" alt="img">
                             </div>
                         </a-carousel>
@@ -52,29 +44,9 @@ const printPage = () => {
                             <div class="news-slug__time">
                                 <ClockCircleOutlined /> <span>{{ newsStore.interviewDetail.created_at }}</span>
                             </div>
-                            <ul class="news-slug__social">
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <VK />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <OK />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <Telegram />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <Twitter />
-                                    </a>
-                                </li>
-                            </ul>
 
+                            <SocialShare :url="currentUrl" :title="newsStore.interviewDetail.title"
+                                :description="newsStore.interviewDetail.title" />
                             <div class="news-slug__statistic">
                                 <EyeOutlined /> <span>{{ newsStore.interviewDetail.views }}</span>
                             </div>
@@ -86,15 +58,7 @@ const printPage = () => {
                     </div>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
-                    <!-- <SidebarMenu :data="breadCrumb.list"/> -->
-                    <div class="committee-page__sidebar">
-                        <div class="committee-page__sidebar-img">
-                            <RouterLink :to="`/${lang}`">
-                                <img src="@/assets/images/olimpic.png" alt="olimpic ">
-                            </RouterLink>
-
-                        </div>
-                    </div>
+                    <SidebarMenu :data="breadCrumb.list" />
                 </a-col>
             </a-row>
         </div>
