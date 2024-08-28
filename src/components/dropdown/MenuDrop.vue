@@ -7,7 +7,6 @@ defineProps({
         default: null
     }
 });
-const lang = localStorage.getItem('locale');
 const handleSubMenuClick = (path) => {
     router.push({
         name: 'static-page',
@@ -37,7 +36,7 @@ const handleSubMenuClick = (path) => {
                             {{ item.title }}
                         </router-link>
                     </a-menu-item>
-                    <a-sub-menu v-else :title="`${item.title}`" @click="handleSubMenuClick(item?.alias)"
+                    <a-sub-menu v-else :title="`${item.title}`" 
                         :key="item.id" :class="{ 'custom-sub-menu': true }">
                         <template v-if="item.children.length != 0" v-for="subItem in item.children" :key="subItem.id">
                             <a-menu-item :class="{ 'custom-sub-menu-item': true }">
