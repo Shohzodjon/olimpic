@@ -14,7 +14,7 @@ const isLoad = ref(false);
 const router = useRoute();
 const infoId = router.params.id;
 const currentUrl=ref('');
-const alias = localStorage.getItem('last-alias');
+const alias = localStorage.getItem('last-alias') || 'news';
 onMounted(async () => {
     await Promise.all([
         newsStore.fetchDetail(infoId),

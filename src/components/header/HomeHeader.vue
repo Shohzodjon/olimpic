@@ -12,11 +12,6 @@ defineProps({
         default: []
     }
 })
-
-// onMounted(async () => {
-//     await homeStore.fetchBanner();
-//     isLoad.value = true
-// })
 </script>
 <template>
     <header class="home-header" >

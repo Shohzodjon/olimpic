@@ -1,6 +1,7 @@
 .header-slider {
     position: relative;
-    &::after{
+
+    &::after {
         content: "";
         position: absolute;
         width: 100%;
@@ -22,7 +23,8 @@
             transition: all linear 1s;
             transform: scale(1.1);
             width: 100%;
-            object-fit: cover;
+            height: 100%;
+            // object-fit: ;
         }
     }
 
@@ -38,11 +40,35 @@
     @media (max-width:$xl) {
         .slider-item {
             height: calc(100vh - 120.27px);
-        }   
+
+            &>img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    @media (max-width:$xs) {
+        .slider-item {
+            height: calc(100vh - 250px);
+
+            &>img {
+                width: 100%;
+                height: 100%;
+                object-fit: unset;
+            }
+        }
     }
     @media (max-width:$sm) {
         .slider-item {
-            height: calc(100vh - 140px);
-        }   
+            height: calc(100vh - 350px);
+
+            &>img {
+                width: 100%;
+                height: 100%;
+                object-fit: unset;
+            }
+        }
     }
 }

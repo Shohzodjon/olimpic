@@ -49,7 +49,7 @@
   }
 
   @media (max-width:$xs) {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 }
 
@@ -75,6 +75,10 @@
   color: $color;
   line-height: 21px;
   font-weight: 400;
+
+  @media (max-width:$sm) {
+    font-size: 1.4rem;
+  }
 }
 
 @mixin content {

@@ -138,13 +138,23 @@ $xxl: 1500px;
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+      
     }
 
     @media (max-width:$sm) {
         &__strategy {
-            background-size: 130% 100%;
+            background-size: 100% 100%;
+            height: 160px;
+            padding: 10px 0;
         }
-
+        &__banner {
+            height: 60px;
+            overflow: hidden;
+            // img{
+            //     width: 130%;
+            //     height: 110%;
+            // }
+        }
         &__olimpic {
             .olimpic-grid {
                 grid-template-columns: repeat(1, 1fr);

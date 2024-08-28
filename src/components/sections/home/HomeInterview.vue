@@ -20,7 +20,7 @@ onMounted(async () => {
                     {{ $t('interviews') }}
                 </RouterLink>
             </div>
-            <a-row :gutter="[20, 0]" v-if="isLoad">
+            <a-row :gutter="[20, 20]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
                     <HomeGallery :img="interviewStore.listLimit[0]?.images[0]"
                         :title="interviewStore.listLimit[0]?.title" :time="interviewStore.listLimit[0]?.created_at"
