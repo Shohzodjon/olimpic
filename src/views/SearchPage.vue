@@ -35,7 +35,7 @@ watch(slug, async (newSlug) => {
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="committee-page__content">
                         <h3 v-if="searchStore.list.data.length == 0" >{{ $t('notFound') }}</h3>
-                        <h3 v-for="item in searchStore.list.data" :key="item.id">{{ item.title }}</h3>
+                        <h3 v-for="item in searchStore.list.data" :key="item.id" class="search__result__title">{{ item.title }}</h3>
                     </div>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
@@ -51,3 +51,10 @@ watch(slug, async (newSlug) => {
         </div>
     </section>
 </template>
+<style scoped>
+.search__result__title{
+    margin: 8px 0;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #b0b0b0;
+}
+</style>

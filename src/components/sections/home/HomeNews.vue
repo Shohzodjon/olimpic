@@ -41,7 +41,7 @@ onMounted(async () => {
                     }" :effect="'fade'" :navigation="true" autoplay loop :modules="modules" class="mySwiper">
                         <swiper-slide v-for="item in homeStore.banner.data" :key="item.id">
                             <div class="home-news-section__card">
-                                <RouterLink :to="`/${lang}/news-slug/${item.id}`">
+                                <RouterLink :to="`/${lang}/news-slug/${item.alias}`">
                                     <div class="home-news-section__card-img">
                                         <img :src="item.images[0]" alt="img">
                                     </div>
@@ -60,7 +60,7 @@ onMounted(async () => {
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
                     <HomeNewsCard v-for="item in homeStore.banner.data" :key="item.id" :img="item.images[0]"
-                        :title="item.title" :url="`/${lang}/news-slug/${item.id}`" :time="item.created_at" />
+                        :title="item.title" :url="`/${lang}/news-slug/${item.alias}`" :time="item.created_at" />
                 </a-col>
             </a-row>
         </div>

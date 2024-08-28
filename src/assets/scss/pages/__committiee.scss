@@ -26,6 +26,10 @@
             margin-top: 1rem;
             line-height: 140%;
         }
+
+        table {
+            width: 100%;
+        }
     }
 
     &__sidebar {
@@ -47,6 +51,15 @@
 
             img {
                 width: 100%;
+            }
+        }
+    }
+
+    @media (max-width:$xs) {
+        &__content {
+            overflow-x: auto;
+            p {
+                font-size: 1.4rem;
             }
         }
     }

@@ -8,7 +8,7 @@ import ResponsiveNavbar from './components/responsive/ResponsiveNavbar.vue';
 import { useMenuStore } from '@/stores/menu';
 
 const menuStore = useMenuStore();
-const isLoading = ref(false);
+const isLoading = ref(true);
 const isLoad = ref(false);
 const router = useRouter();
 
@@ -32,7 +32,7 @@ onMounted(async () => {
 <template>
   <section>
     <Navbar />
-    <Loader v-if="!isLoad || isLoading" />
+    <Loader v-if=" isLoading" />
     <div v-else>
       <ResponsiveNavbar :data="menuStore.list.data" />
       <transition name="fade" mode="out-in">

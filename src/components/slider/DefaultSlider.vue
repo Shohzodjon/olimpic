@@ -32,7 +32,7 @@ onBeforeUnmount(() => {
     <div class="vertical-slider">
         <a-carousel autoplay :autoplaySpeed="3000" :dots="false" :slidesToShow="slidesToShow" :pauseOnHover="false"
             :space="10">
-            <RouterLink :to="`/${lang}/news-slug/${item.id}`" v-for="item in data" :key="item.id"
+            <RouterLink :to="`/${lang}/news-slug/${item.alias}`" v-for="item in data" :key="item.id"
                 class="vertical-slider__wrapper">
                 <div class="vertical-slider__card">
                     <img :src="item.images[0]" alt="hero img">

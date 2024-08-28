@@ -18,7 +18,7 @@ defineProps({
                     <span>{{ item.created_at }}</span>
                 </div>
                 <h3 class="horizontal-slider__card-title">{{ item.title }}</h3>
-                <RouterLink :to="`/${lang}/news-slug/${item.id}`" class="horizontal-slider__card-btn">{{ $t('more') }}
+                <RouterLink :to="`/${lang}/news-slug/${item.alias}`" class="horizontal-slider__card-btn">{{ $t('more') }}
                 </RouterLink>
             </div>
         </a-carousel>

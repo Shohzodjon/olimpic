@@ -32,6 +32,9 @@ const breads = [
                                 <img :src="img" alt="img">
                             </div>
                         </a-carousel> -->
+                        <div  class="news-slug__img">
+                            <img :src="mediaStore.announcementDetail.images" alt="img">
+                        </div>
                         <div class="news-slug__flex">
                             <div class="news-slug__time">
                                 <ClockCircleOutlined /> <span>{{ mediaStore.announcementDetail.created_at }}</span>

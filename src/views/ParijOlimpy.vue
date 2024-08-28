@@ -42,7 +42,8 @@ const paginationFunc = async (pageNum) => {
                     <a-row :gutter="[20, 20]">
                         <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="item in licenseesStore.licensees?.data"
                             :key="item.id">
-                            <NewsCard :data="item" :url="`/${lang}/licensees-slug/${item.alias}`" />
+                            <NewsCard :data="item" :url="`/${lang}/licensees-slug/${item.alias}`"
+                                class="parij__olimpic" />
                         </a-col>
                     </a-row>
                     <a-pagination v-model:current="current" :total="licenseesStore.licensees?.meta?.total"
@@ -55,3 +56,16 @@ const paginationFunc = async (pageNum) => {
         </div>
     </section>
 </template>
+<style lang="scss">
+.parij__olimpic {
+    padding: 22.5px;
+    .news-card__img {
+        height: 300px;
+        img {
+            object-fit: inherit;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+</style>
