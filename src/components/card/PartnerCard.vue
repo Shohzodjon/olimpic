@@ -14,10 +14,10 @@ defineProps({
 })
 </script>
 <template>
-    <RouterLink class="partner-card" :to="url">    
+    <RouterLink class="partner-card" :to="url">
         <div class="partner-card__img">
             <img :src="img" alt="parnet img">
         </div>
-        <h5 class="partner-card__name" v-if="title">{{ title }}</h5>
+        <h5 class="partner-card__name" v-if="title" style="text-transform: capitalize;">{{ title }}</h5>
     </RouterLink>
 </template>

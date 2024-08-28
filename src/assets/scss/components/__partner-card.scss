@@ -25,8 +25,7 @@
 
     &__name {
         @include desc($black-800);
-        font-weight: 600;
-        text-transform: capitalize;
+        
     }
 
     @media (max-width:1440px) {

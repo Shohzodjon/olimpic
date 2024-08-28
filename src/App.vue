@@ -18,8 +18,7 @@ onMounted(async () => {
   <section>
     <Navbar />
     <div v-if="isLoad">
-      <!-- menuStore.list.data -->
-      <ResponsiveNavbar :data="menuStore.list.data"/>
+      <ResponsiveNavbar :data="menuStore.list.data" />
     </div>
 
     <router-view v-slot="{ Component }">

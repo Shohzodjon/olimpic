@@ -3,38 +3,49 @@
 
     & h2 {
         @include title($black-800);
+
+    }
+
+    & h2 {
         margin: 2rem 0;
     }
-    &__content{
+
+    &__content {
         @include content();
 
-        img{
+        img {
             width: 100%;
             max-width: auto;
             object-fit: contain;
             display: block;
             margin-bottom: 8px;
         }
-        p{
+
+        p {
             font-size: 1.6rem;
             margin-top: 1rem;
             line-height: 140%;
         }
     }
-    &__sidebar{
+
+    &__sidebar {
         display: flex;
         flex-direction: column;
         gap: 30px;
-        &-menu{
+
+        &-menu {
             @include content()
         }
-        &-img{
+
+        &-img {
             width: 100%;
-            a{
+
+            a {
                 width: 100%;
                 display: block;
             }
-            img{
+
+            img {
                 width: 100%;
             }
         }

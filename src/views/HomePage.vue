@@ -74,14 +74,14 @@ const isGradient = computed(() => windowWidth.value > 800);
     </section>
     <section class="home-page__olimpic">
       <div class="container">
-        <h2>{{ $t('olimpicSport') }}</h2>
+        <h2 style="margin-bottom: 2.5rem;">{{ $t('olimpicSport') }}</h2>
         <div class="olimpic-grid">
           <OlimpicCard v-for="item in homeStore.olimpicType.data" :key="item.id" :title="item.title"
             season="summerSeason" :img="item.images" style="">
             <template #season-icon><img src="@/assets/images/sun-icon.svg" width="24" height="24" /></template>
           </OlimpicCard>
           <RouterLink :to="`/${lang}/olimpic-summer`" class="last-item">
-            <h3>{{ $t('all') }}
+            <h3 style="font-size:16px">{{ $t('all') }}
               <RightOutlined />
             </h3>
             <div class="item-flex">
@@ -96,7 +96,7 @@ const isGradient = computed(() => windowWidth.value > 800);
     </section>
     <section class="home-page__partner">
       <div class="container">
-        <h2>{{ $t('uzOlimpic') }}</h2>
+        <h2 style="margin-bottom: 2.5rem;">{{ $t('uzOlimpic') }}</h2>
         <Vue3Marquee :gradient="isGradient" :pauseOnHover="true" :duration="35">
           <div v-for="item in homeStore.olimpicGame.data" :key="item.id">
             <PartnerCard :img="item.images" :title="item.title" :url="`/${lang}/uz-olimpic/${item.id}`"
@@ -104,7 +104,7 @@ const isGradient = computed(() => windowWidth.value > 800);
           </div>
         </Vue3Marquee>
       </div>
-      
+
     </section>
   </section>
 

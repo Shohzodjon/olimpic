@@ -36,6 +36,9 @@
 
     &__title {
         @include card-title($black-800);
+       
+    }
+    &__title {
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;

@@ -50,12 +50,12 @@
 
     &__title {
         @include slug-title(#fff);
-        line-height: 32px;
-        font-weight: 600;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        // line-height: 32px;
+        // font-weight: 600;
+        // display: -webkit-box;
+        // -webkit-line-clamp: 2;
+        // -webkit-box-orient: vertical;
+        // overflow: hidden;
     }
 
     @media (max-width:$md) {

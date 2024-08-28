@@ -2,10 +2,11 @@
     padding: 2rem 0;
 
     &__title {
-        @include title($black-900);
         margin: 2rem 0;
     }
-
+    &__title {
+        @include title($black-900);
+    }
     &__sub-title {
         @include slug-title($black-600)
     }
