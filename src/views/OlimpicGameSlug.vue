@@ -1,10 +1,13 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useGamesStore } from '@/stores/games';
-// import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
+import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
 import { useRoute } from 'vue-router';
+import SidebarMenu from '@/components/menu/SidebarMenu.vue';
+import BreadCrump from '@/components/menu/BreadCrump.vue';
 const gamesStore = useGamesStore();
-// const breadCrumb = useBreadCrumbsStore();
+const breadCrumb = useBreadCrumbsStore();
+const alias = localStorage.getItem('last-alias');
 const router = useRoute();
 const slug = router.params.id;
 const isLoad = ref(false);
@@ -13,7 +16,7 @@ const isLoad = ref(false);
 onMounted(async () => {
     await Promise.all([
         gamesStore.fetchGameDetail(slug),
-        // breadCrumb.fetchList(slug)
+        breadCrumb.fetchList(alias)
     ])
     isLoad.value = true;
 })
@@ -21,6 +24,7 @@ onMounted(async () => {
 <template>
     <section class="committee-page">
         <div class="container">
+            <BreadCrump :data="breadCrumb.list"/>
             <h2 v-if="isLoad">{{gamesStore.gameDetail.title}}</h2>
             <a-row :gutter="[24, 24]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
@@ -30,14 +34,7 @@ onMounted(async () => {
                     </div>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
-                    <!-- <SidebarMenu :data="breadCrumb.list" /> -->
-                    <div class="committee-page__sidebar">
-                        <div class="committee-page__sidebar-img">
-                            <RouterLink :to="`/${lang}`">
-                                <img src="@/assets/images/olimpic.png" alt="olimpic ">
-                            </RouterLink>
-                        </div>
-                    </div>
+                    <SidebarMenu :data="breadCrumb.list" />
                 </a-col>
             </a-row>
         </div>

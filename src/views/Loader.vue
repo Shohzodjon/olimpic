@@ -56,6 +56,9 @@ onMounted(() => {
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    opacity: 0;
+    transition: all linear .5s;
+    display: none;
 }
 
 .center {
@@ -64,7 +67,7 @@ onMounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(250, 248, 248, 0.4);
+    background: rgba(51, 95, 169,1);
 }
 
 .loader__logo {
@@ -100,7 +103,7 @@ onMounted(() => {
     display: block;
     font-size: 20px;
     font-weight: 500;
-    color: #212529;
+    color: #fff;
 }
 
 .text {

@@ -5,21 +5,27 @@ import HeaderSlider from '@/components/slider/HeaderSlider.vue';
 import HorizontalSlider from '@/components/slider/HorizontalSlider.vue'
 import DefaultSlider from '@/components/slider/DefaultSlider.vue';
 
-const isLoad = ref(false);
-const homeStore = useHomeStore();
-onMounted(async () => {
-    await homeStore.fetchBanner();
-    isLoad.value = true
+
+defineProps({
+    data: {
+        type: Array,
+        default: []
+    }
 })
+
+// onMounted(async () => {
+//     await homeStore.fetchBanner();
+//     isLoad.value = true
+// })
 </script>
 <template>
-    <header class="home-header" v-if="isLoad">
-        <HeaderSlider :data="homeStore.banner.data"/>
+    <header class="home-header" >
+        <HeaderSlider :data="data" />
         <div class="home-header__container">
             <div class="container">
                 <div class="home-header__flex">
-                    <HorizontalSlider :data="homeStore.banner.data"/>
-                    <DefaultSlider :data="homeStore.banner.data"/>
+                    <HorizontalSlider :data="data" />
+                    <DefaultSlider :data="data" />
                 </div>
             </div>
         </div>

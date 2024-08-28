@@ -18,6 +18,7 @@ onMounted(async () => {
         breadCrumb.fetchList(slug)
     ])
     isLoad.value = true;
+    localStorage.setItem('last-alias', slug)
 })
 </script>
 <template>

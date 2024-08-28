@@ -16,19 +16,23 @@ const windowWidth = ref(window.innerWidth);
 const partnerStore = usePartnerStore();
 const homeStore = useHomeStore();
 const isLoad = ref(false);
+const bannerLoad = ref(false);
 onBeforeUnmount(() => {
   window.removeEventListener('resize', updateWindowWidth);
 });
 onMounted(async () => {
   window.addEventListener('resize', updateWindowWidth);
   await Promise.all([
+    homeStore.fetchBanner(),
     partnerStore.fetchList(),
     partnerStore.fetchSupport(),
     homeStore.fetchOlimpicType(),
-    homeStore.fetchOlimpicGames()
+    homeStore.fetchOlimpicGames(),
   ])
   isLoad.value = true;
-
+  setTimeout(() => {
+    bannerLoad.value = true
+  }, 1000)
 })
 function updateWindowWidth() {
   windowWidth.value = window.innerWidth;
@@ -38,12 +42,12 @@ const isGradient = computed(() => windowWidth.value > 800);
 </script>
 <template>
   <section class="home-page" v-if="isLoad">
-    <HomeHeader />
-    <HomeBanner />
+    <HomeHeader :data="homeStore.banner.data"/>
+    <HomeBanner v-if="bannerLoad" />
     <HomeNews />
-    <section class="home-page__strategy"></section>
+    <section class="home-page__strategy" v-if="bannerLoad"></section>
     <HomeInterview />
-    <div class="container">
+    <div class="container" v-if="bannerLoad">
       <div class="home-page__banner">
         <img src="@/assets/images/home-banner.png" alt="home banner">
       </div>
