@@ -40,7 +40,7 @@ const paginationFunc = async (pageNum) => {
                     <a-row :gutter="[20, 20]" v-if="isLoad">
                         <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="item in interviewStore.list?.data"
                             :key="item.id">
-                            <NewsCard :data="item" :url="`/${lang}/interview-detail/${item.alias}`" />
+                            <NewsCard :data="item" :url="`/${lang}/interview-slug/${item.alias}`" />
                         </a-col>
                     </a-row>
                     <a-pagination v-model:current="current" :total="interviewStore.list?.meta?.total" show-less-items

@@ -6,6 +6,8 @@ import NewsCard from '@/components/card/NewsCard.vue';
 import { lang } from '@/uitiles/currentLang';
 import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
 import { useRoute } from 'vue-router';
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
 
 import SidebarMenu from '@/components/menu/SidebarMenu.vue';
 
@@ -42,8 +44,15 @@ const paginationFunc = async (pageNum) => {
                     <a-row :gutter="[20, 20]">
                         <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="item in licenseesStore.licensees?.data"
                             :key="item.id">
-                            <NewsCard :data="item" :url="`/${lang}/licensees-slug/${item.alias}`"
-                                class="parij__olimpic" />
+                            <RouterLink :to="`/${lang}/licensees-slug/${item.alias}`" class="news-card parij__olimpic">
+                                <div class="news-card__img">
+                                    <img :src="item.images" alt="news img" :class="imageStore.isGray ? 'gray' : ''">
+                                </div>
+                                <div class="news-card__info">
+                                    <p>{{ item?.title }}</p>
+                                    <span>{{ item.content }}</span>
+                                </div>
+                            </RouterLink>
                         </a-col>
                     </a-row>
                     <a-pagination v-model:current="current" :total="licenseesStore.licensees?.meta?.total"
@@ -59,13 +68,37 @@ const paginationFunc = async (pageNum) => {
 <style lang="scss">
 .parij__olimpic {
     padding: 22.5px;
+
     .news-card__img {
         height: 300px;
+
         img {
             object-fit: inherit;
             width: 100%;
             height: 100%;
         }
+    }
+
+    .news-card__info {
+        text-align: center;
+
+        span {
+            font-size: 1.8rem;
+            color: var(--gray-900);
+        }
+    }
+
+}
+
+@media (max-width:991px) {
+    .parij__olimpic {
+        padding: 22px;
+        .news-card__info {
+            span {
+                font-size: 1.4rem;
+            }
+        }
+
     }
 }
 </style>

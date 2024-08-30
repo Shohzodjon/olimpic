@@ -63,10 +63,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'MuseoSans';
+  // font-family: 'MuseoSans';
+}
+body {
+  font-family: 'MuseoSans', sans-serif;
+  font-weight: 300; /* Thin */
 }
 
-body {}
+h1 {
+  font-weight: 700; /* Bold */
+}
+
+p {
+  font-weight: 500; /* Medium */
+}
 
 html {
   font-size: 10px;

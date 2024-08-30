@@ -4,7 +4,8 @@ const props = defineProps({
     data: {
         type: Object,
         default: null
-    }
+    }, 
+
 });
 
 const activeKey = ref(props.data ? props.data.id : 1);

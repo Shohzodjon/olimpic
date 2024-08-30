@@ -30,8 +30,8 @@ onMounted(async () => {
             <a-row :gutter="[24, 24]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <a-row :gutter="[20, 20]">
-                        <a-col v-for="item in employeesStore.employees.data" :key="item.id" :span="24">
-                            <Accardion :data="item">
+                        <a-col v-for="(item,i) in employeesStore.employees.data" :key="item.id" :span="24">
+                            <Accardion :data="item" :activeAcc="i">
                                 <template #accardion-card>
                                     <EmployeesCard v-for="child in item?.children" :key="child.id" :img="child.images"
                                         :name="child.title" :position="child.post" :reception="child.reception" />

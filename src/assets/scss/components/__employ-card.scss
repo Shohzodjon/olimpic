@@ -26,6 +26,7 @@
 
         p {
             @include desc(var(--gray-800));
+            font-weight: 500;
         }
 
         h3 {

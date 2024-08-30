@@ -42,12 +42,19 @@ const openLightbox = (index) => {
 const onHide = () => {
     visibleRef.value = false;
 };
+
+const imageUrls = computed(() => {
+    return globalStore.matirialInfo?.files?.length > 0
+        ? globalStore.matirialInfo.files.map(image => image.url)
+        : [];
+});
+
+
 </script>
 <template>
     <section class="news-slug">
         <div class="container">
             <BreadCrump :data="breadCrumb.list" />
-            <!-- <h2 v-if="isLoad">{{globalStore.greatingDetail.title}}</h2> -->
             <a-row :gutter="[24, 24]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="news-slug__content">
@@ -58,8 +65,8 @@ const onHide = () => {
                                 <img :src="img.url" alt="img" :class="imageStore.isGray ? 'gray' : ''">
                             </div>
                         </a-carousel>
-                        <vue-easy-lightbox :visible="visibleRef" :imgs="globalStore.matirialInfo?.files"
-                            :index="indexRef" @hide="onHide"></vue-easy-lightbox>
+                        <vue-easy-lightbox :visible="visibleRef" :imgs="imageUrls" :index="indexRef"
+                            @hide="onHide"></vue-easy-lightbox>
                         <div class="news-slug__flex">
                             <div class="news-slug__time">
                                 <ClockCircleOutlined /> <span>{{ globalStore.matirialInfo?.created_at }}</span>
@@ -73,7 +80,7 @@ const onHide = () => {
 
                         </div>
                         <h2>{{ globalStore.matirialInfo?.title }}</h2>
-                        <div v-html="globalStore.matirialInfo?.content"></div>
+                        <div v-html="globalStore.matirialInfo.content"></div>
 
                         <BaseButton @click="printPage" />
                     </div>

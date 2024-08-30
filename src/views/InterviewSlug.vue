@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useNewsStore } from '@/stores/news';
 import { useRoute } from 'vue-router';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
@@ -44,6 +44,10 @@ const openLightbox = (index) => {
 const onHide = () => {
     visibleRef.value = false;
 };
+
+const imageUrls = computed(() => {
+    return newsStore.interviewDetail?.images.map(image => image.url);
+})
 </script>
 <template>
     <section class="news-slug">
@@ -55,10 +59,10 @@ const onHide = () => {
                         <a-carousel autoplay :dots="false" :autoplaySpeed="3000" :slidesToShow="1">
                             <div v-for="(img, i) in newsStore.interviewDetail?.images" :key="i" class="news-slug__img"
                                 @click="openLightbox(i)">
-                                <img :src="img" alt="img" :class="imageStore.isGray ? 'gray' : ''">
+                                <img :src="img.url" alt="img" :class="imageStore.isGray ? 'gray' : ''">
                             </div>
                         </a-carousel>
-                        <vue-easy-lightbox :visible="visibleRef" :imgs="newsStore.detail.images" :index="indexRef"
+                        <vue-easy-lightbox :visible="visibleRef" :imgs="imageUrls" :index="indexRef"
                             @hide="onHide"></vue-easy-lightbox>
 
                         <div class="news-slug__flex">

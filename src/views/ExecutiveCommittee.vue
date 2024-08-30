@@ -13,7 +13,7 @@ const router = useRoute();
 const slug = router.name;
 onMounted(async () => {
     await Promise.all([
-        employeesStore.fetchAdvisorList(),
+        employeesStore.fetchExsecutev(),
         breadCrumb.fetchList(slug)
     ])
     isLoad.value = true;
@@ -27,7 +27,7 @@ onMounted(async () => {
             <a-row :gutter="[24, 24]">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <a-row :gutter="[20, 20]">
-                        <a-col v-for="item in employeesStore.advisor.data" :key="item.id" :span="24">
+                        <a-col v-for="item in employeesStore.executive.data" :key="item.id" :span="24">
                             <EmployeesCard :img="item.images" :position="item.post" :name="item.title"
                                 :reception="item.reception" />
                         </a-col>

@@ -36,7 +36,7 @@ const handleSubMenuClick = (path) => {
                             {{ item.title }}
                         </router-link>
                     </a-menu-item>
-                    <a-sub-menu v-else :title="`${item.title}`" 
+                    <a-sub-menu v-else :title="`${item.title}`"  
                         :key="item.id" :class="{ 'custom-sub-menu': true }">
                         <template v-if="item.children.length != 0" v-for="subItem in item.children" :key="subItem.id">
                             <a-menu-item :class="{ 'custom-sub-menu-item': true }">
@@ -63,6 +63,7 @@ const handleSubMenuClick = (path) => {
     padding: 23px 0;
     display: flex;
     align-items: center;
+    font-weight: 500 !important;
     gap: 10px;
 }
 
@@ -83,32 +84,35 @@ const handleSubMenuClick = (path) => {
 .custom-sub-menu {
     border-bottom: 1px solid #cacaca;
 }
-
+.ant-dropdown-menu-title-content{
+    font-weight: 500 !important;
+}
 .custom-sub-menu:last-child {
     border-bottom: none;
 }
 
 .custom-sub-menu span {
     font-size: 1.6rem !important;
-    font-weight: 400 !important;
+    font-weight: 500 !important;
     color: var(--black-600) !important;
 }
 
 .custom-sub-menu .ant-dropdown-menu-title-content a {
     font-size: 1.6rem !important;
-    font-weight: 400;
+    font-weight: 500;
     color: var(--black-600) !important;
 }
 
 .custom-sub-menu-item {
     font-size: 1.6rem !important;
-    font-weight: 400 !important;
+    font-weight: 500 !important;
     border-radius: 0 !important;
     border-bottom: 1px solid #cacaca;
 }
 
 .custom-sub-menu-item a {
     color: var(--black-600) !important;
+    font-weight: 500 !important;
 }
 
 .custom-sub-menu-item:last-child {
@@ -120,7 +124,7 @@ const handleSubMenuClick = (path) => {
     border-radius: 0 !important;
     border-bottom: 1px solid #cacaca;
     font-size: 1.6rem !important;
-    font-weight: 400 !important;
+    font-weight: 500 !important;
 }
 
 

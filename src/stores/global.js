@@ -37,7 +37,7 @@ export const useGlobalStore = defineStore("global", () => {
   const matirialDetail = async (id) => {
     try {
       const res = await $axios.get(`/main/materials/${id}`);
-      matirialInfo.value = res.data;
+      matirialInfo.value = res.data.data;
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +53,7 @@ export const useGlobalStore = defineStore("global", () => {
   const fetchRegulationDetail = async (id) => {
     try {
       const res = await $axios.get(`/main/regulations/${id}`);
-      regulationDetail.value = res.data;
+      regulationDetail.value = res.data.data;
     } catch (error) {
       console.log(error);
     }

@@ -26,8 +26,9 @@ onMounted(async () => {
             <a-row :gutter="[24, 24]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="news-slug__content">
-                        <h2>{{ licenseesStore.detail.title }}</h2>
-                        <div v-html="licenseesStore.detail.content"></div>
+                        <h2>{{ licenseesStore.detail?.title }}</h2>
+                        <p>{{ licenseesStore.detail?.content }}</p>
+                        <div v-html="licenseesStore.detail?.short_content"></div>
                     </div>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">

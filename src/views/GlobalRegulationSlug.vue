@@ -42,6 +42,12 @@ const openLightbox = (index) => {
 const onHide = () => {
     visibleRef.value = false;
 };
+
+const imageUrls = computed(() => {
+    return globalStore.regulationDetail?.files?.length > 0 
+        ? globalStore.regulationDetail.files.map(image => image.url) 
+        : [];
+});
 </script>
 <template>
     <section class="news-slug">
@@ -58,8 +64,8 @@ const onHide = () => {
                                 <img :src="img.url" alt="img" :class="imageStore.isGray ? 'gray' : ''">
                             </div>
                         </a-carousel>
-                        <vue-easy-lightbox :visible="visibleRef" :imgs="globalStore.regulationDetail?.files"
-                            :index="indexRef" @hide="onHide"></vue-easy-lightbox>
+                        <vue-easy-lightbox :visible="visibleRef" :imgs="imageUrls" :index="indexRef"
+                            @hide="onHide"></vue-easy-lightbox>
                         <div class="news-slug__flex">
                             <div class="news-slug__time">
                                 <ClockCircleOutlined /> <span>{{ globalStore.regulationDetail?.created_at }}</span>

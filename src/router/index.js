@@ -99,8 +99,8 @@ const router = createRouter({
           component: () => import("../views/InterviewPage.vue"),
         },
         {
-          path: "interview-detail/:id",
-          name: "interview-detail",
+          path: "interview-slug/:id",
+          name: "interview-slug",
           component: () => import("../views/InterviewSlug.vue"),
         },
         {

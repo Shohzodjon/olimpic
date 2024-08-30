@@ -43,6 +43,12 @@ const openLightbox = (index) => {
 const onHide = () => {
     visibleRef.value = false;
 };
+
+const imageUrls = computed(() => {
+    return newsStore.detail.images.map(image => image.url);
+})
+
+
 </script>
 <template>
     <section class="news-slug">
@@ -56,10 +62,10 @@ const onHide = () => {
                             :pauseOnHover="false">
                             <div v-for="(img, i) in newsStore.detail.images" :key="i" class="news-slug__img"
                                 @click="openLightbox(i)">
-                                <img :src="img" alt="img" :class="imageStore.isGray ? 'gray' : ''">
+                                <img :src="img.url" alt="img" :class="imageStore.isGray ? 'gray' : ''">
                             </div>
                         </a-carousel>
-                        <vue-easy-lightbox :visible="visibleRef" :imgs="newsStore.detail.images" :index="indexRef"
+                        <vue-easy-lightbox :visible="visibleRef" :imgs="imageUrls" :index="indexRef"
                             @hide="onHide"></vue-easy-lightbox>
                         <div class="news-slug__flex">
                             <div class="news-slug__time">
