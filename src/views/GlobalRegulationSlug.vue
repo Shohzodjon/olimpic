@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
-import { useNewsStore } from '@/stores/news';
+import { useGlobalStore } from '@/stores/global';
 import { useRoute } from 'vue-router';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import { ClockCircleOutlined, EyeOutlined } from '@ant-design/icons-vue';
@@ -13,8 +13,7 @@ import BaseButton from '@/components/button/BaseButton.vue';
 import { useImageStore } from '@/stores/setGray';
 const imageStore = useImageStore();
 
-
-const newsStore = useNewsStore();
+const globalStore = useGlobalStore();
 const breadCrumb = useBreadCrumbsStore()
 const isLoad = ref(false);
 const router = useRoute();
@@ -23,10 +22,10 @@ const currentUrl = ref('');
 const visibleRef = ref(false);
 const indexRef = ref(0);
 
-const alias = localStorage.getItem('last-alias') || 'news';
+const alias = localStorage.getItem('last-alias');
 onMounted(async () => {
     await Promise.all([
-        newsStore.fetchDetail(infoId),
+        globalStore.fetchRegulationDetail(infoId),
         breadCrumb.fetchList(alias)
     ])
     isLoad.value = true;
@@ -48,33 +47,33 @@ const onHide = () => {
     <section class="news-slug">
         <div class="container">
             <BreadCrump :data="breadCrumb.list" />
-            <!-- <h2 v-if="isLoad">{{newsStore.detail.title}}</h2> -->
+            <!-- <h2 v-if="isLoad">{{globalStore.greatingDetail.title}}</h2> -->
             <a-row :gutter="[24, 24]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="news-slug__content">
                         <a-carousel autoplay :dots="false" :autoplaySpeed="2400" :slidesToShow="1" draggable="true"
                             :pauseOnHover="false">
-                            <div v-for="(img, i) in newsStore.detail.images" :key="i" class="news-slug__img"
+                            <div v-for="(img, i) in globalStore.regulationDetail?.files" :key="i" class="news-slug__img"
                                 @click="openLightbox(i)">
-                                <img :src="img" alt="img" :class="imageStore.isGray ? 'gray' : ''">
+                                <img :src="img.url" alt="img" :class="imageStore.isGray ? 'gray' : ''">
                             </div>
                         </a-carousel>
-                        <vue-easy-lightbox :visible="visibleRef" :imgs="newsStore.detail.images" :index="indexRef"
-                            @hide="onHide"></vue-easy-lightbox>
+                        <vue-easy-lightbox :visible="visibleRef" :imgs="globalStore.regulationDetail?.files"
+                            :index="indexRef" @hide="onHide"></vue-easy-lightbox>
                         <div class="news-slug__flex">
                             <div class="news-slug__time">
-                                <ClockCircleOutlined /> <span>{{ newsStore.detail.created_at }}</span>
+                                <ClockCircleOutlined /> <span>{{ globalStore.regulationDetail?.created_at }}</span>
                             </div>
-                            <SocialShare :url="currentUrl" :title="newsStore.detail.title"
-                                :description="newsStore.detail.title" />
+                            <SocialShare :url="currentUrl" :title="globalStore.regulationDetail?.title"
+                                :description="globalStore.regulationDetail?.title" />
 
                             <div class="news-slug__statistic">
-                                <EyeOutlined /> <span>{{ newsStore.detail.views }}</span>
+                                <EyeOutlined /> <span>{{ globalStore.regulationDetail?.views }}</span>
                             </div>
 
                         </div>
-                        <h2>{{ newsStore.detail.title }}</h2>
-                        <div v-html="newsStore.detail.content"></div>
+                        <h2>{{ globalStore.regulationDetail?.title }}</h2>
+                        <div v-html="globalStore.regulationDetail?.content"></div>
 
                         <BaseButton @click="printPage" />
                     </div>

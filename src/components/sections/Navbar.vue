@@ -1,10 +1,9 @@
 <script setup>
-import { ref, onMounted, watch, nextTick } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { useMenuStore } from '@/stores/menu';
 import { lang } from '@/uitiles/currentLang';
 import { useRoute } from 'vue-router';
 import router from '@/router';
-import Button from '@/components/button/Button.vue'
 import { NotificationOutlined, PictureOutlined, SearchOutlined } from '@ant-design/icons-vue';
 import { MenuOutlined } from '@ant-design/icons-vue'
 import LangComp from '@/components/lang/LangComp.vue'
@@ -44,13 +43,24 @@ const menuToggle = () => {
     menuStore.toggleFunc();
 }
 const setSize = (event) => {
+    const btns = document.querySelectorAll('.btn');
+    btns.forEach((btn) => {
+        btn.style.background = 'none';
+        btn.style.color = '#000';
+    })
     let element = event.target;
+    element.style.background = '#000';
+    element.style.color = '#fff';;
     const size = element.dataset.size
     document.documentElement.style.fontSize = `${size}px`;
 }
 
 
 const setColor = (elem) => {
+    const btns = document.querySelectorAll('.theme-btn');
+    btns.forEach((btn) => {
+        btn.style.transform = 'scale(1)';
+    })
     const element = elem.target;
     element.style.transform = 'scale(1.13)'
     document.body.style.background = '#000'
@@ -71,6 +81,10 @@ const setColor = (elem) => {
 }
 
 const setGreen = (elem) => {
+    const btns = document.querySelectorAll('.theme-btn');
+    btns.forEach((btn) => {
+        btn.style.transform = 'scale(1)';
+    })
     const element = elem.target;
     element.style.transform = 'scale(1.13)'
     document.body.style.background = '#000'
@@ -89,6 +103,10 @@ const setGreen = (elem) => {
     document.documentElement.style.setProperty('--drop-bg', '#000');
 }
 const setWhite = (elem) => {
+    const btns = document.querySelectorAll('.theme-btn');
+    btns.forEach((btn) => {
+        btn.style.transform = 'scale(1)';
+    })
     const element = elem.target;
     element.style.transform = 'scale(1.13)'
     document.body.style.background = '#fff'
@@ -107,10 +125,23 @@ const setWhite = (elem) => {
     document.documentElement.style.setProperty('--drop-bg', '#fff');
 }
 
-const setGray = () => {
+const setGray = (event) => {
+    const btns = document.querySelectorAll('.picture');
+    btns.forEach((btn) => {
+        btn.style.transform = 'scale(1)';
+    })
+    const element = event.target;
+    element.style.transform = 'scale(1.13)';
+
     imageStore.setGray();
 }
-const removeGray = () => {
+const removeGray = (event) => {
+    const btns = document.querySelectorAll('.picture');
+    btns.forEach((btn) => {
+        btn.style.transform = 'scale(1)';
+    })
+    const element = event.target;
+    element.style.transform = 'scale(1.13)'
     imageStore.removeGray();
 }
 </script>
@@ -140,12 +171,13 @@ const removeGray = () => {
                 <li>
                     <span>Rasmlar : </span>
                     <div class="btn-group">
-                        <button class="picture active-picture" data-state="active" @click="setGray">
-                            <PictureOutlined />
-                        </button>
-                        <button class="picture unactive-picture" data-state="unactive" @click="removeGray">
-                            <PictureOutlined />
-                        </button>
+                        <img class="vi-nopart  picture active-picture"
+                            src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjOTk5IiBoZWlnaHQ9IjM2IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIzNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPiAgICA8cGF0aCBkPSJNMTkgM0g1Yy0xLjEgMC0yIC45LTIgMnYxNGMwIDEuMS45IDIgMiAyaDE0YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMTZINVY1aDE0djE0em0tNS4wNC02LjcxbC0yLjc1IDMuNTQtMS45Ni0yLjM2TDYuNSAxN2gxMWwtMy41NC00LjcxeiIvPjwvc3ZnPg=="
+                            @click="setGray">
+
+                        <img class="vi-nopart picture unactive-picture"
+                            src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjM2IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIzNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPiAgICA8cGF0aCBkPSJNMTkgM0g1Yy0xLjEgMC0yIC45LTIgMnYxNGMwIDEuMS45IDIgMiAyaDE0YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMTZINVY1aDE0djE0em0tNS4wNC02LjcxbC0yLjc1IDMuNTQtMS45Ni0yLjM2TDYuNSAxN2gxMWwtMy41NC00LjcxeiIvPjwvc3ZnPg=="
+                            @click="removeGray">
 
                     </div>
                 </li>

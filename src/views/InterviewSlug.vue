@@ -9,6 +9,8 @@ import SidebarMenu from '@/components/menu/SidebarMenu.vue';
 import BaseButton from '@/components/button/BaseButton.vue';
 import SocialShare from '@/components/social/SocialShare.vue';
 import { useImageStore } from '@/stores/setGray';
+import VueEasyLightbox from 'vue-easy-lightbox/external-css';
+import 'vue-easy-lightbox/external-css/vue-easy-lightbox.css';
 const imageStore = useImageStore();
 
 const newsStore = useNewsStore();
@@ -18,6 +20,8 @@ const router = useRoute();
 const infoId = router.params.id;
 const alias = localStorage.getItem('last-alias');
 const currentUrl = ref('');
+const visibleRef = ref(false);
+const indexRef = ref(0);
 
 
 onMounted(async () => {
@@ -31,6 +35,15 @@ onMounted(async () => {
 const printPage = () => {
     window.print();
 }
+
+const openLightbox = (index) => {
+    indexRef.value = index;
+    visibleRef.value = true;
+};
+
+const onHide = () => {
+    visibleRef.value = false;
+};
 </script>
 <template>
     <section class="news-slug">
@@ -40,10 +53,14 @@ const printPage = () => {
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="news-slug__content">
                         <a-carousel autoplay :dots="false" :autoplaySpeed="3000" :slidesToShow="1">
-                            <div v-for="(img, i) in newsStore.interviewDetail.images" :key="i" class="news-slug__img">
-                                <img :src="img" alt="img"  :class="imageStore.isGray ? 'gray' : ''">
+                            <div v-for="(img, i) in newsStore.interviewDetail?.images" :key="i" class="news-slug__img"
+                                @click="openLightbox(i)">
+                                <img :src="img" alt="img" :class="imageStore.isGray ? 'gray' : ''">
                             </div>
                         </a-carousel>
+                        <vue-easy-lightbox :visible="visibleRef" :imgs="newsStore.detail.images" :index="indexRef"
+                            @hide="onHide"></vue-easy-lightbox>
+
                         <div class="news-slug__flex">
                             <div class="news-slug__time">
                                 <ClockCircleOutlined /> <span>{{ newsStore.interviewDetail.created_at }}</span>

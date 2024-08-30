@@ -40,7 +40,7 @@ const handleSubMenuClick = (path) => {
                         :key="item.id" :class="{ 'custom-sub-menu': true }">
                         <template v-if="item.children.length != 0" v-for="subItem in item.children" :key="subItem.id">
                             <a-menu-item :class="{ 'custom-sub-menu-item': true }">
-                                <router-link v-if="subItem.link" :to="{ name: subItem.link }"
+                                <router-link v-if="subItem.link" :to="{ name: subItem.link,query: { alias: subItem.alias } }"
                                     >{{
                                         subItem.title }} </router-link>
                                 <router-link v-else :to="{ name: 'static-page', query: { alias: subItem.alias } }"

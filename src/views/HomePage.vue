@@ -44,6 +44,7 @@ const isGradient = computed(() => windowWidth.value > 800);
 </script>
 <template>
   <section class="home-page" v-if="isLoad">
+    <!-- <pre>{{homeStore.banner.data}}</pre> -->
     <HomeHeader :data="homeStore.banner.data" />
     <HomeBanner v-if="bannerLoad" />
     <HomeNews />

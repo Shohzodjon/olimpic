@@ -76,7 +76,7 @@ const router = createRouter({
           name: "medical-center",
           component: () => import("../views/MedicalCenter.vue"),
         },
-      
+
         {
           path: "federation-doctors",
           name: "federation-doctors",
@@ -161,7 +161,7 @@ const router = createRouter({
           name: "static-page",
           component: () => import("../views/OlimpicHistory.vue"),
         },
-       
+
         {
           path: "olimpic-summer",
           name: "olimpic-summer",
@@ -179,7 +179,7 @@ const router = createRouter({
         },
 
         // asia
-     
+
         {
           path: "asia-summer",
           name: "asia-summer",
@@ -208,7 +208,7 @@ const router = createRouter({
           name: "international-structure",
           component: () => import("../views/InterOlimpicStructure.vue"),
         },
-       
+
         // gallery
         {
           path: "gallery",
@@ -249,6 +249,38 @@ const router = createRouter({
           path: "uz-olimpic/:id",
           name: "uzolimpic-games",
           component: () => import("../views/UzOlimpicGames.vue"),
+        },
+
+        //
+        {
+          path: "global-great",
+          name: "global-great",
+          component: () => import("../views/GlobalGreat.vue"),
+        },
+        {
+          path: "great-slug/:id",
+          name: "great-slug",
+          component: () => import("../views/GlobalSlug.vue"),
+        },
+        {
+          path: "global-matirial",
+          name: "global-matirial",
+          component: () => import("../views/GlobalMatirials.vue"),
+        },
+        {
+          path: "matirial-slug/:id",
+          name: "matirial-slug",
+          component: () => import("../views/GlobalMatirialSlug.vue"),
+        },
+        {
+          path: "global-regulation",
+          name: "global-regulation",
+          component: () => import("../views/GlobalRegulation.vue"),
+        },
+        {
+          path: "regulation-slug/:id",
+          name: "regulation-slug",
+          component: () => import("../views/GlobalRegulationSlug.vue"),
         },
       ],
     },

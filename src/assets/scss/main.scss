@@ -103,7 +103,7 @@ a {
 
 .ant-collapse-header .ant-collapse-header-text {
   color: var(--blue-700);
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 600;
 }
 
@@ -133,8 +133,11 @@ a {
   box-shadow: none !important;
 }
 
-.ant-modal-wrap {
-  // cursor: pointer !important;
+.vel-img-wrapper {
+  img {
+    width: 600px;
+    height: 400px;
+  }
 }
 
 .ant-modal-mask {
