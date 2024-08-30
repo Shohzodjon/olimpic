@@ -84,6 +84,18 @@
 
         }
     }
+    .lang__wrapper{
+        position: relative;
+
+        a{
+            position: absolute;
+            top: -18px;
+            right: 0;
+            font-size: 1.4rem;
+            color: var(--red-500);
+            font-weight: 500 !important;
+        }
+    }
 
     &-header__left {
         display: flex;
@@ -110,6 +122,11 @@
     .webtheme {
         padding: 10px 0;
         background: #f6f6f6;
+        height: 0 !important;
+        overflow: hidden;
+        transition: $smooth;
+        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+        display: none;
 
         &__list {
             display: flex;
@@ -131,6 +148,9 @@
                 &:last-child {
                     span {
                         cursor: pointer;
+                        padding-bottom: 2px;
+                        display: block;
+                        border-bottom: 1px dotted #000;
                     }
                 }
 
@@ -276,7 +296,12 @@
                 font-size: 2rem;
             }
         }
-
+        .lang__wrapper{
+    
+            a{
+              display: none;
+            }
+        }
         &-bottom {
             height: 70px;
         }

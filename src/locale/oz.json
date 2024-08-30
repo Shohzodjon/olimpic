@@ -32,7 +32,10 @@
     "all":"Barchasi",
     "reception":"Qabul kunlari",
     "images":"Rasmlar",
-    "videos":"Videyolar",
+    "videos":"Videolar",
     "summerSeason":"Yozgi",
-    "winterSeason":"Qishki"
+    "winterSeason":"Qishki",
+    "shrift":"Shirft o'lchami",
+    "colorSchem":"Rang sxemasi",
+    "fullVersion":"Saytning to`liq versiyasi"
 }

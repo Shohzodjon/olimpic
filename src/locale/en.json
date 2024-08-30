@@ -34,5 +34,8 @@
     "images": "Images",
     "videos": "Videos",
     "summerSeason": "Summer",
-    "winterSeason": "Winter"
+    "winterSeason": "Winter",
+    "shrift":"Font size",
+    "colorSchem":"Color scheme",
+    "fullVersion":"Full version of the site"
 }

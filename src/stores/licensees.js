@@ -14,7 +14,7 @@ export const useLicenseesStore = defineStore("licensees", () => {
   };
   const fetchDetail = async (id) => {
     try {
-      const res = await $axios.get(`/licensees/${id}`);
+      const res = await $axios.get(`/main/licensees/${id}`);
       detail.value = res.data.data;
     } catch (error) {
       console.log(error);

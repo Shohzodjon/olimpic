@@ -188,7 +188,7 @@ a {
 }
 
 .gray {
-  filter: grayscale(100%);
+  filter: grayscale(100%) !important;
 }
 
 @media (max-width:1440px) {

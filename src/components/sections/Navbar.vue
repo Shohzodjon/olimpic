@@ -2,7 +2,7 @@
 import { ref, onMounted, watch } from 'vue';
 import { useMenuStore } from '@/stores/menu';
 import { lang } from '@/uitiles/currentLang';
-import { useRoute } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import router from '@/router';
 import { NotificationOutlined, PictureOutlined, SearchOutlined } from '@ant-design/icons-vue';
 import { MenuOutlined } from '@ant-design/icons-vue'
@@ -18,6 +18,7 @@ const open = ref(false);
 const search = ref('');
 const menuStore = useMenuStore();
 const searchStore = useSearchStore();
+const show = ref(false);
 onMounted(async () => {
     await menuStore.fetchList();
 })
@@ -73,6 +74,7 @@ const setColor = (elem) => {
     document.documentElement.style.setProperty('--gray-700', '#fff');
     document.documentElement.style.setProperty('--white-800', '#fff');
     document.documentElement.style.setProperty('--blue-700', '#fff');
+    document.documentElement.style.setProperty('--red-500', '#fff');
     document.documentElement.style.setProperty('--blue-600', '#000');
     document.documentElement.style.setProperty('--white-900', '#000');
     document.documentElement.style.setProperty('--nav-bg', '#000');
@@ -97,9 +99,10 @@ const setGreen = (elem) => {
     document.documentElement.style.setProperty('--gray-700', '#a9e44d');
     document.documentElement.style.setProperty('--white-800', '#a9e44d');
     document.documentElement.style.setProperty('--blue-700', '#a9e44d');
+    document.documentElement.style.setProperty('--red-500', '#a9e44d');
     document.documentElement.style.setProperty('--blue-600', '#000');
-    document.documentElement.style.setProperty('--white-900', '#fff');
-    document.documentElement.style.setProperty('--nav-bg', '#000');
+    document.documentElement.style.setProperty('--white-900', '#000');
+    document.documentElement.style.setProperty('--nav-bg', '#f6f7f9');
     document.documentElement.style.setProperty('--drop-bg', '#000');
 }
 const setWhite = (elem) => {
@@ -119,6 +122,7 @@ const setWhite = (elem) => {
     document.documentElement.style.setProperty('--gray-700', '#000');
     document.documentElement.style.setProperty('--white-800', '#000');
     document.documentElement.style.setProperty('--blue-700', '#000');
+    document.documentElement.style.setProperty('--red-500', '#000');
     document.documentElement.style.setProperty('--blue-600', '#fff');
     document.documentElement.style.setProperty('--white-900', '#fff');
     document.documentElement.style.setProperty('--nav-bg', '#fff');
@@ -144,14 +148,23 @@ const removeGray = (event) => {
     element.style.transform = 'scale(1.13)'
     imageStore.removeGray();
 }
+
+const fullVersion = () => {
+    window.location.reload()
+}
+
+const toggleTheme = () => {
+    show.value = !show.value;
+}
+
 </script>
 <template>
     <nav class="navbar">
 
-        <div class="webtheme">
+        <div class="webtheme" :class="show ? 'active' : ''">
             <ul class="webtheme__list">
                 <li>
-                    <span>Shirft o'lchami : </span>
+                    <span>{{ $t('shrift') }} : </span>
                     <div class="btn-group">
                         <button class="btn small-x" data-size="8" @click="setSize">A</button>
                         <button class="btn " data-size="10" @click="setSize">A</button>
@@ -161,7 +174,7 @@ const removeGray = (event) => {
                     </div>
                 </li>
                 <li>
-                    <span>Rang sxemasi : </span>
+                    <span>{{ $t('colorSchem') }} : </span>
                     <div class="btn-group">
                         <button class="theme-btn theme-white" @click="setWhite">A</button>
                         <button class="theme-btn theme-black" @click="setColor">A</button>
@@ -169,7 +182,7 @@ const removeGray = (event) => {
                     </div>
                 </li>
                 <li>
-                    <span>Rasmlar : </span>
+                    <span>{{ $t('images') }} : </span>
                     <div class="btn-group">
                         <img class="vi-nopart  picture active-picture"
                             src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjOTk5IiBoZWlnaHQ9IjM2IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIzNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPiAgICA8cGF0aCBkPSJNMTkgM0g1Yy0xLjEgMC0yIC45LTIgMnYxNGMwIDEuMS45IDIgMiAyaDE0YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMTZINVY1aDE0djE0em0tNS4wNC02LjcxbC0yLjc1IDMuNTQtMS45Ni0yLjM2TDYuNSAxN2gxMWwtMy41NC00LjcxeiIvPjwvc3ZnPg=="
@@ -182,7 +195,7 @@ const removeGray = (event) => {
                     </div>
                 </li>
                 <li>
-                    <span>Saytning to'liq versiyasi</span>
+                    <span @click="fullVersion">{{ $t('fullVersion') }}</span>
                 </li>
             </ul>
         </div>
@@ -216,7 +229,7 @@ const removeGray = (event) => {
                                 <PictureOutlined />
                                 <span>{{ $t('media') }}</span>
                             </RouterLink>
-                            <div class="header-child glass-icon">
+                            <div class="header-child glass-icon" @click="toggleTheme" v-if="!show">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="22" viewBox="0 0 24 24">
                                     <path fill="currentColor" fill-rule="evenodd"
                                         d="M6.237 4.712a.75.75 0 0 0-.474-1.423l-.555.185c-.57.19-1.055.351-1.439.527c-.409.187-.767.416-1.051.776c-.285.36-.426.76-.515 1.2c-.083.415-.129.923-.183 1.522l-.698 7.67a4.777 4.777 0 0 0-.072.823C1.255 18.611 3.38 20.75 6 20.75a4.751 4.751 0 0 0 4.689-3.986l.219-.078a3.251 3.251 0 0 1 2.184 0l.22.078A4.751 4.751 0 0 0 18 20.75c2.62 0 4.744-2.14 4.75-4.758c0-.28-.025-.556-.073-.823L21.98 7.5c-.054-.6-.1-1.107-.183-1.521c-.089-.441-.23-.842-.515-1.201c-.285-.36-.642-.59-1.051-.776c-.384-.176-.868-.337-1.439-.527l-.555-.185a.75.75 0 0 0-.474 1.423l.518.172c.617.206 1.024.343 1.326.481c.286.13.414.235.5.343c.085.107.157.256.219.564c.065.326.105.753.164 1.401l.415 4.569a4.751 4.751 0 0 0-7.585 2.942a4.75 4.75 0 0 0-2.64 0a4.751 4.751 0 0 0-7.585-2.942l.048-.532l.367-4.037c.059-.648.099-1.075.164-1.4c.062-.309.134-.458.22-.565c.085-.108.213-.212.499-.343c.302-.138.709-.275 1.326-.48zM21.19 15.376l.06.656a3.25 3.25 0 1 1-.06-.656m-18.38 0l-.06.656a3.25 3.25 0 1 0 .06-.656"
@@ -227,7 +240,10 @@ const removeGray = (event) => {
                                 <SearchOutlined /> <span>{{ $t('search') }}</span>
                             </div>
                         </div>
-                        <LangComp />
+                        <div class="lang__wrapper">
+                            <RouterLink :to="`/${lang}`">Saytning eski versiyasi</RouterLink>
+                            <LangComp />
+                        </div>
                     </div>
                     <div class="navbar-bottom">
                         <div class="navbar-bottom__item" v-for="(item, i) in menuStore.list.data" :key="i">
@@ -251,3 +267,10 @@ const removeGray = (event) => {
         </a-modal>
     </nav>
 </template>
+<style scoped>
+.active {
+    height: 100% !important;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    display: block;
+}
+</style>

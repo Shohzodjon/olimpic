@@ -37,12 +37,12 @@ onMounted(async () => {
                                 <template #accardion-card>
                                     <div class="employ-card" v-for="child in item?.children" :key="child.id">
                                         <div class="employ-card__img">
-                                            <img :src="child.images" alt="employ img"   :class="imageStore.isGray?'gary':''">
+                                            <img :src="child.images" alt="employ img"   :class="imageStore.isGray?'gray':''">
                                         </div>
                                         <div class="employ-card__info">
                                             <h3>{{ child.title }}</h3>
                                             <div v-html="child.short_content"></div>
-                                            <span v-if="reception"> <b>Qabul kunlari : </b> {{ reception }}</span>
+                                            <span v-if="reception"> <b>{{ $t('reception') }} : </b> {{ reception }}</span>
                                         </div>
                                     </div>
                                 </template>

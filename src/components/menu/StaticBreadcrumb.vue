@@ -9,9 +9,6 @@ defineProps({
     },
 
 });
-
-
-
 </script>
 <template>
     <a-breadcrumb class="bread__crumb">
@@ -32,18 +29,24 @@ defineProps({
 }
 .ant-breadcrumb-link {
     font-size: 1.7rem;
-    color: #717b83 !important;
+    color: var(--gray-800)!important;
     font-weight: 500;
 }
-
+.ant-breadcrumb-separator{
+    color: var(--gray-800)!important;
+}
+.ant-breadcrumb-link a {
+    color: var(--gray-800)!important;
+    background: none !important;
+}
 .ant-breadcrumb-link a:hover {
-    color: #717b83;
+    color: var(--gray-800)!important;
     background: none !important;
 }
 
 .ant-breadcrumb-link svg {
     font-size: 1.8rem;
-    color: #717b83;
+    color: var(--gray-800)!important;
 }
 
 @media (max-width:768px) {

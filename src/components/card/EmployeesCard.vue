@@ -21,3 +21,8 @@ defineProps({
         </div>
     </div>
 </template>
+<style>
+.gray {
+    filter: grayscale(100%) !important;
+  }
+</style>

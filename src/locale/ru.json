@@ -31,9 +31,12 @@
     "winter": "Зимние виды",
     "all":"Все",
     "reception":"Дни приёма",
-    "images":"Изображения",
+    "images":"Фото",
     "videos":"Видео",
      "summerSeason": "Лето",
-    "winterSeason": "Зима"
+    "winterSeason": "Зима",
+    "shrift":"Размер шрифта",
+    "colorSchem":"Цветовая схема",
+    "fullVersion":"Полная версия сайта"
     
 }

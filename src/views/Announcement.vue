@@ -40,7 +40,7 @@ onMounted(async () => {
                         <div class="committee-page__sidebar-img">
                             <RouterLink :to="`/${lang}`">
                                 <img src="@/assets/images/olimpic.png" alt="olimpic "
-                                    :class="imageStore.isGray ? 'gary' : ''">
+                                    :class="imageStore.isGray ? 'gray' : ''">
                             </RouterLink>
                         </div>
                     </div>

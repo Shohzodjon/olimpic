@@ -39,7 +39,7 @@ const paginationFunc = async (pageNum) => {
                     <a-row :gutter="[20, 20]" style="min-height: 500px;">
                         <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="item in globalStore.regulation.data"
                             :key="item.id">
-                            <NewsCard :data="item" :url="`/${lang}/great-slug/${item.alias}`" />
+                            <NewsCard :data="item" :url="`/${lang}/regulations-slug/${item.alias}`" />
                         </a-col>
                     </a-row>
                     <a-pagination v-model:current="current" :total="globalStore.regulation?.meta?.total" show-less-items

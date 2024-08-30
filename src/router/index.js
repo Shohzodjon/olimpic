@@ -258,7 +258,7 @@ const router = createRouter({
           component: () => import("../views/GlobalGreat.vue"),
         },
         {
-          path: "great-slug/:id",
+          path: "greetings-slug/:id",
           name: "great-slug",
           component: () => import("../views/GlobalSlug.vue"),
         },
@@ -268,7 +268,7 @@ const router = createRouter({
           component: () => import("../views/GlobalMatirials.vue"),
         },
         {
-          path: "matirial-slug/:id",
+          path: "materials-slug/:id",
           name: "matirial-slug",
           component: () => import("../views/GlobalMatirialSlug.vue"),
         },
@@ -278,7 +278,7 @@ const router = createRouter({
           component: () => import("../views/GlobalRegulation.vue"),
         },
         {
-          path: "regulation-slug/:id",
+          path: "regulations-slug/:id",
           name: "regulation-slug",
           component: () => import("../views/GlobalRegulationSlug.vue"),
         },
@@ -291,10 +291,16 @@ router.beforeEach((to, from, next) => {
   const storedLocale = localStorage.getItem("locale");
 
   if (storedLocale && lang !== storedLocale) {
-    return next(`/${storedLocale}${to.path.slice(3)}`);
+    return next({
+      path: `/${storedLocale}${to.path.slice(3)}`,
+      query: to.query, 
+    });
   }
   if (!lang) {
-    return next(`/${storedLocale || "oz"}`);
+    return next({
+      path: `/${storedLocale || "oz"}`,
+      query: to.query, 
+    });
   }
   next();
 });

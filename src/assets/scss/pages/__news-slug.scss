@@ -3,9 +3,14 @@
 
     &__content {
         @include content();
+        height: max-content !important;
 
         p {
             @include desc(var(--black-800));
+        }
+
+        video {
+            width: 100% !important;
         }
     }
 

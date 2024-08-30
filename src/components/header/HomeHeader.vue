@@ -1,6 +1,5 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import { useHomeStore } from '@/stores/home';
 import HeaderSlider from '@/components/slider/HeaderSlider.vue';
 import HorizontalSlider from '@/components/slider/HorizontalSlider.vue'
 import DefaultSlider from '@/components/slider/DefaultSlider.vue';

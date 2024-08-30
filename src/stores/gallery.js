@@ -37,7 +37,7 @@ export const useMediaStore = defineStore("media", () => {
   };
   const fetchAnnouncementDetail = async (id) => {
     try {
-      const res = await $axios.get(`/announcement/${id}`);
+      const res = await $axios.get(`/main/announcement/${id}`);
       announcementDetail.value = res.data.data;
     } catch (error) {
       console.log(error);

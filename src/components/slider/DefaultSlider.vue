@@ -36,7 +36,7 @@ onBeforeUnmount(() => {
             <RouterLink :to="`/${lang}/news-slug/${item.alias}`" v-for="item in data" :key="item.id"
                 class="vertical-slider__wrapper">
                 <div class="vertical-slider__card">
-                    <img :src="item.images[0]" alt="hero img" :class="imageStore.isGray ? 'gray' : ''">
+                    <img :src="item.images" alt="hero img" :class="imageStore.isGray ? 'gray' : ''">
                     <div class="vertical-slider__card-time">
                         <ClockCircleOutlined />
                         <span>{{ item.created_at }}</span>

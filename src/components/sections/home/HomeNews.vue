@@ -45,7 +45,7 @@ onMounted(async () => {
                             <div class="home-news-section__card">
                                 <RouterLink :to="`/${lang}/news-slug/${item.alias}`">
                                     <div class="home-news-section__card-img">
-                                        <img :src="item.images[0]" alt="img" :class="imageStore.isGray ? 'gray' : ''">
+                                        <img :src="item.images" alt="img" :class="imageStore.isGray ? 'gray' : ''">
                                     </div>
                                     <div class="home-news-section__card-info">
                                         <div class="home-news-section__card-time">
@@ -61,7 +61,7 @@ onMounted(async () => {
                     </swiper>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-                    <HomeNewsCard v-for="item in homeStore.banner.data" :key="item.id" :img="item.images[0]"
+                    <HomeNewsCard v-for="item in homeStore.banner.data" :key="item.id" :img="item.images"
                         :title="item.title" :url="`/${lang}/news-slug/${item.alias}`" :time="item.created_at" />
                 </a-col>
             </a-row>

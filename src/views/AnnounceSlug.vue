@@ -36,7 +36,7 @@ const breads = [
                         </a-carousel> -->
                         <div class="news-slug__img">
                             <img :src="mediaStore.announcementDetail.images" alt="img"
-                                :class="imageStore.isGray ? 'gary' : ''">
+                                :class="imageStore.isGray ? 'gray' : ''">
                         </div>
                         <div class="news-slug__flex">
                             <div class="news-slug__time">
@@ -53,7 +53,7 @@ const breads = [
                     <div class="committee-page__sidebar">
                         <div class="committee-page__sidebar-img">
                             <RouterLink :to="`/${lang}`">
-                                <img src="@/assets/images/olimpic.png" alt="olimpic "   :class="imageStore.isGray?'gary':''">
+                                <img src="@/assets/images/olimpic.png" alt="olimpic "   :class="imageStore.isGray?'gray':''">
                             </RouterLink>
                         </div>
                     </div>

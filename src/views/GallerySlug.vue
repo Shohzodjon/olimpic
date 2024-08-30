@@ -45,7 +45,7 @@ const onHide = () => visibleRef.value = false
                                 v-for="(img, i) in galleryStore.galleryDetail.images" :key="i">
                                 <div class="gallery-slug__card pic" @click="() => showImg(i)">
                                     <div class="pic">
-                                        <img :src="img" :class="imageStore.isGray ? 'gary' : ''" />
+                                        <img :src="img" :class="imageStore.isGray ? 'gray' : ''" />
                                     </div>
                                 </div>
                             </a-col>
@@ -59,7 +59,7 @@ const onHide = () => visibleRef.value = false
                         <div class="gallery-slug__sidebar-img">
                             <RouterLink :to="`/${lang}`">
                                 <img src="@/assets/images/olimpic.png" alt="olimpic "
-                                    :class="imageStore.isGray ? 'gary' : ''">
+                                    :class="imageStore.isGray ? 'gray' : ''">
                             </RouterLink>
 
                         </div>
