@@ -42,7 +42,7 @@ const paginationFunc = async (pageNum) => {
                             <NewsCard :data="item" :url="`/${lang}/greetings-slug/${item.alias}`" />
                         </a-col>
                     </a-row>
-                    <a-pagination v-model:current="current" :total="globalStore.greating?.meta?.total" show-less-items
+                    <a-pagination v-if="globalStore.greating?.data?.length>0" v-model:current="current" :total="globalStore.greating?.meta?.total" show-less-items
                         @click="paginationFunc" />
                 </a-col>
                 
