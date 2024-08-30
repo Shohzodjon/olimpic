@@ -1,20 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sora:ital,wght@0,100..900;1,100..900&display=swap');
-$black-900: #000;
-$black-800: #212529;
-$black-600: #363c44;
-// gray color
-$gray-900: #9a9a9a9a;
-$gray-800: #717b83;
-$gray-700: #929dad;
-$gray-500: #b0b0b0;
-$gray-300: #e4e5e8;
-$gray-200: #ececec;
-$gray-100: #eaeef3;
-// blue color
-$blue-800: #0754c8;
-$blue-700: #007bfe;
-$blue-600: #335fa9;
+:root{
+    --white-900:#fff;
+    --white-800:#fff;
+    --white-700:#fff6d9;
+    --nav-bg:#f6f7f9;
+    --drop-bg:#eaeff6;
+    --black-900: #000;
+    --black-800: #212529;
+    --black-600: #363c44;
+    --gray-900: #9a9a9a9a;
+    --gray-800: #717b83;
+    --gray-700: #929dad;
+    --gray-500: #b0b0b0;
+    --gray-300: #e4e5e8;
+    --gray-200: #ececec;
+    --gray-100: #eaeef3;
+    --blue-800: #0754c8;
+    --blue-700: #007bfe;
+    --blue-600: #335fa9;
+
+}
+
 $smooth: all linear 0.4s;
 $sm: 576px;
 $xs: 768px;

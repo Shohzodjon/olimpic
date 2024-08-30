@@ -2,7 +2,7 @@
     padding: 2rem 0;
 
     &__title {
-        @include title($black-900);
+        @include title(var(--black-900));
     }
 
     &__title {
@@ -10,7 +10,7 @@
     }
 
     &__sub-title {
-        @include slug-title($black-600)
+        @include slug-title(var(--black-600))
     }
 
     &__content {

@@ -5,6 +5,7 @@ import BreadCrump from '@/components/menu/BreadCrump.vue';
 import AccardionFed from '@/components/dropdown/AccardionFed.vue';
 import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
 import { useRoute } from 'vue-router';
+import { useImageStore } from '@/stores/setGray';
 import SidebarMenu from '@/components/menu/SidebarMenu.vue';
 const federationStore = useFederationStore();
 const isLoad = ref(false);
@@ -12,6 +13,7 @@ const breadCrumb = useBreadCrumbsStore();
 const router = useRoute();
 const slug = router.name;
 const activeKey = ref('1');
+const imageStore = useImageStore();
 
 
 
@@ -21,6 +23,7 @@ onMounted(async () => {
         breadCrumb.fetchList(slug)
     ])
     isLoad.value = true;
+  
 })
 
 </script>

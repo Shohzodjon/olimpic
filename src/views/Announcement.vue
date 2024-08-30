@@ -5,6 +5,8 @@ import StaticBreadcrumb from '@/components/menu/StaticBreadcrumb.vue'
 import NewsCard from '@/components/card/NewsCard.vue';
 import { lang } from '@/uitiles/currentLang';
 import { useI18n } from 'vue-i18n';
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
 const mediaStore = useMediaStore();
 const { t } = useI18n();
 
@@ -37,7 +39,8 @@ onMounted(async () => {
                     <div class="committee-page__sidebar">
                         <div class="committee-page__sidebar-img">
                             <RouterLink :to="`/${lang}`">
-                                <img src="@/assets/images/olimpic.png" alt="olimpic ">
+                                <img src="@/assets/images/olimpic.png" alt="olimpic "
+                                    :class="imageStore.isGray ? 'gary' : ''">
                             </RouterLink>
                         </div>
                     </div>

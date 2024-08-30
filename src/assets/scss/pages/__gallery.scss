@@ -8,7 +8,7 @@
         margin: 1rem 0;
 
         h2 {
-            @include title($black-600)
+            @include title(var(--black-600))
         }
 
         ul {
@@ -19,19 +19,19 @@
             li {
                 padding: 6px 1rem;
                 opacity: 0.8;
-                border: 1px solid $blue-800;
+                border: 1px solid var(--blue-800);
                 margin-left: 12px;
                 border-radius: 3px;
                 transition: $smooth;
                 &:hover {
-                    background: $blue-800;
+                    background: var(--blue-800);
                 }
 
                 a {
                     font-weight: 600;
                     font-size: 1.8rem;
                     line-height: 24px;
-                    color: #363c44;
+                    color: var(--black-600);
                 }
             }
         }

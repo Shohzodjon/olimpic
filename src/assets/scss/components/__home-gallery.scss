@@ -40,7 +40,7 @@
         margin-bottom: 5px;
 
         span {
-            @include desc(#fff)
+            @include desc(var(--white-800))
         }
 
         svg {
@@ -49,7 +49,7 @@
     }
 
     &__title {
-        @include slug-title(#fff);
+        @include slug-title(var(--white-800));
         // line-height: 32px;
         // font-weight: 600;
         // display: -webkit-box;

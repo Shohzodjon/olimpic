@@ -9,14 +9,17 @@
     }
 
     &__title {
-        @include title($black-800);
+        @include title(var(--black-800));
         // font-weight: 700;
     }
 
     &__btn {
-        @include nav-link($blue-800);
+        @include nav-link(var(--blue-700));
+    
+    }
+    &__btn{
         font-weight: 500;
-        border: 1px solid $blue-800;
+        border: 1px solid var(--blue-800);
         padding: 6px 12px;
         border-radius: 4px;
     }

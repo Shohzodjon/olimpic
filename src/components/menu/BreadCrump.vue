@@ -43,7 +43,7 @@ const breadcrumbItems = computed(() => {
                 <template v-if="index === 0">
                     <HomeOutlined />
                 </template>
-                <RouterLink :to="item.url">{{ item.label }}</RouterLink>
+                <RouterLink :to="item.url" class="home__link">{{ item.label }}</RouterLink>
             </template>
             <template v-else>{{ item.label }}</template>
         </a-breadcrumb-item>
@@ -53,20 +53,23 @@ const breadcrumbItems = computed(() => {
 .bread__crumb{
     margin-bottom: 1.5rem;
 }
+.home__link{
+    color: var(--gray-800) !important;
+}
 .ant-breadcrumb-link {
     font-size: 1.7rem;
-    color: #717b83 !important;
+    color: var(--gray-800)!important;
     font-weight: 500;
 }
 
 .ant-breadcrumb-link a:hover {
-    color: #717b83;
+    color: var(--gray-800);
     background: none !important;
 }
 
 .ant-breadcrumb-link svg {
     font-size: 1.8rem;
-    color: #717b83;
+    color: var(--gray-800);
 }
 
 @media (max-width:768px) {

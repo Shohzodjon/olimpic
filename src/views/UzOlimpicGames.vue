@@ -11,7 +11,8 @@ import VK from '@/components/icons/VK.vue';
 import Telegram from '@/components/icons/Telegram.vue';
 import Twitter from '@/components/icons/Twitter.vue';
 import OK from '@/components/icons/OK.vue';
-
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
 
 const socialStore = useSocialStore();
 const breadCrumb = useBreadCrumbsStore();
@@ -85,7 +86,7 @@ onMounted(async () => {
                         
                         <div class="committee-page__sidebar-img">
                             <RouterLink :to="`/${lang}`">
-                                <img src="@/assets/images/olimpic.png" alt="olimpic ">
+                                <img src="@/assets/images/olimpic.png" alt="olimpic " :class="imageStore.isGray?'gray':''" >
                             </RouterLink>
 
                         </div>

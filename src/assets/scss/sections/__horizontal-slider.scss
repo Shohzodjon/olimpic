@@ -4,9 +4,10 @@
     &__card {
         display: flex;
         flex-direction: column;
-        gap: 3rem;
-        height: 230px !important;
-        padding: 1.5rem 0;
+        gap: 20px;
+        min-height:230px !important;
+        max-height:250px !important;
+        padding: 15px 0;
         margin: 20px 0;
     }
     &__card-time {
@@ -16,34 +17,34 @@
 
         span {
             font-size: 1.8rem;
-            color: #fff;
+            color: var(--white-800);
             font-weight: 500;
         }
     }
 
     &__card-title {
         font-size: 3.8rem;
-        color: #fff;
+        color: var(--white-800);
         font-weight: 800;
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 1;
         overflow: hidden;
     }
 
     &__card-btn {
         font-weight: 500;
-        background: $blue-800;
+        background: var(--blue-800);
         border-radius: 3px;
         font-size: 18px;
         line-height: 22px;
-        color: #ffffff;
+        color: var(--white-800);
         padding: 10px 31px;
         transition: $smooth;
 
         &:hover {
-            color: $blue-800;
-            background: #fff;
+            color: var(--blue-800);
+            background:var(--white-900);
         }
     }
 

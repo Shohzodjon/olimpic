@@ -8,6 +8,10 @@ import SocialShare from '@/components/social/SocialShare.vue'
 import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
 import SidebarMenu from '@/components/menu/SidebarMenu.vue';
 import BaseButton from '@/components/button/BaseButton.vue';
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
+
+
 const newsStore = useNewsStore();
 const breadCrumb = useBreadCrumbsStore()
 const isLoad = ref(false);
@@ -31,12 +35,13 @@ const printPage = () => {
     <section class="news-slug">
         <div class="container">
             <BreadCrump :data="breadCrumb.list" />
+            <!-- <h2 v-if="isLoad">{{newsStore.detail.title}}</h2> -->
             <a-row :gutter="[24, 24]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="news-slug__content">
                         <a-carousel autoplay :dots="false" :autoplaySpeed="3000" :slidesToShow="1">
                             <div v-for="(img, i) in newsStore.detail.images" :key="i" class="news-slug__img">
-                                <img :src="img" alt="img">
+                                <img :src="img" alt="img" :class="imageStore.isGray?'gray':''">
                             </div>
                         </a-carousel>
                         <div class="news-slug__flex">

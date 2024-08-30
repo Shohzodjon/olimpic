@@ -8,26 +8,7 @@ const props = defineProps({
 });
 
 const activeKey = ref(0);
-// const handleClick = async (e) => {
-//     await nextTick();
-//     const items = document.querySelectorAll('.ant-collapse-item');
-//     let el = e.target;
-//     let parent = el.closest('.ant-collapse-header');
-//     let sibling = parent.nextElementSibling;
 
-//     items.forEach(item => {
-//         let content = item.querySelector('.ant-collapse-content');
-//         if (content) {
-//             content.classList.remove('ant-collapse-content-active');
-//             content.style.display = 'none';
-//         }
-//     });
-
-//     if (sibling) {
-//         sibling.classList.add('ant-collapse-content-active');
-//         sibling.style.display = 'block';
-//     }
-// };
 const handleClick = async (e) => {
     await nextTick();
     const items = document.querySelectorAll('.ant-collapse-item');
@@ -58,7 +39,7 @@ const handleClick = async (e) => {
 <style scoped>
 .ant-collapse-icon-position-start {
     border-radius: 4px !important;
-    background: #fff !important;
+    background: var(--white-900) !important;
     border: none !important;
     box-shadow: 0px 0px 12px rgb(56 56 56 / 5%) !important;
 }

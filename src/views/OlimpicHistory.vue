@@ -5,6 +5,8 @@ import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import { useRoute } from 'vue-router';
 import SidebarMenu from '@/components/menu/SidebarMenu.vue';
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
 
 const staticStore = useStaticStore();
 const breadCrumb = useBreadCrumbsStore();
@@ -36,7 +38,7 @@ watch(() => router.query.alias, async (newAlias) => {
             <h2>{{ staticStore.data?.title }}</h2>
             <a-row :gutter="[20, 20]">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
-                    <div class="committee-page__content" v-html="staticStore.data?.short_content"></div>
+                    <div class="committee-page__content" v-html="staticStore.data?.short_content" :class="imageStore.isGray?'gray':''"></div>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">
                        <SidebarMenu :data="breadCrumb.list"/>

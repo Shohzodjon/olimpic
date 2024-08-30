@@ -1,6 +1,8 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { lang } from '@/uitiles/currentLang';
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
 defineProps({
     url: { type: String, default: `/${lang}` },
     title: { type: String, default: '' },
@@ -20,7 +22,7 @@ defineProps({
             </div>
         </div>
         <div class="olimpic-card__img">
-            <img :src="img" alt="">
+            <img :src="img" alt=""  :class="imageStore.isGray ? 'gray' : ''">
         </div>
     </RouterLink>
 

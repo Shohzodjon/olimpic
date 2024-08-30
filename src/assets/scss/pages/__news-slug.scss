@@ -5,11 +5,14 @@
         @include content();
 
         p {
-            @include desc($black-800);
+            @include desc(var(--black-800));
         }
     }
 
-   
+    & h2 {
+        @include slug-title(var(--black-600))
+    }
+
 
     &__img {
         width: 100%;
@@ -39,7 +42,7 @@
         svg,
         span {
             font-size: 1.6rem;
-            color: $blue-800;
+            color: var(--blue-800);
         }
     }
 
@@ -63,7 +66,7 @@
                 justify-content: center;
                 align-items: center;
                 opacity: 1;
-                color: #fff;
+                color: var(--white-900);
 
                 svg {
                     width: 16px;
@@ -71,7 +74,7 @@
             }
 
             &:nth-child(1) {
-                background: $blue-800;
+                background: var(--blue-800);
             }
 
             &:nth-child(2) {
@@ -83,7 +86,7 @@
             }
 
             &:nth-child(4) {
-                background: $black-800;
+                background: var(--black-800);
             }
         }
 
@@ -95,6 +98,6 @@
         align-items: center;
         gap: 5px;
         font-size: 1.6rem;
-        color: $blue-800;
+        color: var(--blue-800);
     }
 }

@@ -3,6 +3,8 @@
 import { RouterLink } from 'vue-router';
 import { ClockCircleOutlined } from '@ant-design/icons-vue';
 import { lang } from '@/uitiles/currentLang';
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
 defineProps({
     url: {
         type: String, default: `/${lang}`
@@ -21,7 +23,7 @@ defineProps({
 <template>
     <RouterLink :to="url" class="home-gallery-card">
         <div class="home-gallery-card__img">
-            <img :src="img" alt="gallery img">
+            <img :src="img" alt="gallery img" :class="imageStore.isGray ? 'gray' : ''">
         </div>
         <div class="home-gallery-card__info">
             <div class="home-gallery-card__time">

@@ -37,15 +37,16 @@ const handleClick = (event) => {
 <template>
     <ul class="lang-comp">
         <li v-for="(item, i) in langList" :key="i">
-            <GlobalOutlined v-if="i == 0" /> <button :data-lang="item.locale" @click="(e) => handleClick(e)"
-                class="lang-btn" :class="item.active ? 'active-lang' : ''">{{ item.label }}</button>
+            <GlobalOutlined v-if="i == 0" />
+            <button :data-lang="item.locale" @click="(e) => handleClick(e)" class="lang-btn"
+                :class="item.active ? 'active-lang' : ''">{{ item.label }}</button>
         </li>
     </ul>
 
 </template>
 <style scoped>
 .active-lang {
-    color: #363c44;
+    color: var(--black-600);
     font-weight: 500;
 }
 </style>

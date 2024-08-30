@@ -2,11 +2,13 @@
 import { lang } from '@/uitiles/currentLang';
 import { useFooterStore } from '@/stores/footer';
 import { ref, onMounted } from 'vue';
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
 const isLoad = ref(false);
 const footerStore = useFooterStore();
 onMounted(async () => {
     await footerStore.fetchList();
-    isLoad.value = true
+    isLoad.value = true;
 })
 </script>
 <template>
@@ -17,7 +19,7 @@ onMounted(async () => {
                     <div class="left">
                         <RouterLink :to="`/${lang}`" class="footer-logo">
                             <div class="footer-logo__img">
-                                <img src="@/assets/images/logo.png" alt="logo ">
+                                <img src="@/assets/images/logo.png" alt="logo " :class="imageStore.isGray?'gray':''">
                             </div>
                             <div class="footer-logo__info">
                                 <h3>{{ $t('logo') }}</h3>
@@ -89,13 +91,13 @@ onMounted(async () => {
                                     stroke-width="2" d="m15 10l-4 4l6 6l4-16l-18 7l4 2l2 6l3-4" />
                             </svg> <span>Telegram bot</span>
                         </a>
-                        <img src="@/assets/images/collect.png" alt="collect png" class="colllect-img">
+                        <img src="@/assets/images/collect.png" alt="collect png" class="colllect-img" :class="imageStore.isGray?'gray':''">
                     </div>
                 </div>
                 <div class="footer-line"></div>
                 <div class="footer-bottom">
                     <div>
-                        <img src="https://i.creativecommons.org/l/by/4.0/80x15.png" alt="img">
+                        <img src="https://i.creativecommons.org/l/by/4.0/80x15.png" alt="img" :class="imageStore.isGray?'gray':''">
                         <p>{{ $t('licence') }}: Creative
                             Commons Attribution 4.0 International.</p>
                     </div>

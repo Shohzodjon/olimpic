@@ -28,6 +28,7 @@ onMounted(async () => {
     <section class="news-slug">
         <div class="container">
             <BreadCrump :data="breadCrumb.list" />
+            <h2 v-if="isLoad">{{ socialStore.detail?.title }}</h2>
             <a-row :gutter="[24, 24]" v-if="isLoad" :style="{ marginTop: '20px' }">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="news-slug__content">

@@ -3,6 +3,8 @@ import { ref, onMounted } from 'vue';
 import { useMediaStore } from '@/stores/gallery';
 import { useRoute } from 'vue-router';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
 const breads = [
     { label: 'Home', url: '/oz', id: 1 },
     { label: "Video", id: 2, url: '/oz/video' },
@@ -34,7 +36,8 @@ onMounted(async () => {
                     <div class="video-slug__sidebar">
                         <div class="video-slug__sidebar-img">
                             <RouterLink to="/en">
-                                <img src="@/assets/images/olimpic.png" alt="olimpic ">
+                                <img src="@/assets/images/olimpic.png" alt="olimpic "
+                                    :class="imageStore.isGray ? 'gray' : ''">
                             </RouterLink>
 
                         </div>

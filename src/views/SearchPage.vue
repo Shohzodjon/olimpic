@@ -5,7 +5,8 @@ import { lang } from '@/uitiles/currentLang';
 import { useI18n } from 'vue-i18n';
 import { useSearchStore } from '@/stores/search';
 import { useRoute } from 'vue-router';
-
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
 const router = useRoute();
 const { t } = useI18n();
 const searchStore = useSearchStore();
@@ -42,7 +43,7 @@ watch(slug, async (newSlug) => {
                     <div class="committee-page__sidebar">
                         <div class="committee-page__sidebar-img">
                             <RouterLink :to="`/${lang}`">
-                                <img src="@/assets/images/olimpic.png" alt="olimpic ">
+                                <img src="@/assets/images/olimpic.png" alt="olimpic "  :class="imageStore.isGray?'gray':''">
                             </RouterLink>
                         </div>
                     </div>

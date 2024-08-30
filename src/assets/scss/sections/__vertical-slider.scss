@@ -39,7 +39,7 @@
 
         span {
             font-size: 17px;
-            color: #ffffffcc !important;
+            color: var(--white-800) !important;
             font-weight: 500;
         }
 
@@ -51,7 +51,7 @@
     &__card-title {
         margin-top: 1rem;
         font-size: 17px;
-        color: #fff !important;
+        color: var(--white-800) !important;
         font-weight: 500;
         display: -webkit-box;
         -webkit-box-orient: vertical;

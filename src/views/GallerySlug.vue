@@ -7,7 +7,8 @@ import 'vue-easy-lightbox/external-css/vue-easy-lightbox.css';
 import StaticBreadcrumb from '@/components/menu/StaticBreadcrumb.vue';
 import { lang } from '@/uitiles/currentLang';
 import { useI18n } from 'vue-i18n';
-
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
 const { t } = useI18n();
 const breads = [
     { label: t('home'), url: `/${lang}`, id: 1 },
@@ -44,7 +45,7 @@ const onHide = () => visibleRef.value = false
                                 v-for="(img, i) in galleryStore.galleryDetail.images" :key="i">
                                 <div class="gallery-slug__card pic" @click="() => showImg(i)">
                                     <div class="pic">
-                                        <img :src="img" />
+                                        <img :src="img" :class="imageStore.isGray ? 'gary' : ''" />
                                     </div>
                                 </div>
                             </a-col>
@@ -57,7 +58,8 @@ const onHide = () => visibleRef.value = false
                     <div class="gallery-slug__sidebar">
                         <div class="gallery-slug__sidebar-img">
                             <RouterLink :to="`/${lang}`">
-                                <img src="@/assets/images/olimpic.png" alt="olimpic ">
+                                <img src="@/assets/images/olimpic.png" alt="olimpic "
+                                    :class="imageStore.isGray ? 'gary' : ''">
                             </RouterLink>
 
                         </div>

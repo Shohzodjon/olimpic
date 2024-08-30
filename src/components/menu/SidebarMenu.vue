@@ -1,8 +1,9 @@
 <script setup>
 import { RouterLink, useRoute } from 'vue-router';
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { lang } from '@/uitiles/currentLang';
-
+import { useImageStore } from '@/stores/setGray';
+const imageStore=useImageStore();
 const route = useRoute();
 const name=route.name
 const props = defineProps({
@@ -11,6 +12,8 @@ const props = defineProps({
         default: () => ({})
     }
 });
+
+
 
 const mainTitle = ref('');
 const menuItems = computed(() => {
@@ -50,9 +53,10 @@ const isActiveLink = (item) => {
         </div>
         <div class="sidebar-container__img">
             <RouterLink :to="`/${lang}`">
-                <img src="@/assets/images/olimpic.png" alt="olimpic">
+                <img src="@/assets/images/olimpic.png" alt="olimpic" :class="imageStore.isGray?'gray':''" >
             </RouterLink>
         </div>
+        <pre></pre>
     </div>
 </template>
 

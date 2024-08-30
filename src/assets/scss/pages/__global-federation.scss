@@ -11,7 +11,7 @@
 
             .ant-tabs-tab-btn {
                 font-size: 1.8rem;
-                color: $gray-800;
+                color: var(--gray-700);
                 padding: 8px 16px !important;
             }
         }
@@ -20,13 +20,13 @@
             border-color: #dee2e6;
 
             .ant-tabs-tab-btn {
-                color: $gray-800 !important;
+                color: var(--blue-700) !important;
             }
 
         }
 
         .ant-tabs-ink-bar-animated {
-            background: #fff;
+            background: var(--white-900);
         }
 
     }

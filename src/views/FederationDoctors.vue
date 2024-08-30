@@ -6,6 +6,8 @@ import Accardion from '@/components/dropdown/Accardion.vue'
 import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
 import { useRoute } from 'vue-router';
 import SidebarMenu from '@/components/menu/SidebarMenu.vue';
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
 const isLoad = ref(false);
 const breadCrumb = useBreadCrumbsStore();
 const router = useRoute();
@@ -35,7 +37,7 @@ onMounted(async () => {
                                 <template #accardion-card>
                                     <div class="employ-card" v-for="child in item?.children" :key="child.id">
                                         <div class="employ-card__img">
-                                            <img :src="child.images" alt="employ img">
+                                            <img :src="child.images" alt="employ img"   :class="imageStore.isGray?'gary':''">
                                         </div>
                                         <div class="employ-card__info">
                                             <h3>{{ child.title }}</h3>

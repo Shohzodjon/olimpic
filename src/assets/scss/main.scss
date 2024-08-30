@@ -1,11 +1,12 @@
 @import "__variables", 'mixin', 'sections', 'components', 'pages';
+
 @font-face {
   font-family: 'MuseoSans';
   src: url('../fonts/museo-font/MuseoSansCyrl-500.eot');
   src: local('../fonts/museo-font/MuseoSansCyrl-500'),
-      url('../fonts/museo-font/MuseoSansCyrl-500.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/museo-font/MuseoSansCyrl-500.woff') format('woff'),
-      url('../fonts/museo-font/MuseoSansCyrl-500.ttf') format('truetype');
+    url('../fonts/museo-font/MuseoSansCyrl-500.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/museo-font/MuseoSansCyrl-500.woff') format('woff'),
+    url('../fonts/museo-font/MuseoSansCyrl-500.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -16,9 +17,9 @@
   font-family: 'MuseoSans';
   src: url('../fonts/museo-font/MuseoSansCyrl-900.eot');
   src: local('MuseoSansCyrl-900'),
-      url('../fonts/museo-font/MuseoSansCyrl-900.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/museo-font/MuseoSansCyrl-900.woff') format('woff'),
-      url('../fonts/museo-font/MuseoSansCyrl-900.ttf') format('truetype');
+    url('../fonts/museo-font/MuseoSansCyrl-900.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/museo-font/MuseoSansCyrl-900.woff') format('woff'),
+    url('../fonts/museo-font/MuseoSansCyrl-900.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
@@ -27,9 +28,9 @@
   font-family: 'MuseoSans';
   src: url('../fonts/museo-font/MuseoSansCyrl-700.eot');
   src: local('../fonts/museo-font/MuseoSansCyrl-700'),
-      url('../fonts/museo-font/MuseoSansCyrl-700.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/museo-font/MuseoSansCyrl-700.woff') format('woff'),
-      url('../fonts/museo-font/MuseoSansCyrl-700.ttf') format('truetype');
+    url('../fonts/museo-font/MuseoSansCyrl-700.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/museo-font/MuseoSansCyrl-700.woff') format('woff'),
+    url('../fonts/museo-font/MuseoSansCyrl-700.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -38,9 +39,9 @@
   font-family: 'MuseoSans';
   src: url('../fonts/museo-font/MuseoSansCyrl-300.eot');
   src: local('../fonts/museo-font/MuseoSansCyrl-300'),
-      url('../fonts/museo-font/MuseoSansCyrl-300.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/museo-font/MuseoSansCyrl-300.woff') format('woff'),
-      url('../fonts/museo-font/MuseoSansCyrl-300.ttf') format('truetype');
+    url('../fonts/museo-font/MuseoSansCyrl-300.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/museo-font/MuseoSansCyrl-300.woff') format('woff'),
+    url('../fonts/museo-font/MuseoSansCyrl-300.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
 }
@@ -49,12 +50,13 @@
   font-family: 'MuseoSans';
   src: url('../fonts/museo-font/MuseoSansCyrl-100.eot');
   src: local('../fonts/museo-font/MuseoSansCyrl-100'),
-      url('../fonts/museo-font/MuseoSansCyrl-100.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/museo-font/MuseoSansCyrl-100.woff') format('woff'),
-      url('../fonts/museo-font/MuseoSansCyrl-100.ttf') format('truetype');
+    url('../fonts/museo-font/MuseoSansCyrl-100.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/museo-font/MuseoSansCyrl-100.woff') format('woff'),
+    url('../fonts/museo-font/MuseoSansCyrl-100.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
 }
+
 *,
 *::after,
 *::before {
@@ -63,6 +65,8 @@
   box-sizing: border-box;
   font-family: 'MuseoSans';
 }
+
+body {}
 
 html {
   font-size: 10px;
@@ -98,7 +102,7 @@ a {
 }
 
 .ant-collapse-header .ant-collapse-header-text {
-  color: $blue-600;
+  color: var(--blue-700);
   font-size: 2.2rem;
   font-weight: 600;
 }
@@ -158,7 +162,7 @@ a {
     line-height: 40px;
     float: left;
     padding-left: 20px;
-    background: #fff;
+    background: var(--white-900);
     color: #999;
     font-size: 17px;
     font-style: italic;
@@ -174,16 +178,21 @@ a {
     height: 50px;
     cursor: pointer;
     font-size: 2rem;
-    background: $blue-600;
-    color: #fff;
+    background: var(--blue-600);
+    color: var(--white-900);
 
   }
+}
+
+.gray {
+  filter: grayscale(100%);
 }
 
 @media (max-width:1440px) {
   .container {
     max-width: 1240px;
   }
+
   .nav-container {
     max-width: 1240px;
   }
@@ -193,6 +202,7 @@ a {
   .container {
     max-width: 1440px;
   }
+
   .nav-container {
     max-width: 1550px;
   }

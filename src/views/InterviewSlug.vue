@@ -8,6 +8,9 @@ import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
 import SidebarMenu from '@/components/menu/SidebarMenu.vue';
 import BaseButton from '@/components/button/BaseButton.vue';
 import SocialShare from '@/components/social/SocialShare.vue';
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
+
 const newsStore = useNewsStore();
 const breadCrumb = useBreadCrumbsStore();
 const isLoad = ref(false);
@@ -15,6 +18,7 @@ const router = useRoute();
 const infoId = router.params.id;
 const alias = localStorage.getItem('last-alias');
 const currentUrl = ref('');
+
 
 onMounted(async () => {
     await Promise.all([
@@ -37,7 +41,7 @@ const printPage = () => {
                     <div class="news-slug__content">
                         <a-carousel autoplay :dots="false" :autoplaySpeed="3000" :slidesToShow="1">
                             <div v-for="(img, i) in newsStore.interviewDetail.images" :key="i" class="news-slug__img">
-                                <img :src="img" alt="img">
+                                <img :src="img" alt="img"  :class="imageStore.isGray ? 'gray' : ''">
                             </div>
                         </a-carousel>
                         <div class="news-slug__flex">

@@ -9,7 +9,7 @@
     }
 
     &__title {
-        @include title($black-800);
+        @include title(var(--black-800));
         // font-weight: 700;
     }
 
@@ -25,7 +25,7 @@
             font-weight: 600;
             font-size: 18px;
             line-height: 24px;
-            color: $black-800;
+            color: var(--black-800);
             cursor: pointer;
             transition: $smooth;
             opacity: 0.5;
@@ -48,7 +48,7 @@
             opacity: 1;
 
             &::after {
-                background: $black-800;
+                background: var(--black-800);
                 width: 100%;
             }
         }

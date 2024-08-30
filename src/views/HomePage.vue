@@ -11,6 +11,8 @@ import HomeMedia from '@/components/sections/home/HomeMedia.vue';
 import PartnerCard from '@/components/card/PartnerCard.vue';
 import OlimpicCard from '@/components/card/OlimpicCard.vue';
 import { RightOutlined } from '@ant-design/icons-vue';
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
 
 const windowWidth = ref(window.innerWidth);
 const partnerStore = usePartnerStore();
@@ -42,14 +44,16 @@ const isGradient = computed(() => windowWidth.value > 800);
 </script>
 <template>
   <section class="home-page" v-if="isLoad">
-    <HomeHeader :data="homeStore.banner.data"/>
+    <HomeHeader :data="homeStore.banner.data" />
     <HomeBanner v-if="bannerLoad" />
     <HomeNews />
-    <section class="home-page__strategy" v-if="bannerLoad"></section>
+    <section class="home-page__strategy" v-if="bannerLoad">
+      <img src="@/assets/images/strategy.png" alt="strategiy"   :class="imageStore.isGray ? 'gray' : ''">
+    </section>
     <HomeInterview />
     <div class="container" v-if="bannerLoad">
       <div class="home-page__banner">
-        <img src="@/assets/images/home-banner.png" alt="home banner">
+        <img src="@/assets/images/home-banner.png" alt="home banner"  :class="imageStore.isGray ? 'gray' : ''">
       </div>
     </div>
     <HomeMedia />
@@ -59,7 +63,7 @@ const isGradient = computed(() => windowWidth.value > 800);
         <Vue3Marquee :gradient="isGradient" :pauseOnHover="true" :duration="35">
           <div v-for="item in partnerStore.support.data" :key="item.id">
             <PartnerCard :img="item.images" :title="item.title" :url="`/${lang}`"
-              style="margin:  1rem;min-width:320px" />
+              style="margin: 1rem;min-width:320px" />
           </div>
 
         </Vue3Marquee>

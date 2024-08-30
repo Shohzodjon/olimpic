@@ -11,6 +11,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/effect-fade';
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
 
 
 
@@ -26,7 +28,7 @@ onMounted(async () => {
 </script>
 <template>
     <section class="home-news-section" v-if="isLoad">
-        <img src="@/assets/images/big_logo.png" alt="big logo" class="big__logo">
+        <img src="@/assets/images/big_logo.png" alt="big logo" class="big__logo" :class="imageStore.isGray ? 'gray' : ''">
         <div class="container">
             <div class="home-news-section__flex">
                 <h2 class="home-news-section__title">{{ $t('news') }}</h2>
@@ -43,7 +45,7 @@ onMounted(async () => {
                             <div class="home-news-section__card">
                                 <RouterLink :to="`/${lang}/news-slug/${item.alias}`">
                                     <div class="home-news-section__card-img">
-                                        <img :src="item.images[0]" alt="img">
+                                        <img :src="item.images[0]" alt="img" :class="imageStore.isGray ? 'gray' : ''">
                                     </div>
                                     <div class="home-news-section__card-info">
                                         <div class="home-news-section__card-time">

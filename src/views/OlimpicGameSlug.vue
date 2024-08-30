@@ -5,6 +5,8 @@ import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
 import { useRoute } from 'vue-router';
 import SidebarMenu from '@/components/menu/SidebarMenu.vue';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
 const gamesStore = useGamesStore();
 const breadCrumb = useBreadCrumbsStore();
 const alias = localStorage.getItem('last-alias');
@@ -29,7 +31,7 @@ onMounted(async () => {
             <a-row :gutter="[24, 24]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="committee-page__content">
-                        <img :src="gamesStore.gameDetail?.images" style="max-width: 300px;" />
+                        <img :src="gamesStore.gameDetail?.images" style="max-width: 300px;" :class="imageStore.isGray?'gray':''" />
                         <div v-html="gamesStore.gameDetail?.content" style="margin-top:10"></div>
                     </div>
                 </a-col>

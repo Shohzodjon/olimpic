@@ -3,6 +3,8 @@
 import { RouterLink } from 'vue-router';
 import { ClockCircleOutlined } from '@ant-design/icons-vue';
 import { lang } from '@/uitiles/currentLang';
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
 defineProps({
     img: {
         type: String,
@@ -26,7 +28,7 @@ defineProps({
         <RouterLink :to="url">
             <div class="home-news__flex">
                 <div class="home-news__img">
-                    <img :src="img" alt="news img">
+                    <img :src="img" alt="news img" :class="imageStore.isGray ? 'gray' : ''">
                 </div>
                 <div class="home-news__info">
                     <h3 class="home-news__title">{{ title }}</h3>

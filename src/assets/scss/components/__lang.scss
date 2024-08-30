@@ -3,16 +3,22 @@
     align-items: center;
     gap: 20px;
     height: max-content !important;
+
     li {
         font-size: 1.6rem;
-        color: $gray-700;
+        color: var(--gray-700);
         display: flex;
         align-items: center;
         padding-top: 9px;
         gap: 8px;
+
+        span {
+            font-size: 17px;
+        }
+
         button {
             font-size: 1.6rem;
-            color: $gray-700;
+            color: var(--gray-700);
             font-weight: 400 !important;
             cursor: pointer;
             border: none;

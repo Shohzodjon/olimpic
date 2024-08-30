@@ -6,9 +6,11 @@ import StaticBreadcrumb from '@/components/menu/StaticBreadcrumb.vue';
 import { ClockCircleOutlined, EyeOutlined } from '@ant-design/icons-vue';
 import { lang } from '@/uitiles/currentLang';
 import { useI18n } from 'vue-i18n';
+import { useImageStore } from '@/stores/setGray';
+const imageStore = useImageStore();
 const mediaStore = useMediaStore();
 const router = useRoute();
-const {t}=useI18n();
+const { t } = useI18n();
 const slug = router.params.id;
 const isLoad = ref(false);
 onMounted(async () => {
@@ -23,7 +25,7 @@ const breads = [
 <template>
     <section class="news-slug">
         <div class="container">
-            <StaticBreadcrumb :data="breads"/>
+            <StaticBreadcrumb :data="breads" />
             <a-row :gutter="[24, 24]" v-if="isLoad">
                 <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
                     <div class="news-slug__content">
@@ -32,8 +34,9 @@ const breads = [
                                 <img :src="img" alt="img">
                             </div>
                         </a-carousel> -->
-                        <div  class="news-slug__img">
-                            <img :src="mediaStore.announcementDetail.images" alt="img">
+                        <div class="news-slug__img">
+                            <img :src="mediaStore.announcementDetail.images" alt="img"
+                                :class="imageStore.isGray ? 'gary' : ''">
                         </div>
                         <div class="news-slug__flex">
                             <div class="news-slug__time">
@@ -50,7 +53,7 @@ const breads = [
                     <div class="committee-page__sidebar">
                         <div class="committee-page__sidebar-img">
                             <RouterLink :to="`/${lang}`">
-                                <img src="@/assets/images/olimpic.png" alt="olimpic ">
+                                <img src="@/assets/images/olimpic.png" alt="olimpic "   :class="imageStore.isGray?'gary':''">
                             </RouterLink>
                         </div>
                     </div>
