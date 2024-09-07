@@ -33,7 +33,7 @@ onMounted(async () => {
                         <a-row :gutter="[15, 15]">
                             <a-col :xs="24" :sm="12" :md="8" :lg="6" :xl="6" v-for="item in partnerStore.list.data"
                                 :key="item.id">
-                                <PartnerCard :img="item.images" :title="item.title" :url="`/${lang}`" />
+                                <PartnerCard :img="item.images" :title="item.title" :url="`/${lang}/partner?alias=partnery`"  class="partner-page"/>
                             </a-col>
                         </a-row>
                     </div>
@@ -45,3 +45,11 @@ onMounted(async () => {
         </div>
     </section>
 </template>
+
+<style scoped>
+  @media (max-width:576px) {
+    .partner-page{
+        max-width: 100% !important;
+    }
+  }
+</style>

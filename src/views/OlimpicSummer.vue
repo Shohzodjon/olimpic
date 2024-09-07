@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch, nextTick } from 'vue';
 import { useGamesStore } from '@/stores/games';
 import BreadCrump from '@/components/menu/BreadCrump.vue';
 import OlimpicCard from '@/components/card/OlimpicCard.vue'
@@ -7,6 +7,7 @@ import { useBreadCrumbsStore } from '@/stores/breadcrumbs';
 import { useRoute } from 'vue-router';
 import SidebarMenu from '@/components/menu/SidebarMenu.vue';
 import { lang } from '@/uitiles/currentLang';
+import { useFadeUp } from '@/uitiles/anime';
 const gamesStore = useGamesStore();
 const breadCrumb = useBreadCrumbsStore();
 const router = useRoute();
@@ -18,8 +19,15 @@ onMounted(async () => {
         breadCrumb.fetchList(slug)
     ])
     isLoad.value = true;
-    localStorage.setItem('last-alias', slug)
+    localStorage.setItem('last-alias', slug);
 })
+watch(isLoad, (newValue) => {
+    if (newValue) {
+        nextTick(() => {
+            useFadeUp(".committee-page__content" ,".olimpic-card__parent");
+        });
+    }
+});
 </script>
 <template>
     <section class="committee-page">
@@ -32,7 +40,7 @@ onMounted(async () => {
                     <div class="committee-page__content">
                         <a-row :gutter="[20, 20]">
                             <a-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" v-for="item in gamesStore.olimpicSummer"
-                                :key="item.id">
+                                :key="item.id" class="olimpic-card__parent">
                                 <OlimpicCard :title="item.title" season="summerSeason" :img="item.images"
                                     :url="`/${lang}/olimpic-game-slug/${item.alias}`">
                                     <template #season-icon><img src="@/assets/images/sun-icon.svg" width="24"

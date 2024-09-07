@@ -39,7 +39,7 @@ onMounted(() => {
                 <span class="text" ref="text">{{ $t('logo') }}</span>
             </div>
             <div class="circle"></div>
-            <div class="loader__logo">
+            <div class="loader__logo" >
                 <img src="@/assets/images/logo_2.png" alt="logo">
             </div>
         </div>
@@ -77,7 +77,6 @@ onMounted(() => {
     border-radius: 50%;
     padding: 10px 15px;
     overflow: hidden;
-    transform: rotate(1.5deg);
 
 }
 

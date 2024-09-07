@@ -68,6 +68,7 @@ const thirdMenuShow = (title, data) => {
 }
 
 const closeThirdMenu = () => {
+  
     const parentMenu = document.querySelector('.second__menu');
     const childMenu = document.querySelector('.third__menu')
     parentMenu.classList.toggle('unactive-menu');
@@ -85,6 +86,18 @@ const chooseLang = (event) => {
     localStorage.setItem('locale', chooseLocale)
     window.location.reload();
 }
+
+const closeMenu=()=>{
+    const parentMenu = document.querySelector('.parent__menu');
+    const secondMenu = document.querySelector('.second__menu');
+    const childMenu = document.querySelector('.third__menu')
+    parentMenu.classList.remove('unactive-menu');
+    secondMenu.classList.remove('unactive-menu');
+    secondMenu.classList.remove('active-menu');
+    childMenu.classList.remove('active-menu');
+    menuStore.toggleFunc();
+}
+
 
 </script>
 <template>
@@ -131,11 +144,11 @@ const chooseLang = (event) => {
                                 <div v-else>
                                     <router-link v-if="child.link"
                                         :to="{ name: child.link, query: { alias: child.alias } }"
-                                        @click="menuStore.toggleFunc()">
+                                        @click="closeMenu">
                                         {{ child.title }}
                                     </router-link>
                                     <router-link v-else :to="{ name: 'static-page', query: { alias: child.alias } }"
-                                        @click="menuStore.toggleFunc()">
+                                        @click="closeMenu">
                                         {{ child.title }}
                                     </router-link>
                                 </div>
@@ -148,11 +161,11 @@ const chooseLang = (event) => {
                             </li>
                             <li v-for="item in grandChildList.list" :key="item.id" class="child__menu-item">
                                 <router-link v-if="item.link" :to="{ name: item.link, query: { alias: item.alias } }"
-                                    @click="menuStore.toggleFunc()">
+                                    @click="closeMenu">
                                     {{ item.title }}
                                 </router-link>
                                 <router-link v-else :to="{ name: 'static-page', query: { alias: item.alias } }"
-                                    @click="menuStore.toggleFunc()">
+                                    @click="closeMenu">
                                     {{ item.title }}
                                 </router-link>
                             </li>

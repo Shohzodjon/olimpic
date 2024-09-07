@@ -55,7 +55,7 @@ const paginationFunc = async (pageNum) => {
                             </RouterLink>
                         </a-col>
                     </a-row>
-                    <a-pagination v-model:current="current" :total="licenseesStore.licensees?.meta?.total"
+                    <a-pagination v-model:current="current" :total="licenseesStore.licensees?.meta?.total" v-if="licenseesStore.licensees?.data.lenght>0"
                         show-less-items @click="paginationFunc" />
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="6" :xl="6">

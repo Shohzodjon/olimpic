@@ -1,5 +1,5 @@
 .horizontal-slider {
-    margin-bottom: 1.5rem;
+    margin-bottom: 15px;
 
     &__card {
         display: flex;
@@ -107,18 +107,29 @@
     }
 
     @media (max-width:$xs) {
+        &__card {
+            height: 140px !important;
+        }
         &__card-title {
             font-size: 2.5rem;
+        }
+
+        .slick-list{
+            height: 180px !important;
         }
     }
 
     @media (max-width:$sm) {
+    
         &__card-title {
             font-size: 2rem;
         }
 
         &__card-btn {
             padding: 6px 20px;
+        }
+        .slick-list{
+            height: 160px !important;
         }
     }
 }
