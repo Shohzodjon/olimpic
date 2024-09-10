@@ -29,6 +29,7 @@
 
         h2 {
             @include title(var(--black-800));
+            font-weight: 900;
         }
     }
 
@@ -37,7 +38,7 @@
 
         h2 {
             @include title(var(--black-800));
-          
+          font-weight: 900;
            
         }
 

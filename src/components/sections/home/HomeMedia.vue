@@ -34,12 +34,12 @@ const tabClick = (tab) => {
             </div>
             <div v-if="isLoad">
                 <a-row :gutter="[20, 20]" v-if="currentTab == 'photo'" >
-                    <a-col :sm="24" :md="12" :lg="12" :xl="12">
+                    <a-col :sm="24" :md="14" :lg="14" :xl="14">
                         <HomeGallery :img="mediaStore.gallery[0]?.images[0]" :title="mediaStore.gallery[0]?.title"
                             :time="mediaStore.gallery[0]?.created_at" class="main-interview-card"
                             :url="`/${lang}/gallery`" />
                     </a-col>
-                    <a-col :span="24" :sm="24" :md="12" :lg="12" :xl="12" class="home-media__right-side" >
+                    <a-col :span="24" :sm="24" :md="10" :lg="10" :xl="10" class="home-media__right-side" >
                         <HomeGallery v-for="(item, i) in mediaStore.gallery" v-show="i != 0" :key="item.id"
                             :img="item.images[0]" :title="item.title" :time="item.created_at"
                             :url="`/${lang}/gallery`" />
@@ -47,12 +47,12 @@ const tabClick = (tab) => {
                 </a-row>
 
                 <a-row :gutter="[20, 20]" v-if="currentTab == 'video'">
-                    <a-col :span="24" :sm="24" :md="12" :lg="12" :xl="12">
+                    <a-col :span="24" :sm="24" :md="14" :lg="14" :xl="14">
                         <HomeGallery :img="mediaStore.video[0]?.images" :title="mediaStore.video[0]?.title"
                             :time="mediaStore.video[0]?.created_at" :url="`/${lang}/video`"
                             class="main-interview-card" />
                     </a-col>
-                    <a-col :span="24" :sm="24" :md="12" :lg="12" :xl="12" class="home-media__right-side">
+                    <a-col :span="24" :sm="24" :md="10" :lg="10" :xl="10" class="home-media__right-side">
                         <HomeGallery v-for="(item, i) in mediaStore.video" v-show="i != 0" :key="item.id"
                             :img="item.images" :title="item?.title" :time="item?.created_at" :url="`/${lang}/video`" />
                     </a-col>

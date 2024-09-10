@@ -72,10 +72,10 @@ onMounted(() => {
 
 .loader__logo {
     position: absolute;
-    width: 170px;
+    width: 165px;
     height: 165px;
     border-radius: 50%;
-    padding: 10px 15px;
+    padding: 10px 27px;
     overflow: hidden;
 
 }
@@ -83,6 +83,7 @@ onMounted(() => {
 .loader__logo img {
     width: 100%;
     height: 100%;
+    transform: rotate(3deg);
 }
 
 .circle {

@@ -21,7 +21,7 @@
 
     &__title {
         @include title(var(--black-800));
-        // font-weight: 700;
+        font-weight: 900;
     }
 
     &__btn {

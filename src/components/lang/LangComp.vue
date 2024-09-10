@@ -37,7 +37,8 @@ const handleClick = (event) => {
 <template>
     <ul class="lang-comp">
         <li v-for="(item, i) in langList" :key="i">
-            <GlobalOutlined v-if="i == 0" />
+            <!-- <GlobalOutlined v-if="i == 0" /> -->
+            <i class="icon-lang" style="font-size: 16px;" v-if="i == 0"></i>
             <button :data-lang="item.locale" @click="(e) => handleClick(e)" class="lang-btn"
                 :class="item.active ? 'active-lang' : ''">{{ item.label }}</button>
         </li>

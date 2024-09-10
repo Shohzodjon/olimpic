@@ -5,7 +5,7 @@ import HomeNewsCard from '@/components/card/HomeNewsCard.vue';
 import { lang } from '@/uitiles/currentLang';
 import { ClockCircleOutlined, } from '@ant-design/icons-vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay } from 'swiper/modules';   
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
