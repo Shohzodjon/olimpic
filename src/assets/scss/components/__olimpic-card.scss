@@ -12,7 +12,8 @@
         flex: 1;
 
         h3 {
-            @include desc(var(--black-800));
+            @include desc(var(--black-800)); 
+            font-weight: 500;
         }
     }
 
